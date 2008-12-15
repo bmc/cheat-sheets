@@ -1,0 +1,8 @@
+Repairing Win2K with installation CD when boot disk is trashed
+
+- Boot from boot CD
+- Select repair option
+- Try auto-repair.
+- If that doesn't do the trick, select manual repair.
+- From CMD prompt, run CHKDSK C: /R
+- You might have to poke around to find a required EXE

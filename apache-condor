@@ -1,0 +1,7 @@
+My stuff consolidated in /usr/local/site/www
+
+For port:
+
+- In /usr/local/etc/apache, ln -s /usr/local/site/www/apache/conf/httpd.conf .
+
+Note that DocumentRoot has been edited in httpd.conf

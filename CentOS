@@ -1,0 +1,7 @@
+1. Font weirdness with Arial: Arial font interpretation is buggered in KDE.
+   Hack solution:
+
+   - Remove Arial fonts via KDE Font Installer.
+   - Add Helvetica font from LaTeX. (I copied 
+     /usr/share/doc/liblo-0.18/latex/Helvetica.ttf from sunball.) That way,
+     sites that request Helvetica get a True-Type one.

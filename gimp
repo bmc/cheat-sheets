@@ -1,0 +1,46 @@
+1. Best JPG quality: When saving a JPG, select "Advanced Options":
+
+   a. Boost quality to 1.
+   b. Set Subsampling to "1x1, 1x1, 1x1"
+   c. Set DCT method to Floating-Point
+
+2. Bringing out texture (from a comment about Photoshop posted to
+   PhotographyBlog.com):
+
+	Try dodging and burning. Set burn to largish selection area and
+	about strength 3 and do a couple of sweeps over reeds, trees, etc
+	(set to shadows) and same with dodge (set to highlights) to pick
+	out extra texure. This can be used on foliage or any similar. Play
+	with results and see what you think.
+
+3. http://www.dslreports.com/forum/remark,15173919
+
+	Punch Up Those Photos (Gimp Style)
+
+	A note before we begin: Its important to keep in mind Gimp treats
+	the LAB colorspace very differently from Photoshop. For one, any
+	changes you make will not be be visible until you do the final
+	step. Gimp decomposes an image to the LAB colorspace using
+	Grayscale layers, as opposed to PS's use of channels. In practice,
+	this is more convenient for some operations, but less convenient
+	overall. For this method... it is a bit more of a pain in the ass,
+	with more steps. Here are those steps:
+
+	1) Open Image
+	2) Go to Image>Mode>Decompose
+	3) Check LAB, Check Decompose to Layers, hit OK
+	4) Open Layers dialog. Make only the B layer visible.
+	5) Duplicate B layer, set "B Copy" to overlay (Opacity is 100%).
+	6) Merge both B layers (Image>Merge Visible Layers/CTRL-M) Choose
+           Expand as necessary (though other options don't make a difference
+           in this case) Hit Ok.
+	7) Repeat steps #4 through #6 for the "A" layer.
+	8) Select "L" layer, apply a slight S curve, mostly adjusted
+           towards the dark end of the curve. (GIMP's overlay is calculated
+           a bit differently)
+	9) Image>Mode>Recompose and Make sure you select LAB with the
+           correct layer order.
+
+	That's it, the output will still be slightly more even of an
+	exposure compared with PS... not quite as dark. (This may be a 8/16
+	bit side effect)

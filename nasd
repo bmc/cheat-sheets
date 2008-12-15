@@ -1,0 +1,6 @@
+Network Audio System
+
+- Problem: When playing sounds via nasd, the sound frequency is too high.
+
+  Solution: Adjust nasd.conf. In the "outputsection", set "maxrate" to
+  22100, instead of 44100.

@@ -1,0 +1,4 @@
+- C-x u (undo) will undo the changes to the messages, restoring the "N" status
+
+- "a" invokes a "set attributes" function that permits setting any message
+  attribute. Type "?" at the minibuffer prompt for a list of them.

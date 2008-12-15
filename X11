@@ -1,0 +1,4 @@
+Fonts:
+
+- After adding new fonts, must run /usr/X11R6/bin/fc-cache (as root), or
+  GTK-based apps (Mozilla, GAIM, etc.) won't come up.

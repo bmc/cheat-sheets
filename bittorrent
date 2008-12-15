@@ -1,0 +1,10 @@
+
+1. Getting the client:
+
+   a. On Linux, "yum install bittorrent"
+   b. On FreeBSD, install the /usr/ports/net/py-bittorrent port
+
+2. Run as follows. Parameters below are suitable for this network's
+   bandwidth and natd.conf setup:
+
+   $ btdownloadcurses.py --max_allow_in 10 --max_initiate 10 -minport 6881 --maxport 6889 torrentfile

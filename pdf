@@ -1,0 +1,5 @@
+1. Merge multiple pdf files:
+
+   - Use pdftk (Google for it) like so:
+
+        pdftk *.pdf cat output front_pages.pdf

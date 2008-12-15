@@ -1,0 +1,584 @@
+Fedora Core 2/3/4 cheat sheet
+$Id: fedora 6599 2006-12-06 02:05:49Z bmc $
+
+ 1. Can't use x2x to connect to X server. 
+
+    Problem: X fired up with -nolisten. Solution: Use gdmsetup to change
+    that setting. (See the Security tab.)
+
+ 2. Default login session is twm, when logging in from graphical console.
+
+    Edit /etc/X11/xdm/Xsession, and change the default case selector
+    to fire up desired session.
+
+ 3. Getting Atheros Wireless NIC to work:
+
+    New MadWIFI (a.k.a., madwifi-ng):
+
+        See http://madwifi.org/wiki/UserDocs/Distro/RedHat
+
+        Summary:
+
+	To automatically create a station mode interface called ath0, add
+	the following lines to /etc/modprobe.conf:
+
+	    install ath0 /sbin/modprobe ath_pci; /usr/bin/wlanconfig ath0 create wlandev wifi0 wlanmode sta
+	    remove ath0 /usr/bin/wlanconfig ath0 destroy; /sbin/modprobe -r ath_pci
+
+	If you've run previous versions of the driver, you'll also need to
+	change the line reading:
+
+	    alias ath0 ath_pci
+
+	To:
+
+	    alias wifi0 ath_pci
+
+    Old MadWIFI:
+
+        FC3:
+
+        - Get madwifi package from madwifi.sourceforge.net
+
+        - Unpack it, and type "make; make install"
+
+        FC4:
+
+        - Get and install madwifi-0.9.4.12-16.rhfc4.at.i386.rpm and
+          madwifi-kmdl-2.6.11-1.1369_FC4smp-0.9.4.12-16.rhfc4.at.i686.rpm from
+          http://www.atrpms.net/dist/fc4/madwifi/
+
+          (Note: Version of madwifi-kdml-* will differ depending on kernel
+          version.)
+
+        Both: 
+
+        - Add the following line to /etc/modprobe.conf:
+
+     	alias ath0 ath_pci
+
+        - Configure the interface. Either select network configuration from
+          the KDE menu, or use the command "system-config-network".
+
+        - Be sure to get the following things correct:
+
+          * channel (currently 8)
+          * WEP key (if using WEP; if using WPA, see below)
+          * SSID
+
+          Also, enable the "activate on boot" flag
+
+        - "ifup ath0"
+
+        ERRORS:
+
+        a. Seeing this, upon doing a "modprobe ath0" or "ifup ath0"
+
+               ath_pci: Unknown symbol ath_rate_tx_complete
+               ath_pci: Unknown symbol ath_rate_attach
+               ath_pci: Unknown symbol ath_rate_newassoc
+               ath_pci: Unknown symbol ath_rate_node_copy
+               ath_pci: Unknown symbol ath_rate_node_cleanup
+               ath_pci: Unknown symbol ath_rate_detach
+               ath_pci: Unknown symbol ath_rate_node_init
+               ath_pci: Unknown symbol ath_rate_findrate
+               ath_pci: Unknown symbol ath_rate_newstate
+               ath_pci: Unknown symbol ath_rate_setupxtxdesc
+
+          Generally means module is installed in two different places within
+          /lib/modules/<kernel> (maybe because RPM is installed and .ko files
+          were also installed from a madwifi build).
+
+          Solution: Remove both versions (and RPM), and reinstall, preferably
+          via RPM.
+
+    WPA:
+
+        If using WPA, more steps are required. Do the following before
+        attempting to bring up the interface. (Adapted from an entry in the
+        madwifi FAQ, http://www.mattfoster.clara.co.uk/madwifi-9.htm#5)
+
+        - Download, build and install "wpa_supplicant" from 
+          http://hostap.epitest.fi/wpa_supplicant/
+
+        - Create /etc/wpa_supplicant.conf
+
+    	network={
+    	                scan_ssid=0
+    	                proto=WPA
+    	                key_mgmt=WPA-PSK
+    	                pairwise=CCMP TKIP
+    	                group=CCMP TKIP WEP104 WEP40
+    	}
+
+        - Get the SSID and the WPA passphrase, and pass them into the
+          wpa_passphrase command, e.g.:
+
+    	wpa_passphrase ssid passphrase
+
+        - Merge the resulting output with the contents of
+          /etc/wpa_supplicant.conf
+
+        - Change the permissions on /etc/wpa_supplicant.conf to 640.
+
+        - Bring up wpa_supplicant as root:
+
+    	# wpa_supplicant -B -w -c/etc/wpa_supplicant.conf -iath0 -Dmadwifi
+
+          (Run with -d and without -B to run in foreground with debugging
+          enabled.)
+
+        - Install ifplugd, and modify /etc/ifplugd/ifplugd.conf so that
+	  "ath0" is in INTERFACES.
+
+	- Create ifup-ath and ifdown-ath scripts in 
+	  /etc/sysconfig/network-scripts
+
+          Contents should be:
+
+	  ifup-ath:
+	  ----------
+	  #!/bin/sh
+
+	  if=$1
+	  /sbin/dhclient -1 -q -cf /etc/dhclient-$if.conf \
+	     -lf /var/lib/dhcp/dhclient-$if.leases \
+	     -pf /var/run/dhclient-$if.pid $if
+	  ----------
+
+	  ifdown-ath:
+	  ----------
+	  #!/bin/sh
+
+	  if=$1
+	  kill -TERM `cat /var/run/dhclient-$if.pid`
+	  ----------
+
+	  These scripts are automatically invoke by the "ifup" and
+	  "ifdown" scripts.
+
+	- Start ifplugd. It'll watch for the ath0 interface, and invoke
+	  "ifup" and "ifdown", which will, in turn, invoke the above scripts
+	  to get an IP address.
+
+	- Invoke wpa_supplicant via /etc/rc.local.
+	  (Be sure ONBOOT is "no" for "ifcfg-ath0".)
+
+    NOTE: If dhclient can't get an address, try killing wpa_supplicant
+    and reloading the module:
+
+	$ sudo modprobe -r ath_pci
+
+ 4. Alternative to kwifimanager, in case kwifimanager doesn't work right:
+
+    http://www-2.cs.cmu.edu/~pach/kwirelessmonitor/
+
+ 5. Disabling graphical boot:
+
+    Edit /boot/grub/grub.conf and remove "rhgb" from every "kernel" line.
+
+    Before:
+        kernel /boot/vmlinuz-2.6.9-1.724_FC3 ro root=LABEL=/ rhgb quiet
+
+    After: 
+        kernel /boot/vmlinuz-2.6.9-1.724_FC3 ro root=LABEL=/ quiet
+
+    Graphical boot is now off. (Note that this change has no effect on whether
+    the xdm/kdm/gdm graphical login is enabled--which is as it should be.)
+
+ 6. Mounting NTFS partition:
+
+    Get this module and install it:
+    http://linux-ntfs.sourceforge.net/rpm/fedora3.html
+
+    Must be done for every new kernel.
+
+    If the latest version isn't there, the roll-your-own instructions work
+    pretty well: http://linux-ntfs.sourceforge.net/rpm/build.html
+    For SMP kernels, use "i686-smp" as the ARCH parameter.
+
+    NOTE: By default, the permissions on the mounted partition forbid access
+    to anyone but root. To make the partition readable by anyone, mount with
+    "-o umask=0222". A useful /etc/fstab entry:
+
+	/dev/hda1  /mnt/winxp  ntfs  noexec,noauto,ro,umask=0222  0  0
+
+    A "uid" parameter is also supported; it changes the mapped owner of the
+    mounted partition. e.g.:
+
+	/dev/hda1  /mnt/winxp  ntfs  noexec,noauto,ro,umask=0222,uid=bmc  0  0
+
+    See http://linux-ntfs.sourceforge.net/info/ntfs.html#4.9 for more info
+
+ 7. Windows fonts.
+
+    Copy the fonts from a Windows installation, and run ttmkfdir on them.
+    Then, add them to the /etc/X11/fs/config file. If they don't show up,
+    then use the KDE Font Installer to install local copies of them.
+
+ 8. Playing MP3s: 
+
+    Need xmms-mp3. See http://home.gagme.com/greg/linux/fc3-tips.php#mp3
+
+ 9. Getting KDE/X apps to use Emacs key bindings:
+
+    Create or edit $HOME/.gtkrc-2.0, and add this line:
+
+ 	gtk-key-theme-name = "Emacs"
+
+10. Getting rid of loud beep when you hit backspace key at the beginning
+    of a line in the console:
+
+    In /etc/inputrc there is a line such as this at the beginning:
+
+	# do not bell on tab-completion
+	#set bell-style none
+
+    Uncomment "set bell-style none", or put that line in ~/.inputrc.
+    You'll have to login again.
+
+11. Equating Backspace key and Ctrl-H (i.e., getting both keys to do the
+    same thing):
+
+    a) Use stty to set erase to ^H
+
+    b) Put the following lines in ~/.inputrc, for applications (like bash)
+       that use GNU readline:
+
+	"\C-?": backward-delete-char
+	"\C-h": backward-delete-char
+	"\M-[3~": delete-char
+
+       The DEL key will do "delete under cursor", and the BACKSPACE key
+       and Ctrl-H sequence will do "backward delete"
+
+
+12. Getting CUPS-driven printing to work to a remote LPD-connected printer.
+
+    If CUPS has a driver for the printer (e.g., HP LaserJet), then use the
+    same trick as with a Samba-connected printer: Route to the "raw"
+    version of the printer, i.e., the one without the input filter ("if").
+
+13. Getting 1440x900 resolution:
+
+    Just add it to the list of modes in the xorg.conf file, before the other
+    modes. It does not seem to be there by default. e.g.:
+
+        Section "Screen"
+                Identifier "Screen0"
+                Device     "Videocard0"
+                Monitor    "Monitor0"
+                DefaultDepth     24
+                SubSection "Display"
+                        Viewport   0 0
+                        Depth     16
+                        Modes    "800x600" "640x480"
+                EndSubSection
+                SubSection "Display"
+                        Viewport   0 0
+                        Depth     24
+                        Modes    "1440x900" "1400x1050" "1280x1024" "1280x960" "1152x864" "1024x768" "800x600" "640x480"
+                EndSubSection
+        EndSection
+
+    Seemed to do the trick right away.
+
+14. Getting and installing kernel source
+
+    *** NOTE: Might not be necessary. Check what's under /usr/src/kernels
+    *** first.
+
+    a. Find "kernel-2.6.x-1.y_FC3.src.rpm" (e.g., 
+       kernel-2.6.10-1.741_FC3.src.rpm)
+
+       Sometimes this will work, if it gets the right mirror:
+
+       # up2date --nox --get-source kernel
+
+       Or, obtain from SRPMS disc. Or, from a Fedora mirror.
+
+    b. Install it: rpm -ihv kernel-2.6.10-1.741_FC3.src.rpm
+
+    c. Extract and configure. For additional info, see
+       http://fedora.redhat.com/docs/release-notes/fc4/#sn-kernel
+
+       # cd /usr/src/redhat/SPECS
+       # rpmbuild -bp --target $(arch) kernel*.spec
+       # cd /usr/src/redhat/BUILD/kernel-<version>
+       # mv linux-<version> /usr/src
+       # cd /usr/src
+       # ln -s linux-<version> linux
+       # cd linux
+       # cp configs/kernel-<version>-i686-smp.config .config
+       # make oldconfig
+
+       Note: Must go all the way through the "make oldconfig" step.
+
+    d. In /lib/modules/2.6....
+
+       # rm build
+       # ln -s /usr/src/linux build
+
+    NOTE: Without (d), the OSS module won't build.
+
+    e. To build, follow README directions. NOTE: To override version
+       (e.g., so version isn't "2.6.14-prep"), use:
+
+	make LOCALVERSION=-1.1644_FC4smp EXTRAVERSION=
+
+15. Using Apple iPod with Linux.
+
+    See "iPod" file in this directory.
+
+16. Ripping to M4A/MP4: See "ripping" cheat sheet.
+
+17. Playing MP4 files: See the "ripping" cheat sheet.
+
+18. DHCP & modification of /etc/resolv.conf:
+
+    DHCP modifies /etc/resolv.conf when DHCP comes up. Using
+    /etc/dhclient-enter-hooks doesn't help, because that script
+    is sourced before the resolv.conf mod.  However, if variable
+    PEERDNS is not set to "yes", dhclient-script doesn't modify
+    resolv.conf. PEERDNS is set in the config file for the interface, e.g.,
+    "/etc/sysconfig/network-scripts/ifcfg-eth0". Set to "no" to disable edits.
+
+19. Connecting to a Microsoft PPTP-based VPN.
+
+    See this web site:
+    http://pptpclient.sourceforge.net/howto-fedora-core-3.phtml
+
+20. Problems with emacs picking up stuff from .Xdefaults:
+
+    - Be sure to fire up emacs with "-name emacs", to assign the appropriate
+      window name to correspond to the resources.
+
+21. Sudden crash of laptop.
+
+    See file "toshiba_linux_crash"
+
+22. Burning a DVD:
+
+    a. Use growisofs:
+       $ growisofs -dvd-compat -Z /dev/dvd=image.iso
+
+    b. Use k3b (install via yum)
+
+23. Playing WMV files:
+
+    Must have the Win32 codecs. Get all-yyyymmdd.tar.bz2 (e.g.,
+    all-20050412.tar.bz2) from
+    http://www1.mplayerhq.hu/MPlayer/releases/codecs/ and:
+
+    a. Unpack.
+    b. Copy all-*/* to /usr/lib/win32
+
+24. UTF-8 support. See "linux" cheat sheet.
+
+25. Installing rpm GPG keys.
+
+    rpm --import http://freshrpms.net/RPM-GPG-KEY-freshrpms
+    rpm --import http://www.atrpms.net/RPM-GPG-KEY.atrpms
+
+26. Compiling xv:
+
+    - Run xmkmf
+    - Edit Makefile, adding -DLINUX where appropriate
+    - Run "make CC=gcc32"
+
+27. Installing a JDK's java as an alternative, rather than the one that
+    ships with the system.
+
+    Use the alternatives(8) command.
+
+    a. First, introduce the JDK as an option:
+
+       # alternatives --install /usr/bin/java java /usr/local/java/jdk/bin/java 3 --slave /usr/bin/rmiregistry rmiregistry /usr/local/java/jdk/bin/rmiregistry \ --slave /usr/bin/javac javac /usr/local/java/jdk/bin/javac
+
+   b. Next, select that alternative with
+
+      # alternatives --config java
+
+28. When trying to use RealPlayer on Fedora Core 4, you get:
+
+	error while loading shared librariess: libstdc++.so.4: cannot
+	open shared object file: No such file or directory
+
+    Problem: RealPlayer has a dependency on the compat-libstdc++-33
+    package, but that dependency isn't in its RPM. 
+
+    Solution: yum install libstdc++-33
+
+29. Building Firefox RPM:
+
+    See http://wiki.mozilla.org/How_to_build_Firefox_RPM_package_for_Fedora_Core
+
+    (Turns out to take almost no time.)
+
+30. Using Wacom tablet: See http://linuxwacom.sourceforge.net/
+
+    Also:
+
+    a) Be sure to examine the output of "cat /proc/bus/input/devices"
+       to ensure that the right device(s) are being used for the mice.
+    b) Install the Wacom udev rules. See /usr/local/etc/udev-rules
+       or the appropriate svn project.
+
+31. Editing videos. See "video-editing-linux"
+
+32. VMWare on FC5: vmware-config.pl won't work. Solution, from
+    http://www.vmware.com/community/thread.jspa?threadID=31877&tstart=0
+
+        In brief, the needed operation:
+        - patching the vmware-config.pl scripts:
+
+        [cacao74@winnie bin]$ pwd
+        /opt/vmware/bin
+
+        [cacao74@winnie bin]$ diff -u vmware-config.pl.ori vmware-config.pl
+        --- vmware-config.pl.ori 2006-02-25 18:38:09.000000000 +0100
+        +++ vmware-config.pl 2006-02-25 22:19:06.000000000 +0100
+        @@ -1969,8 +1969,8 @@
+        . ' -E - | ' . shell_string($gHelper{'grep'}) . ' '
+        . shell_string($pattern));
+        chomp($header_page_offset);
+        - $header_page_offset =~ s/^$pattern \(?0x([0-9a-fA-F]{8,}).*$/$1/;
+        - if ($header_page_offset =~ /[0-9a-fA-F]{8,}/) {
+        + if ($header_page_offset =~ /^$pattern \(?0x([0-9a-fA-F]{8,})/) {
+        + $header_page_offset = $1;
+        # We found a valid page offset
+        if (defined($gSystem{'page_offset'}) and
+        not (lc($header_page_offset) eq lc($gSystem{'page_offset'}))) {
+
+
+
+        - patching a file in a couple of compressed archives, by adding a line of code:
+
+        [cacao74@winnie source]$ pwd
+        /opt/vmware/lib/modules/source
+
+        [cacao74@winnie source]$ tar xf vmmon.tar
+        [cacao74@winnie source]$ vi vmmon-only/Makefile.kernel
+        add the bold line
+        vm_check_build = $(shell if $(CC) $(CPPFLAGS) $(CFLAGS) $(CFLAGS_KERNEL) $(EXTRA_CFLAGS) -Iinclude2/asm/mach-default -DKBUILD_BASENAME=\"$(DRIVER)\" \
+        -Werror -S -o /dev/null -xc $(1) > /dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi)
+
+        [cacao74@winnie source]$ tar xf vmnet.tar
+        [cacao74@winnie source]$ vi vmnet-only/Makefile.kernel
+        add the bold line
+        vm_check_build = $(shell if $(CC) $(CPPFLAGS) $(CFLAGS) $(CFLAGS_KERNEL) $(EXTRA_CFLAGS) -Iinclude2/asm/mach-default -DKBUILD_BASENAME=\"$(DRIVER)\" \
+        -Werror -S -o /dev/null -xc $(1) > /dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi)
+
+        [cacao74@winnie source]$ mv vmmon.tar vmmon.tar.ori
+        [cacao74@winnie source]$ mv vmnet.tar vmnet.tar.ori
+
+        [cacao74@winnie source]$ tar cf vmmon.tar vmmon-only/
+        [cacao74@winnie source]$ tar cf vmnet.tar vmnet-only/
+
+        By doing so, I have to re-launch the perl script
+        vmware-config.pl to install the software for the new kernel
+        on my system:
+        GNU/Linux Slackware 10.2
+        kernel 2.6.16-rc4
+        gcc version 3.3.6
+
+        Thanks again. Bye 
+
+33. Enabling 3D graphics (ATI Radeon chipset)
+
+    http://www.fedorafq.org/#radeon
+
+34. Getting "can't read superblock" when mounting NFS partition onto Linux
+    (Fedora) client from (FreeBSD) server.
+
+    Solution: Restart server's nfsd.
+
+35. Getting USB disk or USB stick to be (a) mounted automatically on boot
+    (or when inserted), and (b) the same place every time.
+
+    Adapted from
+    http://linux.wordpress.com/2006/10/07/suse-automatically-mount-usb-hard-drives/
+    and http://www.reactivated.net/writing_udev_rules.html#example-usbhdd
+
+    a) Label the partition to be mounted. For ext2 or ext3 volumes, used
+       e2label.
+
+    b) Create a mount entry in /etc/fstab, using the label, not the device
+       (since the assigned device can change):
+
+       LABEL=usbstick  /mnt/usbstick  ext2  noauto,defaults  1 2
+
+    c) Use dmesg to figure out the device to which the drive/stick has been
+       assigned. Then, run this command and look for the device's model
+       string:
+
+	udevinfo -a -p $(udevinfo -q path -n /dev/sdc1)
+
+       Substitute the device for "/dev/sdc1". Output should be something like
+       this:
+
+	  looking at device '/devices/pci0000:00/0000:00:13.2/usb1/1-1/1-1.3/1-1.3.1':
+	    ID=="1-1.3.1"
+	    BUS=="usb"
+	    DRIVER=="usb"
+	    SYSFS{configuration}==""
+	    SYSFS{serial}=="0000290905058962"
+	    SYSFS{product}=="U3 Cruzer Micro"
+	    SYSFS{manufacturer}=="SanDisk Corporation"
+	    SYSFS{maxchild}=="0"
+	    SYSFS{version}==" 2.00"
+	    SYSFS{devnum}=="25"
+	    SYSFS{speed}=="480"
+
+    d) Create a udevd rule file, in /etc/udev/rules.d, that will mount the 
+       device. Use the model string as a match criterion:
+
+       # USB stick
+       KERNEL=="sd?1", BUS=="scsi", SYSFS{model}=="U3 Cruzer Micro", RUN+="/bin/mount /mnt/usbstick"
+
+    e) Restart udevd:
+
+	# killall -9 udevd; /sbin/udevd -d
+
+    NOTE: A set of local Fedora rules is in /usr/local/etc/udev-rules.
+    Those rules can simply be symlinked into /etc/udev/rules.d
+
+36. Remounting an already mounted file system:
+
+    # mount -o remount,rw /dev/sda2
+
+37. When running the java command, Fedora will automatically use GNU Java.
+    To use Sun's java do the following:
+
+    $ sudo /usr/sbin/alternatives --install /usr/bin/java java /path/to/jdk/bin/java
+    $ echo 2 | sudo /usr/sbin/alternatives --config java
+
+38. Flash plug-in: Use the Flash 9 plug-in. See
+    http://www.mjmwired.net/resources/mjm-fedora-fc6.html#flash
+
+39. Fedora services (what they mean, which ones can be safely disabled,
+    etc.)
+
+    http://www.mjmwired.net/resources/mjm-services-fc6.html
+
+40. Installing VMWare on FC6:
+
+    http://forums.fedoraforum.org/showthread.php?t=134488&highlight=vmware
+
+	How to install VMware on Fedora Core 6
+	(Adapted from http://en.opensuse.org/Setting_up_VMware_on_SUSE_Linux)
+
+	1. Install xinetd.
+	2. Install VMware*.rpm.
+	3. Download the latest vmware-any-any-update*.tar.gz from
+           http://ftp.cvut.cz/vmware.
+        4. As root, run vmware-any-any-update*/runme.pl.
+
+	Post any missing steps here. I have tried many things to fight
+	problems with /usr/bin/vmware-config.pl and I don't remember them
+	all. I know this topic has been discussed before; I just want to
+	keep good records.
+
+	VMware does not power on when Xen is loaded.
+
+41. IE on Linux: See "linux" cheat sheet, #5

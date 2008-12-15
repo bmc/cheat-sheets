@@ -1,0 +1,10 @@
+Transfer from TiVo:
+
+- Connect to https://172.16.86.12
+- When prompted for user name and password, enter "tivo" for the user name,
+  and the media access key for the password.
+
+A screen with the various recorded shows will come up, with links for
+downloading.
+
+Use tivodecode (tivodecode.sourceforge.net) to decode a downloaded .tivo file.

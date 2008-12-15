@@ -1,0 +1,3 @@
+- JDE background changes to a different color when you edit a buffer.
+
+  -> Type "M-x list-faces-display" and edit "senator-momentary-highlight-face"

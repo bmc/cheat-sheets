@@ -1,0 +1,137 @@
+Configuration notes:
+
+	- By default, mozilla doesn't build with the PSM (personal security
+	  manager), which means you can't visit SSL-encrypted sites. Run
+	  "configure" manually with the --enable-crypto option to ensure
+	  that PSM builds.
+
+	- Good "configure" line:
+
+	  	./configure --enable-crypto --with-gtk-prefix=/usr/X11R6
+	
+
+Build the Lizard
+
+	cvs co -f mozilla/client.mk
+	cd mozilla
+	gmake -f client.mk
+
+To rebuild without pulling the tree, 
+
+	gmake -f client.mk build 
+
+To pull or update the tree, 
+
+	gmake -f client.mk checkout 
+
+Build may fail, unless following steps are taken:
+
+1. In security/coreconf/nsinstall:
+
+	ln -s freebsd FreeBSD4.3_OPT.OBJ
+
+   Problem appears to be use of PLATFORM environment variable. Try
+   unsetting it before running the build.
+
+
+To build Phoenix:
+
+	Getting the Source
+
+		Go to the root of your mozilla tree.
+		cvs up -Pd browser and toolkit
+
+	Building mozilla/browser
+
+		UNIX, Windows (gmake), Mac (mach-o)
+
+		Ensure that MOZ_PHOENIX is set to 1 in your .mozconfig
+		file. A good .mozconfig file is shown below:
+
+		export MOZ_PHOENIX=1
+		mk_add_options MOZ_PHOENIX=1
+		ac_add_options --enable-crypto
+		ac_add_options --disable-tests
+		ac_add_options --disable-debug
+		ac_add_options --disable-mailnews
+		ac_add_options --disable-composer
+		ac_add_options --enable-optimize=-O2
+
+	See "dist/bin" for results. Copying "dist/bin" to, say,
+	"/usr/local/phoenix/bin" works fine.
+
+SCREWED UP UI FONTS
+
+- Newer Phoenix builds don't seem to handle Helvetica properly. Might be
+  an artifact of my font path. In the userChrome.css file (located in
+  ~/.phoenix/default/xxxxxxx.slt/chrome/userChrome.css), add these lines
+  to adjust the fonts:
+
+	window {
+	  font-size: 3.5mm !important;
+	  font-family: arial !important;
+	}
+
+	/* Make menus big, pretty and readable (like the old SGI look):
+	 * menubar isn't used after 12/19 builds, but is needed for NS6;
+	 * the rest are for post-12/19
+	 */
+	menubar, menubutton, menulist, menu, menuitem {
+	  font-family: arial !important;
+	//  font-style: italic !important;
+	//  font-weight: bold !important;
+	//  font-size: 4mm !important;
+	}
+
+- Preferences: Proxy preferences not saved. From
+  http://bugzilla.mozilla.org/show_bug.cgi?id=171464
+
+    Confirming. The prefs do not get saved, as long as the last line remains 
+    user_pref("network.proxy.socks_version", 0);
+    If the last line is deleted, or changed to 
+    user_pref("network.proxy.socks_version", 4); then the prefs get saved.
+
+
+----------------------------
+Using the Linux Flash Player
+----------------------------
+
+1. Install the "flashpluginwrapper" port
+2. Follow these instructions (which the port displays as part of
+   "make install"):
+
+	To use the flash plugin wrapper, you first need to copy the linux flash
+	plugin into your mozilla directory:
+
+	# cp /usr/local/lib/flash/libflashplayer.so \
+	    /usr/X11R6/lib/mozilla/plugins/libflashplayer_linux.so
+	# cp /usr/local/lib/flash/ShockwaveFlash.class \
+	    /usr/X11R6/lib/mozilla/plugins/
+
+	(Note, if you are using mozilla-devel, the destination directories
+	will be different)
+
+	Next, change the Mozilla startup script, /usr/X11R6/bin/mozilla
+	to have:
+
+	LD_PRELOAD=/usr/local/lib/libflashplayer.so.1
+	export LD_PRELOAD
+
+	at the top of it (but after #!/bin/sh).  Now start mozilla and go to
+	'about:plugins' and the flash plugin is enabled!
+
+
+-----
+Fonts
+-----
+
+Disabling antialiasing below a certain size.
+
+- Find file <mozilla-home>/defaults/pref/unix.js
+
+- Change these two lines
+
+	pref("font.antialias.min",        10);
+	pref("font.scale.aa_bitmap.min", 10);
+
+

@@ -1,0 +1,40 @@
+1. Single User Boot
+
+To perform single user boot with GRUB perform the steps:
+
+    * type p and password if required
+    * type e to enter edit mode
+    * select the kernel command line and append single for single user
+      boot, or run level number (1 through 5)
+    * type b to boot the system
+
+
+----
+Boot hang, with 
+	Socket status: 30000006
+
+Try booting single user mode. Then, start PCMCIA services manually,
+via /etc/rc.d/init.d/pcmcia. Remove network card. Reinsert it. Then,
+"telinit 5".
+----
+
+
+2. UTF-8:
+
+Both vi (vim) and emacs will grok UTF-8 if you set LANG appropriately, e.g.:
+
+    export LANG=en_US.UTF-8
+
+3. Decoding Nikon NEF files on Linux:
+
+   a. Use dcraw, and get the GIMP plug-in.
+   b. Get neftags2jpg (see 
+      http://pages.quicksilver.net.nz/pepe/d70/Nikon_D70_on_Linux.html)
+
+4.  Getting "can't read superblock" when mounting NFS partition onto Linux
+    (Fedora) client from (FreeBSD) server.
+
+    Solution: Restart server's nfsd.
+
+5. Running IE on Linux: Use ies4linux, at 
+   http://www.tatanka.com.br/ies4linux/page/Installation

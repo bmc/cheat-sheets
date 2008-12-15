@@ -1,0 +1,12 @@
+1. Create a hotkey to lock the workstation:
+
+   - Create a new shortcut on the desktop
+   - In the command-line box, type: rundll32.exe user32.dll, LockWorkStation
+   - Click "Next"
+   - Give the shortcut a name like "Lock Workstation"
+   - Click "Finish"
+   - Right-click on the shortcut icon, and select "Properties"
+   - In the "hotkey" box, press F10.
+   - Click "OK"
+
+   Adapted from http://pubs.logicalexpressions.com/Pub0009/LPMArticle.asp?ID=70

@@ -1,0 +1,93 @@
+1. To get Thunderbird to use Firefox as its browser, add these lines
+   to $HOME/.thunderbird/*.default/user.js:
+
+// Use firefox for http, https & ftp links
+user_pref("network.protocol-handler.app.http", "/home/bmc/bin/browser-remote");
+user_pref("network.protocol-handler.app.https", "/home/bmc/bin/browser-remote");
+user_pref("network.protocol-handler.app.ftp", "/home/bmc/bin/browser-remote");
+
+2. Thunderbird quotes messages with a revision bar. The "quote colors"
+   extension (http://quotecolors.mozdev.org/download.html) allows greater
+   control over the configuration, and makes it simple to revert to using
+   a ">" instead.
+
+3. "Script busy or not responding"
+
+   http://kb.mozillazine.org/Script_busy_or_stopped_responding
+
+      If you get a "A script on this page may be busy, or it may have
+      stopped responding. You can stop the script now, or you can continue
+      to see if the script will complete" error message that typically
+      means that some javascript didn't execute within the time specified
+      by dom.max_script_run_time. This might occur when sending a message
+      using a mailing list or when fetching new mail using the webmail
+      extension.
+
+      The dom.max_script_run_time preference defaults to 5 seconds in
+      Thunderbird 1.5. Try increasing it to 30 seconds using Edit ->
+      Preferences -> Advanced -> General -> Config editor.
+
+4. Getting Thunderbird to pick up changes to folders that are created by
+   an external program such as procmail.
+
+   Assumptions: Thunderbird & procmail (and programs it invokes) are
+   running on the same machine.
+
+   This problem requires an IMAP server. Current solution (which also
+   attempts to retain compatibility with other mailers, e.g., Emacs VM):
+
+   a) Install uw-imap daemon and enable it.
+
+   b) Move ~/Mail directory (with saved folders) to something else, e.g.,
+      ~/mail-folders.
+
+   c) Change ~/.vm to point to ~/mail-folders, instead of ~/Mail
+
+   d) Create a ~/thunderbird directory, and two subdirectories:
+
+      ~/thunderbird/imap-local      local directory for caching IMAP folder
+				    data
+      ~/thunderbird/local-folders   local Thunderbird folders
+
+   e) In Thunderbird, set the Local Folders account to point to
+      ~/thunderbird/local-folders
+
+   f) Create a new account in Thunderbird, pointing to the local IMAP server.
+
+   g) Make sure ~/.procmail/rc creates its files in ~/Mail, which is where
+      the IMAP server will look for folders other than the default.
+
+      **** NOTE: This requires a modified uw-imap! Get the source or
+      **** source RPM, and read the docs/CONFIG file. (See Example 2).
+      **** See uw-imap cheat sheet.
+
+   h) In Thunderbird, subscribe (File > Subscribe) to the procmail folders
+
+   That should be it.
+
+5. Adjusting fonts in the entire program:
+
+   Add this entry to userChrome.css (in
+   ~/.thunderbird/whatever.default/chrome/userChrome.css):
+
+       * {
+       font-size: 20pt !important
+       }
+
+6. Multiple SMTP servers:
+
+   To add an additional SMTP server:
+
+   * Go to "Tools -> Account Settings".
+   * At the bottom of the left pane (you may need to scroll down), click on
+     "Outgoing Server (SMTP)".
+   * Click the "Add" button.
+   * Insert the SMTP server information that you want, and click the "OK"
+     button.
+
+   To use this newly added SMTP server for any of your mail accounts:
+
+   * Go to "Tools -> Account Settings", and then in the left pane click on
+     the account name whose SMTP server you want to change.
+   * At the bottom of the "Default identity" panel, choose the SMTP server
+     you want to use from the "Outgoing Server (SMTP)" pulldown list.

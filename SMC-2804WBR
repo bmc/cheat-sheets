@@ -1,0 +1,13 @@
+- It's possible to expose addresses behind the router. To do so, enable
+  the firewall feature. Then, go to
+
+	Firewall > DMZ
+
+  and add NAT mappings that map external addresses to internal ones.
+
+- By default, pings are disabled. To enable, from admin screen, go to
+
+  	Firewall > Intrusion Detection
+
+  and disable "Discard Ping from WAN"
+

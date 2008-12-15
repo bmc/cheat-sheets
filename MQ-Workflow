@@ -1,0 +1,2 @@
+1. Client: Had to create a "priv" view to list private processes, before my
+   processes would show up. Probably a matter of modifying them in the model.

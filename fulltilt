@@ -1,0 +1,8 @@
+1. Wireless:
+
+   - WPA: SSID=fltwrt54, passphrase=flt5ghzunwired
+   - Network is 10.2.1.0/24
+   - Default route should be 10.2.1.1
+   - Nameserver should be 12.127.16.68
+   - Will need to connect to FT VPN to gain access to inside
+

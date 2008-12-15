@@ -1,0 +1,129 @@
+Linux on Toshiba Laptop
+---------------------------------------------------------------------------
+
+Touchpad: From http://plaza.ufl.edu/redboots/#touchpad
+
+	Touchpad setup
+
+	Initially the touchpad didn't work and I had to rely on a USB
+	mouse. To correct this in a crude manner the following steps were
+	taken:
+
+	1. First, during the Toshiba display at the beginning of booting,
+	   press the F2 key. This will bring you to the bios setup.
+	2. Next, press the right arrow key to select the Advanced mode.
+           Press the down arrow button to select the Legacy USB Support
+           option. Press F5 to disable it.
+	3. Press ESC and save your settings.
+	4. Reboot the computer.  Touchpad should now work.
+
+Touchpad does work, but is slow.
+
+
+Sudden crash of Toshiba laptop when running Linux
+----------
+See ACPI notes here: http://plaza.ufl.edu/redboots/#acpi
+----------
+From: http://www.linuxquestions.org/questions/archive/25/2004/12/4/258808
+
+    pmw: I have a dual boot FC2/XP Home Toshiba A60 laptop which will
+    suddenly crash without warning when I'm using FC2 (never with
+    Windows). I've tried a number of different kernels, and have had
+    the same problem... and my installation is completely up-to-date
+    according to up2date. When I say "crash", I mean complete power
+    off, immediately... no hanging, no warning, nothing. The only thing
+    I can think of is that there is a major ACPI problem... I'm plugged
+    into the mains supply most of the time, but still get the crashes -
+    so it's not a flat battery. Does anyone else have this problem, or
+    have any idea how to go about solving it? I'm sure it's nothing I'm
+    doing which causes the problem, as it seems to happen just
+    randomly. When I reboot after such a crash, the ventilation fan
+    runs constantly and furiously for a looooong time (don't know if
+    this is standard, or not).
+
+    The problem happens with: 2.6.9-1.3_FC2, 2.6.8-1.521, 2.6.5-1.358,
+    in my experience. In other words, all the kernels I've had!
+
+    Kwast & Co: put echo "force_on:1" > proc/acpi/fan/FAN1/state in
+    rc.local to turn the fan on if you don't want a sudden shut down
+    due to overheating.
+
+    pmw: Coo, thanks Dick. I hope that works. Is there any more
+    user-friendly way to adjust ACPI settings? A nice GUI, or
+    something? Having a look at /proc/acpi makes me wonder what I can
+    do with the rest of the behind-the-scenes hardware settings.
+
+    pmw: No matter, just found klaptop_acpi_helper ... I guess that's
+    the best I'm going to get, huh?
+
+    Kwast & Co: Don't worry, it will work, without it the fan will not
+    turn on and your Toshiba will shut down if the cpu gets too hot. As
+    a second security I also let the cpu frequency downscale to 1400
+    MHz when it reaches a temperature of 65 C , using p4-clockmod and
+    CPUspeed:
+
+    put echo "1399965" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+    in your rc.local to set the lowest frequency at 1400MHz.
+
+    In your cpuspeed.conf:
+
+    VMAJOR=1
+    VMINOR=1
+    OPTS="-i 1"
+    DRIVER="p4-clockmod"
+    OPTS="-p 90 100 -t /proc/acpi/thermal_zone/THZN/temperature 64"
+
+    Now it runs always full speed unless the cpu temperature reaches 65
+    degrees Celcius, in that case it slows down en speed up again if
+    the temperature lowers below 64 degrees C.
+
+    (Never see this by the way, it's just extra safety to protect the
+    cpu when it gots stuck at 100% cpu load)
+
+    Don't know about klaptop_acpi_helper ......
+
+    pmw: Well, I'm as surprised as you, Dick, but my laptop crashed
+    again, even with the suggestions you made (I keep checking
+    periodically that the fan is set to on, and it is.) Very strange.
+
+    Kwast & Co: What BIOS version are you running on you A60?
+
+    The latest version (1.80) solved some temperature and Fan issues.
+ 
+    pmw: Yep, 1.80. I also noticed that my screen doesn't turn off when
+    I close the lid of the laptop. I really hope the people at Fedora
+    are going to make this ACPI stuff a lot easier! pmw: Hmm, I updated
+    the BIOS via my Windows installation... I am assuming that the BIOS
+    is independent of operating system, and that this wouldn't be the
+    cause of my Fedora problems? 
+
+    bednar: hi, same problem using SuSe 9.1 and 9.2 on Toshiba Satellite
+    1135-S1554 with bios 1.7. In windows everythink is ok. The problem
+    shows only when battery powered and could be solved by starting
+    system with acpi=off added to kernel options.
+
+    raffi: Hello, I have similar problem with my hp pavilion zt1170,
+    running slackware 10.0, 2.4 kernel. The system crashes without any
+    obvious reason. It mostly happens when the cpu is heavy used, for
+    instance during kernel compilation (yep, I have to get off-powered
+    to compile it!). Correct me if I'm wrong, but I suppose that acpi
+    only works if batteries are *not* powered, yes? But putting
+    acpi=off during boot time makes no difference, it still crashes. I
+    also can't find anything about fans in the /proc structure... Maybe
+    I should recompile the kernel without acpi at all? Oh, and, the
+    worst of all, it used to work on windows...
+
+    mitchellj: ACPI Works both when powered via AC/DC and when using
+    batteried. It is a power management feature.
+
+    The best thing to do is compile the kernel WITH ACPI enabled, then
+    you can just force the fan on and it will cool down for you. The
+    reason the Tosh crashes is due to overheating, its not really a
+    crash as such its a safety shut off. The reason it worked in
+    windows is that the Tosh has ACPI drivers which are fully
+    compatible with windows, but like most companies, they decided not
+    to develop linux drivers as it costs them money! But the funny
+    thing is they won't even release the details of the bios ACPI so
+    linux kernel developers can do it for free.
+----------

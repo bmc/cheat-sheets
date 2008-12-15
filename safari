@@ -1,0 +1,8 @@
+1. Enabling hidden debug menu:
+
+   - Make sure Safari isn't running.
+   - In a command window, issue:
+         defaults write com.apple.Safari IncludeDebugMenu 1
+   - Bring up Safari. Debug menu should now be available.
+
+2. Enabling tabbed browsing: See the Preferences panel.

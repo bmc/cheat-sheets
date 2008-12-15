@@ -1,0 +1,60 @@
+1. To get KDE to source environment or run commands on startup, put
+   files ending in .sh in $HOME/.kde/env
+
+   Known to work on Fedora Core 3. May not work on older installations
+   (e.g., FreeBSD 4.x)
+
+2. If icons don't stay where they're put, make sure that
+   $HOME/Desktop/.directory is writable. That's where the positions are
+   stored.
+
+3. Koffice MIME type problems:
+
+        Subject: Kivio won't start?
+        by Haakon Nilsen on Wednesday May 23, @08:47PM
+
+        When starting the kivio that came with the mandrake rpm's, i get
+        this (console) message:  koffice (lib kofficecore): ERROR: Couldn't
+        find the native MimeType in kivio's desktop file. Check your
+        installation !
+        ...and it doesn't start. what can i do?
+
+        Subject: try kbuildsycoca
+        by John Dailey on Friday May 25, @02:57AM
+
+        I had this problem once...someone eventually suggested I run the
+        program "kbuildsycoca".  It worked.  I have no idea if that will
+        help (that was on KDE 2.0), and I'm not real clear on what that
+        program does but you can try it.  Just run it as root.  I think it
+        does something with a database of mime types.  Maybe someone who
+        knows what they're talking about can clarify.  :-)
+
+        John Dailey
+        dailey@vt.edu
+
+   Seems to fix the problem.
+
+4. If you log in, and xlogin (Eterm or aterm, even) doesn't work, try
+   firing up an xterm; then, try xlogin/Eterm again.
+
+5. To get rid of this problem:
+
+	$ uptime
+	uptime: /dev/:0: No such file or directory
+	8:51AM  up 14 days, 21:21, 11 users, load averages: 0.08, 0.06, 0.02
+
+   edit /usr/local/share/config/kdm/{Xreset,Xstartup} and change
+   "-l $DISPLAY" to "-l console"
+
+6. Dcopserver complaints:
+
+	- remove ~/.ICE* ~/.DCOP*
+	- dcopserver
+
+7. Error on startup:
+
+        klauncher said: Unknown procotol 'file'
+
+   Look for /var/tmp/kdecache-$USER, and kill it.
+
+8. Connecting Samba shares: Use knetattach

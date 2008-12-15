@@ -1,0 +1,57 @@
+ 1. Getting sound to work.
+
+    https://help.ubuntu.com/community/SoundTroubleshooting
+
+    Specific to the Intel ICH8 (in many laptops):
+
+    http://linuxtechie.wordpress.com/2007/10/19/getting-intel-ich8-family-rev-3-sound-card-to-work-in-gutsy/
+
+    Also, make sure the sound isn't (accidentally) muted.
+
+ 2. Getting Broadcom wireless NIC to work. (This is the NIC in Dell laptops.)
+
+    https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx/Feisty_No-Fluff
+
+    (Be sure the Wifi switch on the side of the laptop is on!)
+
+ 3. Changing size of Gnome terminal. From
+    http://ubuntuforums.org/showthread.php?t=15471
+
+    The gnome-terminal uses a termcap file for its basic settings. To change
+    these, edit /usr/share/vte/termcap/xterm
+
+    Change the "li#24" entry to some other size. Save the file, and the next
+    spawned Gnome terminal will take that size.
+
+ 4. Set keybindings for GTK applications:
+
+    gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
+
+ 5. Getting Adobe Acrobat Reader (and other proprietary stuff) for Ubuntu
+    http://www.ubuntugeek.com/how-to-install-adobe-pdf-reader-811-with-plug-in-for-mozilla-firefox-in-gutsy-gibbon.html
+
+ 6. Rough equivalent to "chkconfig" is "update-rc.d"
+
+ 7. Install Sun JDK 6. From
+    http://broersa.wordpress.com/2008/02/20/install-sun-jdk-6-on-ubuntu-gutsy/
+
+    sudo apt-get install sun-java6-jdk sun-java6-plugin sun-java6-fonts
+    sudo update-java-alternatives --set java-6-sun
+
+ 8. Mounting remote Windows or Samba shares.
+    - apt-get install smbfs
+    - Then, add something like this to /etc/fstab
+      //tera1/share /mnt/tera1 cifs username=root,password=,noauto,uid=0,rw,suid 0 0
+
+ 9. When removing a package, you get 'subprocess pre-removal script returned
+    error', and the package refuses to go away. Solution:
+
+    - Go to /var/lib/dpkg/info
+    - Look for package.prerm
+    - Remove it
+    - Try again
+
+10. Getting Gnome desktop to quit prompting for trash emptying:
+
+    - Fire up gconf-editor from the command line
+    - Go to apps/nautilus/preferences and uncheck confirm_trash

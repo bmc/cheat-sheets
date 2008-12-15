@@ -1,0 +1,32 @@
+1. Crack (only for tryout purposes):
+   - http://hexedit.sourceforge.net/
+   - Open /Adobe Photoshop CS3.app/Contents/MacOS/Adobe Photoshop CS3 with
+      hexedit
+   - in the menubar, find, go to address
+   - type in 0×30AE5EA
+   - menubar, find, find and replace
+   - find: 81ECDC00 ~ replace: E9E20200
+   - click find next, then click replace
+   - file, save
+
+   a) CS3 Final: Can use this serial number: 1045-0415-8060-3241-4388-1406
+
+2. To remove, run:
+
+   /Applications/Utilities/Adobe Installers/Add or Remove Photoshop CS3
+
+   Dragging the application to the trash won't work, because there are turds
+   all over the place.
+
+3. If you want to limit an adjustment layer's effect to only one layer, you
+   can do this by creating a clipping grouping. First, ensure that the
+   adjustment layer is positioned immediately above the layer that it
+   should affect. Hold your mouse over the border between the adjustment
+   layer and the layer below it in the Layers palette. If you're using
+   Photoshop CS2, press Control+Alt+G to create a clipping mask (or
+   Option+Command+G on the Mac). In earlier versions of Photoshop, the
+   command is Control+G (or Command+G on the Mac).
+
+   This clipping mask limits the affect of the adjustment layer to the base
+   layer in the clipping group. Because this clipping group is only two
+   layers, it's the one below the adjustment layer.

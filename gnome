@@ -1,0 +1,26 @@
+To get Gnome to run a startup script before invoking gnome-session (e.g.,
+to ensure that various environment variables are set):
+
+On Linux, do one of:
+
+a) Modify /etc/X11/gdm/Sessions/Gnome so that the appropriate file
+   is sourced before gnome-session is exec'd. For instance, have
+   it check for the existence of "$HOME/.gnome/init.sh".
+
+b) Specify that an "xsession" style session is to be created, and have
+   .xsession fire up "gnome-session" exactly as in /etc/X11/gdm/Sessions/Gnome.
+   Then, be sure all the settings are in .xsession. Setting LC_ALL=C helps.
+
+
+Nautilus sometimes refuses to come back up if you log out and log back in.
+To get it to work again,
+
+a) Remove the $HOME/.nautilus directory
+b) Run /usr/bin/nautilus-clean.sh
+c) Kill and gconfd-1 process that's running
+d) Log out and log back in.
+e) Type "nautilus" in a command window.
+
+The Nautilus configurator should come up.
+
+ 

@@ -1,0 +1,90 @@
+----------------
+Editing out pixel hot spots
+
+http://www.basic-digital-photography.com/how-to-take-night-photos.html
+
+One problem with digital cameras is that there are always some pixels on
+the image sensor which are bad. When taking day photos, these defects are
+not discernible. However, they are pretty obvious in night photos. How
+do we correct these? Here?s a simple way ? take a control shot, then
+use image editing to subtract out those bad pixels.
+
+This is how it works. The next time you?re out to take night photos,
+go ahead and snap a picture of Scene A, as you normally would. Then,
+when it?s convenient, take a photo of the exact same Scene A again,
+but with the lens cap on.
+
+Now you will have two images, one night shot and one control shot
+(with the hot pixels). Load them up in say, Paint Shop Pro. Switch to
+the control shot and select Edit and Copy from the menu. Next, switch
+to the night shot and paste the copied image as a new layer. Then,
+select the new layer and change the Blend Mode to Difference and click
+OK. You?ll get the correct night shot with the hot spots subtracted out.
+
+----------------
+MOUNTING ON FreeBSD
+
+From: Brian Clapper <bmc@clapper.org>
+Sender: owner-focme@clapper.org
+Reply-To: focme@clapper.org
+To: focme@clapper.org
+Subject: Re: [focme] FreeBSD & digital camera
+Date: Mon, 21 Jul 2003 11:16:22 -0400
+
+On 21 July, 2003, at 11:01 (-0400), I wrote:
+
+> We bought a 5 megapixel digital camera over the weekend. Before installing
+> the photo-copy software on my wife's Win98 laptop, I decided to poke around
+> the net to see if I could access the camera via FreeBSD's USB drivers.
+> Sure enough, it works just fine. If I plug in the USB cable, I can issue
+> a mount command ("mount -t msdos /dev/da0s1 /mnt/camera"), and the contents
+> of the camera's memory stick appear as a file system.
+>
+> Cool.
+
+BTW, for those who care, this is FreeBSD 4.7-RELEASE.
+
+Also, I can get the camera to auto-mount by judicious use of
+/etc/usbd.conf. Here are the steps I took:
+
+0. Make sure all usb devices are created. (They weren't, and on my desktop
+   system, the convenient USB port, on the front, is /dev/usb2.)
+
+1. Kill the running usbd daemon.
+
+2. Fire it up in foreground, as root: usbd -d -v -v -v
+
+3. Plug the camera in. Watch usbd's debug output to see what the vendor,
+   product, and release codes are.
+
+4. For convenience, add an entry in /etc/fstab:
+
+        /dev/da0s1   /mnt/camera   msdos   ro,noauto   0   0
+
+5. Create an appropriate section in /etc/usbd.conf
+
+        # Sony Digital Camera (bmc@clapper.org)
+        device "Digital Camera"
+                vendor 0x054c
+                product 0x0010
+                release 0x0450
+                attach "sleep 2; /sbin/mount /mnt/camera"
+                detach "/sbin/umount /mnt/camera"
+
+   The "sleep" is necessary to allow time for the driver to detect the
+   device and bring it fully online. Without the "sleep", the mount(8) call
+   fails.
+
+With those steps done, I can access the camera's memory stick simply by
+plugging the camera into the USB port on my FreeBSD workstation. The
+contents of the memory stick show up under /mnt/camera. When I turn the
+camera off or unplug the cable, the file system is automatically unmounted.
+
+Cool++
+
+-Brian
+
+Brian Clapper, bmc@clapper.org, http://www.clapper.org/bmc/
+Q. How many programmers does it take to change a light bulb?
+A. None.  It's a hardware problem.
+

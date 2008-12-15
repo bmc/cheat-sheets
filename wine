@@ -1,0 +1,27 @@
+http://appdb.codeweavers.com/appview.php?appId=25&versionId=240;PHPSESSID=d79f3eb3d62e353eb1dfc5b9c1e9270b
+
+How I get IE 5.5 to run
+by anonymous coward on Sunday November 24th 2002, 23:48
+Installed the wine that came with my distro(wine-20020605-2 on Redhat 8.0).
+
+Ran wine to create default .wine directory and configuration files.
+
+Made directory wine-c in the .wine directory.
+
+Edited .wine/config and changed the [Drive C] path to
+"/home/home_directory/.wine/wine-c" with home_directory being appropriately
+set.
+
+Copied a complete Win98SE installation with drivers(latest Nvidia, SB Live
+value, LNE100TX), IE5.5SP2, all necessary patches, and Quicktime to
+.wine/wine-c directory.
+
+Made all of the files in the .wine/wine-c directory lower case(this appears
+to be important--IE wouldn't work until I did it).
+
+Ran: wine /home/home_directory/.wine/wine-c/program\ files/internet\
+explorer/iexplore.exe
+
+There have been some quirks and crashes, here and there, but it seems
+operational.
+

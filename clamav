@@ -1,0 +1,24 @@
+1. Building clamav on FreeBSD 4.x (clamav versions >= 0.90)
+
+   a) Won't configure, due to -lpthread in configure. So, from the
+      port (/usr/ports/security/clamav), do:
+
+      - Make extract
+
+      Then, edit the "configure" script, looking for the -lpthread
+      specified on the probe for libmilter. Change it to -lpthread.
+
+      Re-run "make configure"
+
+   b) Once configured, it won't build for the same reasons. So, create
+      a "ged" script that looks like this:
+
+          /-lpthread/
+          /-pthread/
+
+      Then, from /usr/ports/security/clamav/work/clamav-0.90, run this
+      command:
+
+         ged /tmp/ged $(find . -name Makefile | xargs grep -l -- -lpthread)
+
+   c) Now, run a "make" from the top of the port. It should build.
