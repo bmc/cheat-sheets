@@ -11,3 +11,7 @@ $Id$
 2. Get list of databases:
 
    select datname from pg_database
+
+3. Give a user (role) superuser privilege:
+
+   ALTER ROLE username WITH superuser
