@@ -334,3 +334,5 @@
     http://docs.info.apple.com/article.html?artnum=107822
 
     (Get Info comments aren't properly propagated.)
+
+29. Clear the DNS cache: sudo lookupd -flushcache
