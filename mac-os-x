@@ -336,3 +336,6 @@
     (Get Info comments aren't properly propagated.)
 
 29. Clear the DNS cache: sudo lookupd -flushcache
+
+30. Change information about a printer: Use
+    /Applications/Utilities/Printer Setup Utility
