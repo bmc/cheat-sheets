@@ -350,3 +350,10 @@
     http://en.cyan-stivy.net/safari-plugins/safarigestures/
 
     SIMBL plug-in. Works with Safari 4.
+
+32. Run BIND on Mac OS X:
+
+    http://slaptijack.com/system-administration/bind-startup-in-mac-os-x-104-tiger/
+    http://slaptijack.com/system-administration/starting-bind-in-os-x-even-after-reboot/
+
+33. Use DYLD_LIBRARY_PATH to pick up dylib files.
