@@ -63,3 +63,10 @@
     - Choose: apps > nautilus > desktop
     - Enable/disable whatever. Changes take place immediately.
 
+12. Playing WMV files, and other proprietary stuff:
+    https://help.ubuntu.com/community/RestrictedFormats
+
+13. Emacs with decent fonts:
+
+    https://launchpad.net/~ubuntu-elisp/+archive/ppa
+    http://emacs.orebokech.com/
