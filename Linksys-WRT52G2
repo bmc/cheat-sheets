@@ -3,3 +3,5 @@ Problem: Attempt to connect to management console (e.g.,
 
 Solution: Either use the IP address, or add "basic.htm" to the end of the
           URL, e.g., http://firewall/basic.htm
+
+See http://forums.linksys.com/linksys/board/message?board.id=Wireless_Routers&thread.id=130439
