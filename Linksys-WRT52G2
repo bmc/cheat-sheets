@@ -1,0 +1,5 @@
+Problem: Attempt to connect to management console (e.g.,
+         http://firewall/) results in a redirect to some Cisco site.
+
+Solution: Either use the IP address, or add "basic.htm" to the end of the
+          URL, e.g., http://firewall/basic.htm
