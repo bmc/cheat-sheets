@@ -357,3 +357,7 @@
     http://slaptijack.com/system-administration/starting-bind-in-os-x-even-after-reboot/
 
 33. Use DYLD_LIBRARY_PATH to pick up dylib files.
+
+34. LPD printer stopped. No explanation.
+
+    Solution: Check /etc/hosts.lpd on machine running LPD.
