@@ -361,3 +361,7 @@
 34. LPD printer stopped. No explanation.
 
     Solution: Check /etc/hosts.lpd on machine running LPD.
+
+34. Change default application that opens a file (e.g., PDF).
+    Use the third-party RCDefaultApp preference pane. See
+    http://www.rubicode.com/Software/RCDefaultApp/
