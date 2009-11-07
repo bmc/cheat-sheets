@@ -23,6 +23,8 @@
     Change the "li#24" entry to some other size. Save the file, and the next
     spawned Gnome terminal will take that size.
 
+    Doesn't always work. If not, use --geometry=80x44 (or whatever)
+
  4. Set keybindings for GTK applications:
 
     gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
