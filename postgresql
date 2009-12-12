@@ -15,3 +15,9 @@ $Id$
 3. Give a user (role) superuser privilege:
 
    ALTER ROLE username WITH superuser
+
+4. Load a CSV file (or some other kind of file) into PostgreSQL:
+
+   COPY tablename FROM 'file.csv' CSV;
+
+   See http://www.postgresql.org/docs/8.1/interactive/sql-copy.html
