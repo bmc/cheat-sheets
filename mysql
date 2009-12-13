@@ -1,0 +1,3 @@
+1. Grant all privileges to a database:
+
+   GRANT ALL PRIVILEGES ON db_base.* TO db_user @'%' IDENTIFIED BY 'db_passwd'; 
