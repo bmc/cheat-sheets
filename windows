@@ -10,3 +10,34 @@
    - Click "OK"
 
    Adapted from http://pubs.logicalexpressions.com/Pub0009/LPMArticle.asp?ID=70
+
+2.  When you attempt to open the Add or Remove Programs applet in the
+    Control Panel, the following message may appear:
+
+        Add or Remove Programs has been restricted.
+        Please check with your administrator.
+
+    This is due to one of the following Policy settings:
+
+    - NoAddRemovePrograms
+    - NoControlPanel
+
+    If your system is attached to a domain, your network administrator may
+    have disabled the Add or Remove Programs applet. For standalone
+    systems, follow the steps below to unlock the restrictions.
+
+    - Click Start, Run and type Regedit.exe
+    - Navigate to the following branches one by one:
+
+      HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Uninstall
+      HKEY_LOCAL_MACHINE \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Uninstall
+
+    - Delete the NoAddRemovePrograms value if present in the above locations.
+
+    - Then, navigate to following locations:
+
+      HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Explorer
+      HKEY_LOCAL_MACHINE \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ Explorer
+
+   - Delete the NoControlPanel value in the above locations.
+   - Close Regedit.exe
