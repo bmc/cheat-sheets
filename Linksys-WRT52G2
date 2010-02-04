@@ -1,7 +1,12 @@
-Problem: Attempt to connect to management console (e.g.,
+1. Problem: Attempt to connect to management console (e.g.,
          http://firewall/) results in a redirect to some Cisco site.
 
-Solution: Either use the IP address, or add "basic.htm" to the end of the
+   Solution: Either use the IP address, or add "basic.htm" to the end of the
           URL, e.g., http://firewall/basic.htm
 
-See http://forums.linksys.com/linksys/board/message?board.id=Wireless_Routers&thread.id=130439
+   See http://forums.linksys.com/linksys/board/message?board.id=Wireless_Routers&thread.id=130439
+
+2. When reset, use the following initial login and password:
+
+   admin
+   admin
