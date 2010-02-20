@@ -1,3 +1,24 @@
-Useful cheat sheet here:
+1. Useful cheat sheet here:
 
-http://daniel.debian.net/documents/cheatpages/git.html
+   http://daniel.debian.net/documents/cheatpages/git.html
+
+2. Getting rid of this warning:
+
+   warning: You did not specify any refspecs to push, and the current remote
+   warning: has not configured any push refspecs. The default action in this
+   warning: case is to push all matching refspecs, that is, all branches
+   warning: that exist both locally and remotely will be updated.  This may
+   warning: not necessarily be what you want to happen.
+   warning: 
+   warning: You can specify what action you want to take in this case, and
+   warning: avoid seeing this message again, by configuring 'push.default' to:
+   warning:   'nothing'  : Do not push anything
+   warning:   'matching' : Push all matching branches (default)
+   warning:   'tracking' : Push the current branch to whatever it is tracking
+   warning:   'current'  : Push the current branch
+
+
+   $ git config push.default matching
+   $ git config --global push.default matching
+
+   See http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching
