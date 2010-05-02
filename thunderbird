@@ -98,3 +98,7 @@ user_pref("network.protocol-handler.app.ftp", "/home/bmc/bin/browser-remote");
 
    Solution: Check the HTML setting associated with the identity (in Manage
    Identities).
+
+8. Thunderbird crashes on previously created local folders directory.
+
+   Remove all *.msf files.
