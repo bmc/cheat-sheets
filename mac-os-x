@@ -365,3 +365,9 @@
 34. Change default application that opens a file (e.g., PDF).
     Use the third-party RCDefaultApp preference pane. See
     http://www.rubicode.com/Software/RCDefaultApp/
+
+35. Disabling "Empty Trash" confirmation dialog:
+
+    Go to Finder → Preferences, select the Advanced button and uncheck
+    “Show warning before emptying the Trash.” You may also wish to check the
+    “Empty Trash securely” while you’re there.
