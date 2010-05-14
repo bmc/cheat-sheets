@@ -122,6 +122,8 @@
 
     http://mac.pieters.cx/
 
+    In Snow Leopard, Ctrl-Shift-Eject activates the screen saver.
+
 10. Burning a DVD from a disk image (.img file) created by (e.g.) iDVD:
 
     - Mount the image (double click on it).
@@ -371,3 +373,13 @@
     Go to Finder → Preferences, select the Advanced button and uncheck
     “Show warning before emptying the Trash.” You may also wish to check the
     “Empty Trash securely” while you’re there.
+
+36. Running cron:
+
+    http://mactips.dwhoard.com/home/system/schedule-automatic-tasks
+
+    Once the crontab file and the associated script file(s) have been
+    created and stored in the specified locations, you must initiate the
+    cron process by issuing the command:
+
+        crontab $HOME/.crontab
