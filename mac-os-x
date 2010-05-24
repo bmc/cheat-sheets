@@ -383,3 +383,17 @@
     cron process by issuing the command:
 
         crontab $HOME/.crontab
+
+37. Create a DVD from a VIDEO_TS directory (e.g., as created from iDVD's
+    "Save to VIDEO_TS" capability). From
+    http://www.macosxhints.com/article.php?story=20070612161317338
+
+    Type in this command and change the paths to suit:
+
+        hdiutil makehybrid -udf -udf-volume-name DVD_NAME \
+        -o MY_DVD.iso /path/to/VIDEO_TS/parent/folder
+
+    Make sure that /path/to/VIDEO_TS/parent/folder is the path to the folder
+    containing the VIDEO_TS folder, not the VIDEO_TS folder itself. Once the
+    .iso file has been created, drag this to Disk Utility and hit the Burn
+    button.
