@@ -26,10 +26,9 @@
 
        Solution:
 
-       - Build first for Carbon:
+       - Build first for NextStep:
 
-         $ ./configure --enable-carbon-app --without-x --with-carbon \
-                       --prefix=/usr/local
+         $ ./configure --with-ns --without-dbus
          $ make bootstrap
          $ make
          $ sudo make install
@@ -46,7 +45,7 @@
          to fire up the appropriate one, depending on whether login is
          local or remote.
 
-       Note: --enable-carbon-app creates a Mac Emacs.app folder, which ends
+       Note: --with-ns creates a Mac Emacs.app folder, which ends
        up being installed in /Applications, allowing use directly from the
        desktop.
 
