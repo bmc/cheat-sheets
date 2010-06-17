@@ -396,3 +396,12 @@
     containing the VIDEO_TS folder, not the VIDEO_TS folder itself. Once the
     .iso file has been created, drag this to Disk Utility and hit the Burn
     button.
+
+38. Merge two PDFs, or pages thereof:
+
+    - Open both PDF documents in Preview.
+    - Ensure that the sidebar is visible in both. (View > Sidebar > Show...)
+    - Drag the pages from the source document to the target document.
+    - Rearrange within the sidebar of the target document.
+
+    http://www.macosxhints.com/article.php?story=20071114191806624
