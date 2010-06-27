@@ -72,3 +72,83 @@
 
     https://launchpad.net/~ubuntu-elisp/+archive/ppa
     http://emacs.orebokech.com/
+
+14. Adding a new disk and putting it in a logical volume.
+
+    a) Add the disk.
+
+    b) Use the GUI Disk Utility to format the disk (i.e., to create
+       the partition table). Do NOT create a file system.
+
+    c) Use "fdisk -l" to verify which device is associated with the new
+       disk
+
+    d) At the command line. create a physical volume. Let's suppose the
+       disk is "/dev/sdb":
+
+       # pvcreate /dev/sdb
+
+       Doesn't hurt to verify the creation with "pvdisplay".
+
+    e) Create the volume group. With a single partition:
+
+       # vgcreate drive2 /dev/sdb
+
+       "drive2" is an arbitrary name for the volume group. It can be anything,
+       as long as it doesn't clash with an existing volume group's name.
+
+       To group multiple partitions in the same group:
+
+       # vgcreate drive2 /dev/sdb /dev/sdc ...
+
+    f) Run "vgdisplay" to show the new volume group configuration.
+
+    g) Create logical volumes:
+
+       # lvcreate --name usrlocal --size 80G drive2
+       # lvcreate --name home2 --size 160G drive2
+
+    h) Format and mount the new volumes:
+
+       # mkfs.ext4 /dev/drive2/usrlocal
+       # mkfs.ext4 /dev/drive2/home2
+       # mount /dev/drive2/usrlocal /usr/local
+       # mount /dev/drive2/home2 /home2
+
+    Reference: http://www.davelachapelle.ca/guides/ubuntu-lvm-guide/
+
+15. Using logical volumes for virtualization.
+
+    a) Ensure that a logical volume exists. See #14, (a) through (g).
+
+    b) Ensure that the virtual machine isn't running.
+
+    c) If moving from a file-based image (.img file):
+
+       # dd /path/to/machine.img /dev/volgroupname/lvname
+
+       e.g.:
+
+       # dd /var/lib/libvirt/images/foobar.img /dev/virtimages/foobar
+
+       This step, obviously, can take awhile.
+
+    d) Using virt-manager, edit the virtual machine's configuration, and
+       create or edit an IDE device to point to the logical volume name
+       (e.g., /dev/virtimages/foobar).
+
+       Note: This also works, but it's more error-prone:
+
+       $ virsh edit foobar
+
+       --- edit the XML, removing the existing disk image and replacing
+       --- it with:
+
+       <disk type='block' device='disk'>
+         <source dev='/dev/virtimages/foobar'/>
+         <target dev='hda' bus='ide'/>
+       </disk>
+
+    e) Fire up the virtual machine.
+
+    Reference: http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ubuntu-with-kvm/
