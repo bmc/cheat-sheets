@@ -35,3 +35,4 @@
 
    $ gconf-editor
    apps > metacity > global_keybindings
+   apps > metacity > window_keybindings
