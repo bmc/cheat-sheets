@@ -28,4 +28,10 @@
 
    $ gnome-keyboard-properties
 
-   Fix it there. Takes effect immediaely.
+   Fix it there. Takes effect immediately.
+
+3. Key bindings in Gnome (e.g., to fix the fact that, by default,
+   ALT-SPACE pulls up a menu, which messes with my Emacs):
+
+   $ gconf-editor
+   apps > metacity > global_keybindings
