@@ -152,3 +152,9 @@
     e) Fire up the virtual machine.
 
     Reference: http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ubuntu-with-kvm/
+
+16. Sharing a printer to Windows
+
+    See: https://help.ubuntu.com/community/NetworkPrintingFromWinXP
+
+    Works with Windows 7.
