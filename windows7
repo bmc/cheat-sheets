@@ -1,0 +1,23 @@
+1. Getting Windows 7 to talk to a Unix printer via LPD/LPR:
+   http://uis.georgetown.edu/labs/instructions/winvista.print.pctolabprinter.html
+   (Vista instructions, but works with Win 7.)
+
+2. Updating Windows 7's print drivers (i.e., adding more Microsoft drivers):
+
+   - Start > Devices and Printers
+   - Select a printer
+   - When "Print server properties" appears up top, click on it.
+   - In the resulting pop-up window, select the Drivers tab.
+   - Click the "Add..." button.
+   - Click Next until you get to the Printer Driver Selection window.
+   - Click Windows Update.
+   - Wait a surprisingly long time.
+   - When the dialog returns, find the manufacturer and print driver for
+     the printer. Select it and hit "Next".
+   - On the final screen, click "Finish". This might take awhile to complete.
+
+   The driver should now be available when adding a printer.
+
+3. Getting Windows 7 to talk to a CUPS printer on another system.
+
+   See #16 in the "Ubuntu" cheat sheet.
