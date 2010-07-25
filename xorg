@@ -1,2 +1,0 @@
-- Can't connect via, say, x2x:
-  On Fedora core 2 add "DisallowTCP=false" to /etc/X11/gdm/gdm.conf

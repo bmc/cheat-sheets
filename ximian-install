@@ -1,4 +1,0 @@
-Installing Ximian Gnome can quickly chew up temp space. The installer doesn't
-seem to honor the setting of the TMPDIR environment variable, either. The
-only way around it seems to be to temporarily symlink /tmp to something
-with more space (e.g., /usr/local/tmp).

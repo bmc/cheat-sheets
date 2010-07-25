@@ -1,6 +1,0 @@
-To connect to Bugzilla DB:
-
-	$ mysql -u root
-	mysql> \r bugs
-
-User names and such are defined in the "profiles" table. "desc profiles".

@@ -1,7 +1,0 @@
-YaST2:
-
-- If online update doesn't come up, go to
-  /var/lib/YaST/patches/i386/update/8.0/patches and remove all recent files.
-- Run "yast2" as root (i.e., do a "sudo su -", then run it, instead of running
-  directly via "sudo") to avoid GPG complaints during online update.
-
