@@ -405,3 +405,6 @@
     - Rearrange within the sidebar of the target document.
 
     http://www.macosxhints.com/article.php?story=20071114191806624
+
+39. Creating a dock folder (a.k.a., a "stack"): Just drag a folder to the
+    dock. Note: Can't always drag from the sidebar, though (e.g., Applications)
