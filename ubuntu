@@ -108,6 +108,10 @@
        # lvcreate --name usrlocal --size 80G drive2
        # lvcreate --name home2 --size 160G drive2
 
+       To use 100% of all disks:
+
+       # lvcreate --name foo --extents 100%FREE drive3
+
     h) Format and mount the new volumes:
 
        # mkfs.ext4 /dev/drive2/usrlocal
