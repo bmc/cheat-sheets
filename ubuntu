@@ -55,8 +55,7 @@
 
 10. Getting Gnome desktop to quit prompting for trash emptying:
 
-    - Fire up gconf-editor from the command line
-    - Go to apps/nautilus/preferences and uncheck confirm_trash
+    See "gnome" cheat sheet.
 
 11. Show the Computer, Home and Trash desktop icons in Gnome.
     From https://help.ubuntu.com/6.10/ubuntu/desktopguide/C/ch12s07.html

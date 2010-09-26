@@ -41,3 +41,16 @@
 
    - Open Keyboard Preferences on an active terminal, and uncheck top
      checkbox.
+
+5. Single click to open a folder:
+
+   - Open a folder (via Nautilus)
+   - Edit > Preferences
+   - Behavior
+
+6. Getting Gnome desktop to quit prompting for trash emptying:
+
+    - Fire up gconf-editor from the command line
+    - Go to apps/nautilus/preferences and uncheck confirm_trash
+
+   Or: Just use Edit > Preferences > Behavior (as in #5, above)
