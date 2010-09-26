@@ -54,3 +54,8 @@
     - Go to apps/nautilus/preferences and uncheck confirm_trash
 
    Or: Just use Edit > Preferences > Behavior (as in #5, above)
+
+7. Getting a trash icon on the desktop:
+
+   $ gconf-editor
+   Under apps > nautilus > desktop, check "trash_icon_visible"
