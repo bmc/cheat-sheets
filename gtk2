@@ -1,35 +1,10 @@
 http://neugierig.org/content/gtk2/
 
 The default GTK2 keybindings are supposed to be more user-friendly (Ctl+A maps
-to "select all") but this user likes Emacs keybindings (though I prefer VIM).
+to "select all"). To enable Emacs bindings:
 
-Add this to your ~/.gtkrc-2.0:
+- Fire up gconf-editor
+- Go to /desktop/gnome/interface/gtk_key_theme
+- Change entry from Default to Emacs
 
-	gtk-key-theme-name = "Emacs"
-
-Additionally, to map Ctl+U to the way it works in readline programs add this:
-
-	binding "my-text-entry" {
-  	    bind "<ctrl>u" { "delete-from-cursor" (paragraphs, -1) }
-	}
-	class "GtkEntry" binding "my-text-entry"
-
-Dave Ahlswede saw this and asked how to accomplish the same effect on a
-GtkTextView. After looking through the code it looks like there's a bit that
-was left unimpelemented, but it seems that this will accomplish the same
-effect:
-
-	binding "my-text-view" {
-	    bind "u" { "delete-from-cursor" (paragraphs, 1) }
-	}
-	class "GtkTextView" binding "my-text-view"
-
-Note the positive one.
-
-And finally, Colin Marquardt (<c.marquardt@alcatel.de>) submitted another tip.
-By adding
-
-	gtk-can-change-accels = 1
-
-you can change the keybindings in menus by hitting the hotkey you want to map
-the menu to while the mouse is over the menu item.
+Change should be immediate, though some apps may require a restart.
