@@ -33,7 +33,13 @@
 
 4. Create a bare repository:
 
-   $ mkdir foo.git && cd foo.git
-   $ git --bare init
+   a) Fresh:
+
+      $ mkdir foo.git && cd foo.git
+      $ git --bare init
+
+   b) From an existing repo:
+
+      $ git clone --bare /path/to/existing/repo proj.git
 
 5. To mark a conflicted file resolved: "git add file"
