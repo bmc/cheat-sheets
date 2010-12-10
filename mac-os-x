@@ -123,7 +123,9 @@
 
     In Snow Leopard, Ctrl-Shift-Eject activates the screen saver.
 
-10. Burning a DVD from a disk image (.img file) created by (e.g.) iDVD:
+10. Burning:
+
+    a)Burning a DVD from a disk image (.img file) created by (e.g.) iDVD:
 
     - Mount the image (double click on it).
     - Start the Disk Utility (Applications/Disk Utility).
@@ -132,13 +134,23 @@
     - Put a DVD (R, R/W) in the drive.
     - Click the Burn button.
 
-11. Burning a DVD or CD from an ISO image:
+    b) Burning a DVD or CD from an ISO image:
 
     - Locate the .iso file in a Finder window
     - Single click it
     - File > Open With > Disk Utility
     - Select the .iso file in the Disk Utility window
     - Images > Burn
+
+    c) Creating and burning a data CD:
+
+    - Insert a burnable disc.
+    - Open it in the Finder.
+    - Drag files to the disc.
+    - Press the Burn button.
+
+11. Creating a dock folder (a.k.a., a "stack"): Just drag a folder to the
+    dock. Note: Can't always drag from the sidebar, though (e.g., Applications)
 
 12. Calibrating the monitor: Use System Preferences > Displays > Calibrate
     Select Expert Mode.
@@ -311,13 +323,13 @@
           pop-up menu, choose Sparse Disk Image and specify a name and
           location. When the Authenticate dialog box appears, choose a
           password; clicking on the key button next to the Password text
-          box will summon Apple’s Password Assistant, which can help you
+          box will summon Apple's Password Assistant, which can help you
           generate a secure one. (See full instructions
           [http://find.macworld.com/2425]; if that seems like too much
           trouble, you can also create an encrypted disk image with a
           third-party product such as PGP Desktop Home [$99].)
 
-          Once you’ve created an encrypted disk image, you can use it to
+          Once you've created an encrypted disk image, you can use it to
           store any files containing private data. Just remember that as
           long as the disk image is mounted, your files are vulnerable. So
           be sure to log out (or at least unmount the disk image) whenever
@@ -369,9 +381,9 @@
 
 35. Disabling "Empty Trash" confirmation dialog:
 
-    Go to Finder → Preferences, select the Advanced button and uncheck
-    “Show warning before emptying the Trash.” You may also wish to check the
-    “Empty Trash securely” while you’re there.
+    Go to Finder -> Preferences, select the Advanced button, and uncheck
+    "Show warning before emptying the Trash." You may also wish to check the
+    "Empty Trash securely" while you're there.
 
 36. Running cron:
 
@@ -406,5 +418,7 @@
 
     http://www.macosxhints.com/article.php?story=20071114191806624
 
-39. Creating a dock folder (a.k.a., a "stack"): Just drag a folder to the
-    dock. Note: Can't always drag from the sidebar, though (e.g., Applications)
+39. Application to control sound from menu bar: SoundSource
+    http://www.rogueamoeba.com/freebies/
+
+40. Preventing Mac from going to sleep: See http://lightheadsw.com/caffeine
