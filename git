@@ -43,3 +43,11 @@
       $ git clone --bare /path/to/existing/repo proj.git
 
 5. To mark a conflicted file resolved: "git add file"
+
+6. Delete a remote branch:
+
+      $ git push remotename :branch
+
+   e.g.:
+
+      $ git push origin :testbranch
