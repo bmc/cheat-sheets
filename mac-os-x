@@ -422,3 +422,17 @@
     http://www.rogueamoeba.com/freebies/
 
 40. Preventing Mac from going to sleep: See http://lightheadsw.com/caffeine
+
+41. Add an image to a PDF:
+
+    - Convert the PDF document to an image with File » Save As.... Choose PN
+      as the format and change the resolution as desired.
+    - Open the image file and select the whole image with Edit » Select Al
+      (or select just a part of it with the mouse if you wish).
+    - Copy the selection Edit » Copy.
+    - Go back to the document (which is now a PNG image) and paste the
+      selection with Edit » Paste and resize it as you wish.
+    - Save the file as a PDF with File » Save As.... Choose PDF as the format
+
+    Note that a PDF made from an image is not searchable, so that is a
+    drawback to this procedure. 
