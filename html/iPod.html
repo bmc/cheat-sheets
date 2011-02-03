@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="ipod-cheat-sheet"
+>iPod Cheat Sheet</h1
+><h2 id="using-apple-ipod-with-linux."
+>Using Apple iPod with Linux.</h2
+><p
+>First, see:</p
+><p
+><a href="http://www.freedos.org/jhall/ipod/"
+  ><code
+    >http://www.freedos.org/jhall/ipod/</code
+    ></a
+  > <a href="http://pag.csail.mit.edu/~adonovan/hacks/ipod.html"
+  ><code
+    >http://pag.csail.mit.edu/~adonovan/hacks/ipod.html</code
+    ></a
+  ></p
+><h3 id="getting-ipod-to-mount-properly-and-with-the-right-permissions"
+>Getting iPod to mount properly, and with the right permissions</h3
+><p
+>Install the following in <code
+  >/usr/share/hal/fd/95userpolicy</code
+  >:</p
+><pre
+><code
+  >&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt; &lt;!-- -*- SGML -*- --&gt;
+&lt;deviceinfo version=&quot;0.2&quot;&gt;
+  &lt;device&gt;
+    &lt;match key=&quot;storage.vendor&quot; string=&quot;Apple&quot;&gt;
+      &lt;match key=&quot;storage.model&quot; string=&quot;iPod&quot;&gt;
+        &lt;merge key=&quot;storage.requires_eject&quot; type=&quot;bool&quot;&gt;true&lt;/merge&gt;
+        &lt;merge key=&quot;storage.removable&quot; type=&quot;bool&quot;&gt;false&lt;/merge&gt;
+        &lt;merge key=&quot;storage.media_check_enabled&quot; type=&quot;bool&quot;&gt;false&lt;/merge&gt;
+      &lt;/match&gt;
+    &lt;/match&gt;
+    &lt;match key=&quot;@block.storage_device:storage.vendor&quot; string=&quot;Apple&quot;&gt;
+      &lt;match key=&quot;@block.storage_device:storage.model&quot; string=&quot;iPod&quot;&gt;
+        &lt;match key=&quot;block.is_volume&quot; bool=&quot;true&quot;&gt;
+          &lt;match key=&quot;volume.fsusage&quot; string=&quot;filesystem&quot;&gt;
+            &lt;match key=&quot;volume.partition.number&quot; int=&quot;1&quot;&gt;
+              &lt;merge key=&quot;volume.policy.should_mount&quot; type=&quot;bool&quot;&gt;false&lt;/merge&gt;
+            &lt;/match&gt;
+            &lt;match key=&quot;volume.partition.number&quot; int=&quot;2&quot;&gt;
+              &lt;merge key=&quot;volume.policy.desired_mount_point&quot; type=&quot;string&quot;&gt;iPod&lt;/merge&gt;
+              &lt;merge key=&quot;volume.policy.mount_option.sync&quot; type=&quot;bool&quot;&gt;true&lt;/merge&gt;
+              &lt;merge key=&quot;volume.policy.mount_option.uid=bmc&quot; type=&quot;bool&quot;&gt;true&lt;/merge&gt;
+            &lt;/match&gt;
+          &lt;/match&gt;
+    &lt;/match&gt;
+      &lt;/match&gt;
+    &lt;/match&gt;
+  &lt;/device&gt;
+&lt;/deviceinfo&gt;
+</code
+  ></pre
+><p
+>See <a href="http://www.kgarner.com/blog/archives/2005/01/11/fc3-hal-ipod/"
+  ><code
+    >http://www.kgarner.com/blog/archives/2005/01/11/fc3-hal-ipod/</code
+    ></a
+  ></p
+><h3 id="accessing-ipod"
+>Accessing iPod</h3
+><p
+>Use <em
+  >gtkpod</em
+  >.</p
+><h3 id="disconnecting-recalcitrant-ipod"
+>Disconnecting recalcitrant iPod</h3
+><p
+>If iPod doesn't want to disconnect properly, use this quick hack solution:</p
+><p
+>Disable automount option in gtkpod, and create two scripts:</p
+><p
+><code
+  >mount-ipod</code
+  >:</p
+><pre
+><code
+  >mount /media/iPod
+</code
+  ></pre
+><p
+><code
+  >umount-ipod</code
+  >:</p
+><pre
+><code
+  >sudo umount /media/iPod
+exec sudo eject -s /dev/sda2
+</code
+  ></pre
+><p
+>Then modify <em
+  >gtkpod</em
+  > front end so it looks like this:</p
+><pre
+><code
+  >mount-ipod
+env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib /usr/local/bin/gtkpod
+umount-ipod
+</code
+  ></pre
+>
+</body>
+</html>
