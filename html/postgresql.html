@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="postgresql-cheat-sheet"
+>PostgreSQL Cheat Sheet</h1
+><h2 id="initial-user-id"
+>Initial user ID</h2
+><p
+>Ubuntu (and maybe other Unices): Initial user is &quot;postgres&quot;. Authentication is defined in <code
+  >pg_hba.conf</code
+  > (<code
+  >/etc/postgres/&lt;version&gt;</code
+  >) and defaults to <code
+  >ident</code
+  >. You can't fire up <code
+  >psql</code
+  > without proper auth.</p
+><ul
+><li
+  >Leave configuration alone.</li
+  ><li
+  >&quot;su&quot; to the &quot;postgres&quot; user</li
+  ><li
+  >&quot;psql&quot; should then work</li
+  ></ul
+><h2 id="get-list-of-databases"
+>Get list of databases</h2
+><pre
+><code
+  >SELECT datname FROM pg_database
+</code
+  ></pre
+><h2 id="give-a-user-role-superuser-privilege"
+>Give a user (role) superuser privilege</h2
+><pre
+><code
+  >ALTER ROLE username WITH superuser
+</code
+  ></pre
+><h2 id="load-a-csv-file"
+>Load a CSV file</h2
+><p
+>Load a CSV file (or some other kind of file) into PostgreSQL:</p
+><pre
+><code
+  >COPY tablename FROM 'file.csv' CSV;
+</code
+  ></pre
+><p
+>See <a href="http://www.postgresql.org/docs/8.1/interactive/sql-copy.html"
+  ><code
+    >http://www.postgresql.org/docs/8.1/interactive/sql-copy.html</code
+    ></a
+  ></p
+>
+</body>
+</html>

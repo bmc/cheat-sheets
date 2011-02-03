@@ -1,4 +1,6 @@
-1. Simulating Apache's UserDir, with nginx.
+# Nginx Cheat Shee
+
+## Simulating Apache's `UserDir`, with nginx.
 
     # Apache userdir simulation.
     location ~ ^/~([^/]+)(/.*)?$ {
