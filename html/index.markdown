@@ -1,6 +1,7 @@
 # Cheat Sheets
 
 * [AquaEmacs](AquaEmacs.html)
+* [Linksys-WRT52G2](Linksys-WRT52G2.html)
 * [VirtualBox](VirtualBox.html)
 * [bind](bind.html)
 * [bittorrent](bittorrent.html)
@@ -8,6 +9,7 @@
 * [gnome](gnome.html)
 * [linux](linux.html)
 * [mac-os-x](mac-os-x.html)
+* [oracle](oracle.html)
 * [php](php.html)
 * [safari](safari.html)
 * [ubuntu](ubuntu.html)
@@ -15,8 +17,6 @@
 
 # Non-HTML Sheets
 
-* [JMS](../JMS)
-* [Linksys-WRT52G2](../Linksys-WRT52G2)
 * [OpenOffice](../OpenOffice)
 * [SMC-2804WBR](../SMC-2804WBR)
 * [apache-condor](../apache-condor)
@@ -43,10 +43,7 @@
 * [mysql](../mysql)
 * [netbeans](../netbeans)
 * [nginx](../nginx)
-* [opera](../opera)
-* [oracle](../oracle)
 * [password](../password)
-* [pdf](../pdf)
 * [perl](../perl)
 * [photoshop-cs3](../photoshop-cs3)
 * [postgresql](../postgresql)
