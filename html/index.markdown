@@ -28,5 +28,3 @@
 * [ubuntu](ubuntu.html)
 * [windows](windows.html)
 
-# Non-HTML Sheets
-

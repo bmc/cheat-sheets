@@ -7,7 +7,7 @@ INDEX_HTML     = html/index.html
 
 MD_FILES = $(wildcard *.md)
 ALL_FILES = $(wildcard *)
-NON_MD_FILES = $(filter-out $(MD_FILES) Makefile,$(ALL_FILES))
+NON_MD_FILES = $(filter-out $(MD_FILES) Makefile html,$(ALL_FILES))
 MD_BASENAMES = $(MD_FILES:%.md=%)
 HTML_FILES = $(MD_FILES:%.md=html/%.html) html/index.html
 
@@ -31,11 +31,16 @@ $(INDEX_MARKDOWN): $(MD_FILES) Makefile
 	     echo "* [$$i]($$i.html)";\
 	 done;\
 	 echo '';\
-	 echo '# Non-HTML Sheets';\
-	 echo '';\
-	 for i in $(NON_MD_FILES); do\
-	     if [ -f $$i ]; then\
-	         echo "* [$$i](../$$i)";\
-	     fi;\
-	 done\
+	 set -- $(NON_MD_FILES);\
+	 echo $$# >&2;\
+	echo args=$$* >&2;\
+	 if [ $$# -gt 0 ]; then\
+	     echo '# Non-HTML Sheets';\
+	     echo '';\
+	     for i in $(NON_MD_FILES); do\
+	         if [ -f $$i ]; then\
+	             echo "* [$$i](../$$i)";\
+	         fi;\
+	     done;\
+	 fi\
 	) >$(INDEX_MARKDOWN)
