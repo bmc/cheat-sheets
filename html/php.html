@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="php-cheat-sheet"
+>PHP Cheat Sheet</h1
+><h2 id="chrooting-php"
+>Chroot'ing PHP</h2
+><p
+>Problem with chroot'd PHP: Can't find <code
+  >mysql</code
+  > extension.</p
+><p
+>Solution:</p
+><ul
+><li
+  >Make sure mysql.so is in the extension dir. (Use <code
+    >php-config</code
+    > to figure out where that is.)</li
+  ><li
+  >Make sure dependent libraries are there.</li
+  ><li
+  >Make sure <code
+    >/usr/local/etc/php.ini</code
+    > exists (or wherever it belongs on the platform).</li
+  ><li
+  >In <code
+    >php.ini</code
+    > define the extension directory and include this line.</li
+  ></ul
+><p
+><code
+  >php.ini</code
+  >:</p
+><pre
+><code
+  >extension=mysql.so
+</code
+  ></pre
+>
+</body>
+</html>

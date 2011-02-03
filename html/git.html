@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="git-cheat-sheet"
+>Git Cheat Sheet</h1
+><h2 id="useful-cheat-sheets-on-the-web"
+>Useful Cheat Sheets on the Web</h2
+><ul
+><li
+  ><a href="http://daniel.debian.net/documents/cheatpages/git.html"
+    ><code
+      >http://daniel.debian.net/documents/cheatpages/git.html</code
+      ></a
+    ></li
+  ><li
+  >GitHub</li
+  ></ul
+><h2 id="get-rid-of-push-warning"
+>Get rid of &quot;push&quot; warning</h2
+><p
+>Getting rid of this warning:</p
+><pre
+><code
+  >warning: You did not specify any refspecs to push, and the current remote
+warning: has not configured any push refspecs. The default action in this
+warning: case is to push all matching refspecs, that is, all branches
+warning: that exist both locally and remotely will be updated.  This may
+warning: not necessarily be what you want to happen.
+warning: 
+warning: You can specify what action you want to take in this case, and
+warning: avoid seeing this message again, by configuring 'push.default' to:
+warning:   'nothing'  : Do not push anything
+warning:   'matching' : Push all matching branches (default)
+warning:   'tracking' : Push the current branch to whatever it is tracking
+warning:   'current'  : Push the current branch
+
+
+$ git config push.default matching
+$ git config --global push.default matching
+</code
+  ></pre
+><p
+>See <a href="http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching"
+  ><code
+    >http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching</code
+    ></a
+  ></p
+><h2 id="delete-a-remote-branch"
+>Delete a remote branch</h2
+><pre
+><code
+  >$ git push REMOTENAME :BRANCHNAME
+</code
+  ></pre
+><p
+>If you look at the advanced push syntax above it should make a bit more sense. You are literally telling git “push nothing into BRANCHNAME on REMOTENAME”.</p
+><h2 id="create-a-bare-repository"
+>Create a bare repository</h2
+><p
+>New:</p
+><pre
+><code
+  >$ mkdir foo.git &amp;&amp; cd foo.git
+$ git --bare init
+</code
+  ></pre
+><p
+>From an existing repo:</p
+><pre
+><code
+  >$ git clone --bare /path/to/existing/repo proj.git
+</code
+  ></pre
+><h2 id="mark-conflict-resolved"
+>Mark conflict resolved</h2
+><pre
+><code
+  >$ git add file
+</code
+  ></pre
+><h2 id="delete-a-remote-branch-1"
+>Delete a remote branch</h2
+><pre
+><code
+  >$ git push remotename :branch
+</code
+  ></pre
+><p
+>e.g.:</p
+><pre
+><code
+  >$ git push origin :testbranch
+</code
+  ></pre
+>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="gnome-cheat-sheet"
+>Gnome Cheat Sheet</h1
+><h2 id="run-startup-script-before-gnome-starts"
+>Run startup script before Gnome starts</h2
+><p
+>To get Gnome to run a startup script before invoking gnome-session (e.g., to ensure that various environment variables are set):</p
+><p
+>On Linux, do one of:</p
+><ul
+><li
+  ><p
+    >Modify <code
+      >/etc/X11/gdm/Sessions/Gnome</code
+      > so that the appropriate file is sourced before gnome-session is exec'd. For instance, have it check for the existence of <code
+      >$HOME/.gnome/init.sh</code
+      >.</p
+    ></li
+  ><li
+  ><p
+    >Specify that an &quot;xsession&quot; style session is to be created, and have <code
+      >.xsession</code
+      > fire up <code
+      >gnome-session</code
+      > exactly as in <code
+      >/etc/X11/gdm/Sessions/Gnome</code
+      >. Then, be sure all the settings are in <code
+      >.xsession</code
+      >. Setting <code
+      >LC_ALL=C</code
+      > helps.</p
+    ></li
+  ></ul
+><h2 id="disable-blinking-cursor-in-gnome-terminal"
+>Disable blinking cursor in gnome-terminal</h2
+><pre
+><code
+  >$ gnome-keybinding-properties
+</code
+  ></pre
+><p
+>Fix it there. Takes effect immediately.</p
+><h2 id="key-bindings"
+>Key bindings</h2
+><p
+>Key bindings in Gnome (e.g., to fix the fact that, by default, ALT-SPACE pulls up a menu, which messes with my Emacs):</p
+><pre
+><code
+  >$ gconf-editor
+</code
+  ></pre
+><p
+>See: <em
+  >apps &gt; metacity &gt; global_keybindings</em
+  > and <em
+  >apps &gt; metacity &gt; window_keybindings</em
+  ></p
+><h2 id="disable-alt-f-opening-gnome-terminal-menu"
+>Disable Alt-F opening Gnome Terminal menu:</h2
+><p
+>Open Keyboard Preferences on an active terminal, and uncheck top checkbox.</p
+><h2 id="single-click-to-open-a-folder"
+>Single click to open a folder</h2
+><ul
+><li
+  >Open a folder (via Nautilus)</li
+  ><li
+  ><em
+    >Edit &gt; Preferences</em
+    ></li
+  ><li
+  ><em
+    >Behavior</em
+    ></li
+  ></ul
+><h2 id="disable-empty-trash-prompt"
+>Disable &quot;empty trash&quot; prompt</h2
+><p
+>Getting Gnome desktop to quit prompting for trash emptying:</p
+><ul
+><li
+  >Fire up <code
+    >gconf-editor</code
+    > from the command line</li
+  ><li
+  >Go to <em
+    >apps &gt; nautilus &gt; preferences</em
+    > and uncheck <em
+    >confirm_trash</em
+    ></li
+  ></ul
+><p
+>Or: Just use <em
+  >Edit &gt; Preferences &gt; Behavior</em
+  > (as noted above).</p
+><h2 id="get-trash-icon-on-desktop"
+>Get trash icon on desktop</h2
+><ul
+><li
+  >Fire up <code
+    >gconf-editor</code
+    > from the command line</li
+  ><li
+  >Under <em
+    >apps &gt; nautilus &gt; desktop</em
+    >, check <em
+    >trash_icon_visible</em
+    ></li
+  ></ul
+><h2 id="show-the-computer-home-and-trash-desktop-icons-in-gnome."
+>Show the Computer, Home and Trash desktop icons in Gnome.</h2
+><p
+>From <a href="https://help.ubuntu.com/6.10/ubuntu/desktopguide/C/ch12s07.html"
+  ><code
+    >https://help.ubuntu.com/6.10/ubuntu/desktopguide/C/ch12s07.html</code
+    ></a
+  ></p
+><ul
+><li
+  >Run <code
+    >gconf-editor</code
+    ></li
+  ><li
+  >Choose: <em
+    >apps &gt; nautilus &gt; desktop</em
+    ></li
+  ><li
+  >Enable/disable whatever. Changes take place immediately.</li
+  ></ul
+>
+</body>
+</html>
