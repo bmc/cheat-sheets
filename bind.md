@@ -1,4 +1,5 @@
-# BIND Cheat Sheet
+% BIND Cheat Sheet
+
 
 ## Determining version of BIND running on a server
 

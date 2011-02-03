@@ -5,10 +5,10 @@ STYLE_CSS_FILE = html/$(STYLE_CSS_REF)
 INDEX_MARKDOWN = html/index.markdown
 INDEX_HTML     = html/index.html
 
-MD_FILES = $(wildcard *.md)
-ALL_FILES = $(wildcard *)
+MD_FILES = $(sort $(wildcard *.md))
+ALL_FILES = $(sort $(wildcard *))
 NON_MD_FILES = $(filter-out $(MD_FILES) Makefile html,$(ALL_FILES))
-MD_BASENAMES = $(MD_FILES:%.md=%)
+MD_BASENAMES = $(basename $(notdir $(MD_FILES)))
 HTML_FILES = $(MD_FILES:%.md=html/%.html) html/index.html
 
 html/%.html: %.md Makefile $(STYLE_CSS_FILE)
@@ -32,8 +32,6 @@ $(INDEX_MARKDOWN): $(MD_FILES) Makefile
 	 done;\
 	 echo '';\
 	 set -- $(NON_MD_FILES);\
-	 echo $$# >&2;\
-	echo args=$$* >&2;\
 	 if [ $$# -gt 0 ]; then\
 	     echo '# Non-HTML Sheets';\
 	     echo '';\

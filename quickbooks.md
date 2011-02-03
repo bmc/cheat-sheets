@@ -1,4 +1,5 @@
-# QuickBooks Cheat Sheet
+% QuickBooks Cheat Sheet
+
 
 ## Handling bounced customer check
 

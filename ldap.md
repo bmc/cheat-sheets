@@ -1,4 +1,5 @@
-# OpenLDAP cheat sheet
+% OpenLDAP cheat sheet
+
 
 ## Running ldapadd/ldapmodify with correct rootdn
 

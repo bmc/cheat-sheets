@@ -1,8 +1,6 @@
 # Cheat Sheets
 
-* [AquaEmacs](AquaEmacs.html)
-* [Linksys-WRT52G2](Linksys-WRT52G2.html)
-* [VirtualBox](VirtualBox.html)
+* [aqua-emacs](aqua-emacs.html)
 * [bind](bind.html)
 * [bittorrent](bittorrent.html)
 * [cygwin](cygwin.html)
@@ -12,6 +10,7 @@
 * [gtk2](gtk2.html)
 * [iPod](iPod.html)
 * [ldap](ldap.html)
+* [linksys-wrt52g2](linksys-wrt52g2.html)
 * [linux](linux.html)
 * [mac-os-x](mac-os-x.html)
 * [mp3](mp3.html)
@@ -26,5 +25,6 @@
 * [sql](sql.html)
 * [thunderbird](thunderbird.html)
 * [ubuntu](ubuntu.html)
+* [virtual-box](virtual-box.html)
 * [windows](windows.html)
 
