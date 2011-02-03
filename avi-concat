@@ -1,7 +1,0 @@
-To concatenate a bunch of AVI files into one (assuming they're all created
-the same way):
-
-	cat file1.avi file2.avi > big.avi
-	mencoder -ovc copy -oac copy -o out.avi -forceidx big.avi
-
-Ref: http://mplayerhq.hu/pipermail/mplayer-users/2002-December/025231.html
