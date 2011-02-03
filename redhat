@@ -1,8 +1,0 @@
-DHCP:
-
-- Modifies /etc/resolv.conf when DHCP comes up. Using /etc/dhclient-enter-hooks
-  doesn't help, because that script is sourced before the resolv.conf mod.
-  However, if variable PEERDNS is not set to "yes", dhclient-script doesn't
-  modify resolv.conf. PEERDNS is set in the config file for the interface,
-  e.g., "/etc/sysconfig/network-scripts/ifcfg-eth0". Set to "no" to disable
-  edits.

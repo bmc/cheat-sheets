@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="sql-cheat-sheet"
+>SQL Cheat Sheet</h1
+><p
+>Various SQL tricks and tips.</p
+><h2 id="insert-but-only-if-not-there"
+>Insert, but only if not there</h2
+><p
+>To insert the values 'a' and 'b' into table <code
+  >foo</code
+  > (with columns named A, B), but only where the values are not already there, try something like:</p
+><pre
+><code
+  >INSERT INTO foo (  
+  SELECT 'a' as A, 'b' as B FROM foo  
+  WHERE A = 'a' AND B = 'b'  
+  HAVING count(*)=0  
+)
+</code
+  ></pre
+>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<h1 id="python-cheat-sheet"
+>Python Cheat Sheet</h1
+><h2 id="setuptools"
+>Setuptools</h2
+><p
+>Messages like this:</p
+><pre
+><code
+  >/home/bmc/python/lib/python2.5/site-packages/zope.interface-3.4.1-py2.5-linux-i686.egg/zope/__init__.py:3:
+UserWarning: Module _mysql was already imported from
+/var/lib/python-support/python2.5/_mysql.so, but
+/var/lib/python-support/python2.5 is being added to sys.path
+</code
+  ></pre
+><p
+>can happen when packages use setuptools. To suppress them, create a <code
+  >sitecustomize.py</code
+  > file in your <code
+  >site-packages</code
+  > directory, containing:</p
+><pre
+><code
+  >import warnings
+warnings.filterwarnings('ignore',
+                        message=r'Module .*? is being added to sys\.path',
+                        append=True)
+</code
+  ></pre
+>
+</body>
+</html>

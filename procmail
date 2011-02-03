@@ -1,4 +1,0 @@
-1. If procmail fails with lock errors on /var/mail/$LOGNAME,
-   a) make sure /var/mail/$LOGNAME exists
-   b) make sure it has 660 permissions
-   c) make sure it's owned by $LOGNAME and has group "mail"
