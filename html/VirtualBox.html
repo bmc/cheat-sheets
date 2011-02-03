@@ -7,26 +7,17 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
-<h1 id="cheat-sheets"
->Cheat Sheets</h1
-><ul
-><li
-  ><a href="AquaEmacs.html"
-    >AquaEmacs</a
-    ></li
-  ><li
-  ><a href="VirtualBox.html"
-    >VirtualBox</a
-    ></li
-  ><li
-  ><a href="mac-os-x.html"
-    >mac-os-x</a
-    ></li
-  ><li
-  ><a href="safari.html"
-    >safari</a
-    ></li
-  ></ul
+<h1 id="virtualbox-cheat-sheet"
+>VirtualBox Cheat Sheet</h1
+><h2 id="create-vmdk-for-existing-partition"
+>Create VMDK for existing partition</h2
+><p
+>Create a vmdk file (a Virtual Box disk descriptor) for an existing raw partition:</p
+><pre
+><code
+  >VBoxManage internalcommands createrawvmdk -filename ./presto.vmdk -rawdisk /dev/drive2/presto
+</code
+  ></pre
 >
 </body>
 </html>
