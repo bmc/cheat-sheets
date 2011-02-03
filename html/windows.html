@@ -104,11 +104,21 @@ HKEY_LOCAL_MACHINE \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies 
 ><h2 id="generating-an-icon-file-thatll-work-with-windows"
 >Generating an icon file that'll work with Windows</h2
 ><p
->Use <code
-  >png2ico</code
-  >, in the Unix <code
-  >netpbm</code
-  > tool kit.</p
+>Creating an MS Windows &quot;favicon.ico&quot; file:</p
+><ul
+><li
+  >Create a PNG.</li
+  ><li
+  >Scale it to 16x16. (ImageMagick's <em
+    >convert</em
+    >(1) works well.)</li
+  ><li
+  >Use <code
+    >png2ico</code
+    > to pack it into an &quot;ico&quot; file. See the <code
+    >png2ico</code
+    > port on the Mac.</li
+  ></ul
 ><h2 id="windows-autorun"
 >Windows Autorun</h2
 ><p

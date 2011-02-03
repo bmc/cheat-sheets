@@ -1,5 +1,0 @@
-Creating an MS Windows "favicon.ico" file:
-
-- Create a PNG.
-- Scale it to 16x16. (ImageMagick's convert(1) works well.)
-- Use png2ico to pack it into an "ico" file. See the png2ico port.

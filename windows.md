@@ -58,7 +58,12 @@ Repairing Win2K with installation CD when boot disk is trashed
 
 ## Generating an icon file that'll work with Windows
 
-Use `png2ico`, in the Unix `netpbm` tool kit.
+Creating an MS Windows "favicon.ico" file:
+
+- Create a PNG.
+- Scale it to 16x16. (ImageMagick's *convert*(1) works well.)
+- Use `png2ico` to pack it into an "ico" file. See the `png2ico` port on
+  the Mac.
 
 ## Windows Autorun
 
