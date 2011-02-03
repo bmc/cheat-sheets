@@ -32,5 +32,6 @@ pre
     margin-right: 5em;
     padding: 10px;
     width: auto;
-    border: 1px solid #dddddd;
+    border: 1px solid #aaaaaa;
+    background-color: #eeeeee;
 }

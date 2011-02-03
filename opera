@@ -1,3 +1,0 @@
-Use a Windows encoding for the fallback encoding (Preferences -> Document ->
-Languages). Seems to help with those Windows-specific characters that abound
-in HTML (e.g., the em-dash).
