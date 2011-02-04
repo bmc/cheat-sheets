@@ -1,40 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>VirtualBox Cheat Sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>VirtualBox Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">VirtualBox Cheat Sheet</h1>
-<h2 id="create-vmdk-for-existing-partition"
->Create VMDK for existing partition</h2
-><p
->Create a vmdk file (a Virtual Box disk descriptor) for an existing raw partition:</p
-><pre
-><code
-  >VBoxManage internalcommands createrawvmdk -filename ./presto.vmdk -rawdisk /dev/drive2/presto
-</code
-  ></pre
-><h2 id="upgrading-host-linux-os-causes-network-to-stop-working-in-windows-guest"
->Upgrading host Linux OS causes network to stop working in Windows guest</h2
-><p
->Environment:</p
-><ul
-><li
-  >Linux host is Ubuntu</li
-  ><li
-  >Bridged networking installed on Linux host</li
-  ><li
-  >Windows 7 guest is using bridged networking</li
-  ></ul
-><p
->Solution:</p
-><ul
-><li
-  >Boot Windows and reinstall VirtualBox Guest Additions.</li
-  ></ul
->
+<h1 id="virtualbox-cheat-sheet">VirtualBox Cheat Sheet</h1>
+
+<h2 id="create-vmdk-for-existing-partition">Create VMDK for existing partition</h2>
+
+<p>Create a vmdk file (a Virtual Box disk descriptor) for an existing raw
+partition:</p>
+
+<pre><code>VBoxManage internalcommands createrawvmdk -filename ./presto.vmdk -rawdisk /dev/drive2/presto
+</code></pre>
+
+<h2 id="upgrading-host-linux-os-causes-network-to-stop-working-in-windows-guest">Upgrading host Linux OS causes network to stop working in Windows guest</h2>
+
+<p>Environment:</p>
+
+<ul>
+  <li>Linux host is Ubuntu</li>
+  <li>Bridged networking installed on Linux host</li>
+  <li>Windows 7 guest is using bridged networking</li>
+</ul>
+
+<p>Solution:</p>
+
+<ul>
+  <li>Boot Windows and reinstall VirtualBox Guest Additions. </li>
+</ul>
+
 </body>
 </html>

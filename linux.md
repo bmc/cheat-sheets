@@ -1,5 +1,4 @@
-% General Linux Cheat Sheet
-
+# General Linux Cheat Sheet
 
 ## Single User Boot
 

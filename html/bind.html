@@ -1,31 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>BIND Cheat Sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>BIND Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">BIND Cheat Sheet</h1>
-<h2 id="determining-version-of-bind-running-on-a-server"
->Determining version of BIND running on a server</h2
-><pre
-><code
-  >$ dig @server version.bind chaos txt
-</code
-  ></pre
-><p
->To configure BIND not to give out the version, include the following in the <code
-  >options</code
-  > portion of <code
-  >named.conf</code
-  >:</p
-><pre
-><code
-  >version &quot;surely you must be joking&quot;;
-</code
-  ></pre
->
+<h1 id="bind-cheat-sheet">BIND Cheat Sheet</h1>
+
+<h2 id="determining-version-of-bind-running-on-a-server">Determining version of BIND running on a server</h2>
+
+<pre><code>$ dig @server version.bind chaos txt
+</code></pre>
+
+<p>To configure BIND not to give out the version, include the following in
+the <code>options</code> portion of <code>named.conf</code>:</p>
+
+<pre><code>version "surely you must be joking";
+</code></pre>
+
+
 </body>
 </html>

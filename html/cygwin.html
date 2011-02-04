@@ -1,33 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>Cygwin Cheat Sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>Cygwin Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">Cygwin Cheat Sheet</h1>
-<h2 id="installing-starting-a-cygwin-service"
->Installing &amp; starting a <a href="http://www.cygwin.com/"
-  >Cygwin</a
-  > service</h2
-><p
->inetd:</p
-><pre
-><code
-  >cygrunsrv -I inetd -d &quot;CYGWIN inetd&quot; -p /usr/sbin/inetd -a -d -e CYGWIN=ntsec
+<h1 id="cygwin-cheat-sheet">Cygwin Cheat Sheet</h1>
+
+<h2 id="installing--starting-a-cygwin-service">Installing &amp; starting a <a href="http://www.cygwin.com/">Cygwin</a> service</h2>
+
+<p>inetd:</p>
+
+<pre><code>cygrunsrv -I inetd -d "CYGWIN inetd" -p /usr/sbin/inetd -a -d -e CYGWIN=ntsec
 cygrunsrv -S inetd
-</code
-  ></pre
-><p
->cron:</p
-><pre
-><code
-  >cygrunsrv -I cron -p /usr/sbin/cron -a -D
+</code></pre>
+
+<p>cron:</p>
+
+<pre><code>cygrunsrv -I cron -p /usr/sbin/cron -a -D
 cygrunsrv -S cron
-</code
-  ></pre
->
+</code></pre>
+
+
 </body>
 </html>

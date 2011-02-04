@@ -1,58 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>Oracle Cheat Sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>Oracle Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">Oracle Cheat Sheet</h1>
-<h2 id="getting-a-list-of-indexes"
->Getting a list of indexes</h2
-><p
->The query</p
-><pre
-><code
-  >SELECT INDEX_NAME FROM DBA_INDEXES
-</code
-  ></pre
-><p
->will list the names of all non-system indexes. Also, from <a href="http://technet.oracle.com/docs/products/oracle8i/doc_index.htm"
-  ><code
-    >http://technet.oracle.com/docs/products/oracle8i/doc_index.htm</code
-    ></a
-  ></p
-><blockquote
-><p
-  >System index views USER_INDEXES, ALL_INDEXES, and DBA_INDEXES indicate bitmap indexes by the word BITMAP appearing in the TYPE column. A bitmap index cannot be declared as UNIQUE.</p
-  ></blockquote
-><p
->Must have system privileges to issue the query.</p
-><h2 id="getting-a-cross-reference-of-tables-and-their-indexes"
->Getting a cross-reference of tables and their indexes</h2
-><pre
-><code
-  >SELECT table_name, index_name FROM dba_indexes WHERE table_name = 'TABLENAME'
-</code
-  ></pre
-><p
->Must have system privileges to issue the query.</p
-><h2 id="determining-the-indexes-on-a-table"
->Determining the indexes on a table</h2
-><h3 id="getting-the-names-of-indexes-for-a-table"
->Getting the names of indexes for a table</h3
-><pre
-><code
-  >SELECT INDEX_NAME name FROM USER_INDEXES
+<h1 id="oracle-cheat-sheet">Oracle Cheat Sheet</h1>
+
+<h2 id="getting-a-list-of-indexes">Getting a list of indexes</h2>
+
+<p>The query</p>
+
+<pre><code>SELECT INDEX_NAME FROM DBA_INDEXES
+</code></pre>
+
+<p>will list the names of all non-system indexes. Also, from
+<a href="http://technet.oracle.com/docs/products/oracle8i/doc_index.htm">http://technet.oracle.com/docs/products/oracle8i/doc_index.htm</a></p>
+
+<blockquote>
+  <p>System index views USER_INDEXES, ALL_INDEXES, and DBA_INDEXES indicate
+bitmap indexes by the word BITMAP appearing in the TYPE column. A bitmap
+index cannot be declared as UNIQUE.</p>
+</blockquote>
+
+<p>Must have system privileges to issue the query.</p>
+
+<h2 id="getting-a-cross-reference-of-tables-and-their-indexes">Getting a cross-reference of tables and their indexes</h2>
+
+<pre><code>SELECT table_name, index_name FROM dba_indexes WHERE table_name = 'TABLENAME'
+</code></pre>
+
+<p>Must have system privileges to issue the query.</p>
+
+<h2 id="determining-the-indexes-on-a-table">Determining the indexes on a table</h2>
+
+<h3 id="getting-the-names-of-indexes-for-a-table">Getting the names of indexes for a table</h3>
+
+<pre><code>SELECT INDEX_NAME name FROM USER_INDEXES
 WHERE TABLE_NAME = 'table_name' AND GENERATED = 'N';
-</code
-  ></pre
-><h2 id="determining-the-columns-on-which-an-index-is-based"
->Determining the columns on which an index is based:</h2
-><pre
-><code
-  >SELECT aic.index_name,
+</code></pre>
+
+<h2 id="determining-the-columns-on-which-an-index-is-based">Determining the columns on which an index is based:</h2>
+
+<pre><code>SELECT aic.index_name,
           aic.column_name,
           aic.column_position,
           aic.descend,
@@ -71,116 +62,83 @@ LEFT JOIN all_constraints alc
     --AND aic.table_owner = 'HR'              -- table owner
     --AND aic.index_name = 'TEST2_FIELD5_IDX' -- index name
  ORDER BY column_position;
-</code
-  ></pre
-><h2 id="other-useful-metadata-queries"
->Other useful metadata queries</h2
-><p
->See <a href="http://www.alberton.info/oracle_meta_info.html"
-  ><code
-    >http://www.alberton.info/oracle_meta_info.html</code
-    ></a
-  ></p
-><h2 id="creating-a-user"
->Creating a user</h2
-><p
->In SQL*Plus, connect as <code
-  >SYSTEM/MANAGER@dbname</code
-  >. Then, issue the following SQL:</p
-><pre
-><code
-  >CREATE USER user IDENTIFIED BY password
+</code></pre>
+
+<h2 id="other-useful-metadata-queries">Other useful metadata queries</h2>
+
+<p>See <a href="http://www.alberton.info/oracle_meta_info.html">http://www.alberton.info/oracle_meta_info.html</a></p>
+
+<h2 id="creating-a-user">Creating a user</h2>
+
+<p>In SQL*Plus, connect as <code>SYSTEM/MANAGER@dbname</code>. Then, issue the following
+SQL:</p>
+
+<pre><code>CREATE USER user IDENTIFIED BY password
 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
 QUOTA UNLIMITED ON users;
-</code
-  ></pre
-><p
->For example:</p
-><pre
-><code
-  >CREATE USER user1 IDENTIFIED BY mypassword
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>CREATE USER user1 IDENTIFIED BY mypassword
 DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
 QUOTA UNLIMITED ON users;
-</code
-  ></pre
-><p
->Next, grant appropriate privileges to the new user:</p
-><pre
-><code
-  >GRANT connect, resource TO user1;
-</code
-  ></pre
-><p
->In SQL*Plus, connect as <code
-  >user1/mypassword@dbname</code
-  >. Create tables, indexes, etc... They'll be owned by the new user.</p
-><h2 id="changing-users-password"
->Changing user's password</h2
-><pre
-><code
-  >ALTER USER user IDENTIFIED BY password
-</code
-  ></pre
-><h2 id="sharing-tables-between-two-users"
->Sharing tables between two users</h2
-><p
->Create a second user, <em
-  >user2</em
-  >. (See above) Then, connect as <em
-  >user1</em
-  >, and issue this command:</p
-><pre
-><code
-  >GRANT insert, update, delete, select on user1.table1 TO user2;
-</code
-  ></pre
-><p
->Do this for all appropriate tables/indexes.</p
-><p
->Now, if <em
-  >user2</em
-  > logs in, he can access <code
-  >user1.table1</code
-  >, but he must refer to it as <code
-  >user1.table1</code
-  >. You can create a public synonym for the table to make this easier. See below.</p
-><h2 id="creating-a-public-synonym-for-a-table"
->Creating a public synonym for a table</h2
-><p
->Log in as the table's owner (<em
-  >user1</em
-  >, in this example), and issue this SQL:</p
-><pre
-><code
-  > CREATE PUBLIC SYNONYM table1 FOR user1.table1
-</code
-  ></pre
-><h2 id="granting-dba-privileges-to-a-user"
->Granting DBA privileges to a user</h2
-><p
->In a word: Don't. Instead, grant the appropriate privileges on the appropriate tables to an unprivileged user.</p
-><h2 id="creating-a-rollback-segment"
->Creating a rollback segment:</h2
-><p
->Connect as <code
-  >SYSTEM/MANAGER</code
-  >, then:</p
-><pre
-><code
-  >CREATE ROLLBACK SEGMENT segname TABLESPACE USERS;
-</code
-  ></pre
-><p
->Then, add the rollback segment name to the <code
-  >initXXX.ora</code
-  > file for the instance.</p
-><h2 id="if-database-is-hung-shutting-down-or-starting-up"
->If database is hung shutting down or starting up</h2
-><p
->As Oracle user:</p
-><pre
-><code
-  >$ svrmgrl
+</code></pre>
+
+<p>Next, grant appropriate privileges to the new user:</p>
+
+<pre><code>GRANT connect, resource TO user1;
+</code></pre>
+
+<p>In SQL*Plus, connect as <code>user1/mypassword@dbname</code>. Create tables, indexes,
+etc&hellip; They&rsquo;ll be owned by the new user.</p>
+
+<h2 id="changing-users-password">Changing user&rsquo;s password</h2>
+
+<pre><code>ALTER USER user IDENTIFIED BY password
+</code></pre>
+
+<h2 id="sharing-tables-between-two-users">Sharing tables between two users</h2>
+
+<p>Create a second user, <em>user2</em>. (See above) Then, connect as <em>user1</em>, and
+issue this command:</p>
+
+<pre><code>GRANT insert, update, delete, select on user1.table1 TO user2;
+</code></pre>
+
+<p>Do this for all appropriate tables/indexes.</p>
+
+<p>Now, if <em>user2</em> logs in, he can access <code>user1.table1</code>, but he must
+refer to it as <code>user1.table1</code>. You can create a public synonym for
+the table to make this easier. See below.</p>
+
+<h2 id="creating-a-public-synonym-for-a-table">Creating a public synonym for a table</h2>
+
+<p>Log in as the table&rsquo;s owner (<em>user1</em>, in this example), and issue this SQL:</p>
+
+<pre><code> CREATE PUBLIC SYNONYM table1 FOR user1.table1
+</code></pre>
+
+<h2 id="granting-dba-privileges-to-a-user">Granting DBA privileges to a user</h2>
+
+<p>In a word: Don&rsquo;t. Instead, grant the appropriate privileges on the
+appropriate tables to an unprivileged user.</p>
+
+<h2 id="creating-a-rollback-segment">Creating a rollback segment:</h2>
+
+<p>Connect as <code>SYSTEM/MANAGER</code>, then:</p>
+
+<pre><code>CREATE ROLLBACK SEGMENT segname TABLESPACE USERS;
+</code></pre>
+
+<p>Then, add the rollback segment name to the <code>initXXX.ora</code> file for the
+instance.</p>
+
+<h2 id="if-database-is-hung-shutting-down-or-starting-up">If database is hung shutting down or starting up</h2>
+
+<p>As Oracle user:</p>
+
+<pre><code>$ svrmgrl
 Oracle8i Enterprise Edition Release 8.1.5.0.2 - Production
 With the Partitioning and Java options
 PL/SQL Release 8.1.5.0.0 - Production
@@ -189,47 +147,42 @@ SVRMGR&gt; connect internal
 SVRMGR&gt; shutdown
 SVRMGR&gt; startup force
 SVRMGR&gt; ^D
-</code
-  ></pre
-><p
->If that fails, try killing the Oracle processes. Then, since Oracle uses two of the &quot;three evil sisters&quot;, semaphores and shared memory, &quot;ipcrm&quot; the Oracle-owned one after the &quot;kill -9&quot; and it should restart.</p
-><h2 id="dumping-and-restoring-an-oracle-database"
->Dumping and Restoring an Oracle Database</h2
-><h3 id="dump"
->Dump:</h3
-><pre
-><code
-  >sqlplus system/manager &lt;&lt;EOF
+</code></pre>
+
+<p>If that fails, try killing the Oracle processes. Then, since Oracle uses
+two of the &ldquo;three evil sisters&rdquo;, semaphores and shared memory, &ldquo;ipcrm&rdquo; the
+Oracle-owned one after the &ldquo;kill -9&rdquo; and it should restart.</p>
+
+<h2 id="dumping-and-restoring-an-oracle-database">Dumping and Restoring an Oracle Database</h2>
+
+<h3 id="dump">Dump:</h3>
+
+<pre><code>sqlplus system/manager &lt;&lt;EOF
 grant dba to user1;
 EOF
 
-exp user1/password@instance # accept defaults, except for &quot;Export entire
-                            # database&quot;. Choose &quot;1&quot; for that.
-</code
-  ></pre
-><p
->When prompted with</p
-><pre
-><code
-  >(1)E(ntire database), (2)U(sers), or (3)T(ables): (2)U &gt;
-</code
-  ></pre
-><p
->accept the default (&quot;U&quot;), and enter the appropriate user name (i.e., the owner of the tables) when prompted.</p
-><pre
-><code
-  >sqlplus system/manager &lt;&lt;EOF
+exp user1/password@instance # accept defaults, except for "Export entire
+                            # database". Choose "1" for that.
+</code></pre>
+
+<p>When prompted with </p>
+
+<pre><code>(1)E(ntire database), (2)U(sers), or (3)T(ables): (2)U &gt;
+</code></pre>
+
+<p>accept the default (&ldquo;U&rdquo;), and enter the appropriate user name (i.e., the
+owner of the tables) when prompted.</p>
+
+<pre><code>sqlplus system/manager &lt;&lt;EOF
 revoke dba from user1;
 EOF
-</code
-  ></pre
-><h3 id="restore"
->Restore</h3
-><p
->Drop all existing tables and indexes in same db first.</p
-><pre
-><code
-  >sqlplus system/manager &lt;&lt;EOF
+</code></pre>
+
+<h3 id="restore">Restore</h3>
+
+<p>Drop all existing tables and indexes in same db first.</p>
+
+<pre><code>sqlplus system/manager &lt;&lt;EOF
 grant dba to user1;
 EOF
 
@@ -238,130 +191,104 @@ imp user1/password@instance
 sqlplus system/manager &lt;&lt;EOF
 revoke dba from user1;
 EOF
-</code
-  ></pre
-><p
->May have to restore SYSTEM account's password afterwards.</p
-><h2 id="oracle-9.2.0-intermedia-problems"
->Oracle 9.2.0 Intermedia Problems:</h2
-><h3 id="ctx_ddl-must-be-declared"
->CTX_DDL must be declared</h3
-><p
->If this error occurs:</p
-><pre
-><code
-  >PLS-00201: identifier 'CTX_DDL' must be declared
-</code
-  ></pre
-><p
->then the user doesn't have appropriate privileges. This seems to cure the problem:</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<p>May have to restore SYSTEM account&rsquo;s password afterwards.</p>
+
+<h2 id="oracle-920-intermedia-problems">Oracle 9.2.0 Intermedia Problems:</h2>
+
+<h3 id="ctxddl-must-be-declared">CTX_DDL must be declared</h3>
+
+<p>If this error occurs:</p>
+
+<pre><code>PLS-00201: identifier 'CTX_DDL' must be declared
+</code></pre>
+
+<p>then the user doesn&rsquo;t have appropriate privileges. This seems to cure the
+problem:</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 grant ctxapp to user1
 EOF
-</code
-  ></pre
-><h3 id="error-during-stored-procedure-definition"
->Error during stored procedure definition</h3
-><p
->If the above error occurs during definition of a stored procedure, then:</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<h3 id="error-during-stored-procedure-definition">Error during stored procedure definition</h3>
+
+<p>If the above error occurs during definition of a stored procedure, then:</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 grant create any procedure to user1
 EOF
-</code
-  ></pre
-><h3 id="insufficient-privilege-error"
->&quot;Insufficient privilege&quot; error</h3
-><p
->If you THEN get:</p
-><pre
-><code
-  >PLS-00904: insufficient privilege to access object CTXSYS.CTX_DDL
-</code
-  ></pre
-><p
->try:</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<h3 id="insufficient-privilege-error">&ldquo;Insufficient privilege&rdquo; error</h3>
+
+<p>If you THEN get:</p>
+
+<pre><code>PLS-00904: insufficient privilege to access object CTXSYS.CTX_DDL
+</code></pre>
+
+<p>try:</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 grant execute on CTXSYS.CTX_DDL to user1;
 EOF
-</code
-  ></pre
-><h2 id="explain-plan-and-autotrace"
->EXPLAIN PLAN and Autotrace</h2
-><p
->Create the relevant tables in the schema, e.g.:</p
-><pre
-><code
-  >sqlplus user1/password@instance @$ORACLE_HOME/rdbms/admin/utlxplan.sql
-</code
-  ></pre
-><p
->Create the <code
-  >PLUSTRACE</code
-  > role, etc.:</p
-><pre
-><code
-  >sqlplus /nolog &lt;&lt;EOF
+</code></pre>
+
+<h2 id="explain-plan-and-autotrace">EXPLAIN PLAN and Autotrace</h2>
+
+<p>Create the relevant tables in the schema, e.g.:</p>
+
+<pre><code>sqlplus user1/password@instance @$ORACLE_HOME/rdbms/admin/utlxplan.sql
+</code></pre>
+
+<p>Create the <code>PLUSTRACE</code> role, etc.:</p>
+
+<pre><code>sqlplus /nolog &lt;&lt;EOF
 connect / as sysdba
 @$ORACLE_HOME/sqlplus/admin/plustrce.sql
 EOF
-</code
-  ></pre
-><p
->Grant the <code
-  >PLUSTRACE</code
-  > role to the user who owns the DB:</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<p>Grant the <code>PLUSTRACE</code> role to the user who owns the DB:</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 grant plustrace to user1;
 EOF
-</code
-  ></pre
-><p
->Can now run EXPLAIN PLAN (see Oracle docs) or autotrace.</p
-><pre
-><code
-  >sqlplus user1/password@instance
+</code></pre>
+
+<p>Can now run EXPLAIN PLAN (see Oracle docs) or autotrace.</p>
+
+<pre><code>sqlplus user1/password@instance
 SQL&gt; set autotrace trace|on|off
 SQL&gt; &lt;statement(s)&gt;
-</code
-  ></pre
-><ul
-><li
-  >&quot;trace&quot; says to run the statement(s) and print the plan(s), but avoid displaying any results.</li
-  ><li
-  >&quot;on&quot; prints the plan(s) and the results.</li
-  ></ul
-><h2 id="managing-statistics-for-the-cost-based-optimizer"
->Managing statistics for the cost-based optimizer</h2
-><p
->Creating statistics for the cost-based optimizer</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<ul>
+  <li>&ldquo;trace&rdquo; says to run the statement(s) and print the plan(s), but avoid
+displaying any results.</li>
+  <li>&ldquo;on&rdquo; prints the plan(s) and the results.</li>
+</ul>
+
+<h2 id="managing-statistics-for-the-cost-based-optimizer">Managing statistics for the cost-based optimizer</h2>
+
+<p>Creating statistics for the cost-based optimizer</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 EXEC DBMS_UTILITY.analyze_schema('IACCEL', 'COMPUTE')
 EOF
-</code
-  ></pre
-><p
->Deleting those statistics:</p
-><pre
-><code
-  >sqlplus system/manager@instance &lt;&lt;EOF
+</code></pre>
+
+<p>Deleting those statistics:</p>
+
+<pre><code>sqlplus system/manager@instance &lt;&lt;EOF
 EXEC DBMS_UTILITY.analyze_schema('IACCEL', 'DELETE')
 EOF
-</code
-  ></pre
-><h2 id="after-bringing-up-database-cant-connect-via-sqlplus."
->After bringing up database, can't connect via SQL*Plus.</h2
-><p
->Try waiting a minute or two.</p
->
+</code></pre>
+
+<h2 id="after-bringing-up-database-cant-connect-via-sqlplus">After bringing up database, can&rsquo;t connect via SQL*Plus.</h2>
+
+<p>Try waiting a minute or two.</p>
+
 </body>
 </html>

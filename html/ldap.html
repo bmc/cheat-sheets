@@ -1,82 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>OpenLDAP cheat sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>OpenLDAP cheat sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">OpenLDAP cheat sheet</h1>
-<h2 id="running-ldapaddldapmodify-with-correct-rootdn"
->Running ldapadd/ldapmodify with correct rootdn</h2
-><p
->Running <code
-  >ldapadd</code
-  > or <code
-  >ldapmodify</code
-  > and using the rootdn configured in <code
-  >slapd.conf</code
-  >:</p
-><pre
-><code
-  >$ ldapmodify -x -v -D 'cn=root,dc=fulltilt,dc=com' -w 'foo$bar'
+<h1 id="openldap-cheat-sheet">OpenLDAP cheat sheet</h1>
+
+<h2 id="running-ldapaddldapmodify-with-correct-rootdn">Running ldapadd/ldapmodify with correct rootdn</h2>
+
+<p>Running <code>ldapadd</code> or <code>ldapmodify</code> and using the rootdn configured in
+<code>slapd.conf</code>:</p>
+
+<pre><code>$ ldapmodify -x -v -D 'cn=root,dc=fulltilt,dc=com' -w 'foo$bar'
 $ ldapadd -x -v -D 'cn=root,dc=fulltilt,dc=com' -w 'foo$bar'
-</code
-  ></pre
-><p
->Assumes rootdn is defined something like this:</p
-><pre
-><code
-  >rootdn   &quot;cn=root,dc=fulltilt,dc=com&quot;
+</code></pre>
+
+<p>Assumes rootdn is defined something like this:</p>
+
+<pre><code>rootdn   "cn=root,dc=fulltilt,dc=com"
 rootpw   {SSHA}u1zwxGiID0uDSA0p+jH+n7Ev5kHFMryq
-</code
-  ></pre
-><p
->where the encrypted password was created with slappasswd.</p
-><h2 id="running-ldapsearch-using-simple-authentication"
->Running ldapsearch using simple authentication:</h2
-><pre
-><code
-  >$ ldapsearch -x -b 'dc=fulltilt,dc=com' 'userName=*'
-</code
-  ></pre
-><p
->Running <code
-  >ldapsearch</code
-  > using simple authentication and the rootdn. (Passwords won't show up in the result unless bind is done this way.)</p
-><p
->Prompt for password:</p
-><pre
-><code
-  >$ ldapsearch -D cn=root,dc=fulltilt,dc=com -W -x -b 'dc=fulltilt,dc=com' 'userName=*'
-</code
-  ></pre
-><p
->Specifying password on command line:</p
-><pre
-><code
-  >$ ldapsearch -D cn=root,dc=fulltilt,dc=com -w password -x -b 'dc=fulltilt,dc=com' 'userName=*'
-</code
-  ></pre
-><h2 id="running-ldapsearch-with-sasl"
->Running ldapsearch with SASL</h2
-><p
->Make sure SASL stuff is in config. See sample <code
-  >slapd.conf</code
-  >, below. Then, run this command:</p
-><pre
-><code
-  >$ ldapsearch -v -U bclapper -b 'dc=fulltilt,dc=com'  username=*
-</code
-  ></pre
-><h2 id="specifying-users-password"
->Specifying user's password</h2
-><p
->Easiest way is via LDIF, in a field. e.g.,</p
-><pre
-><code
-  >dn: cn=bmc,dc=fulltilt,dc=com
+</code></pre>
+
+<p>where the encrypted password was created with slappasswd.</p>
+
+<h2 id="running-ldapsearch-using-simple-authentication">Running ldapsearch using simple authentication:</h2>
+
+<pre><code>$ ldapsearch -x -b 'dc=fulltilt,dc=com' 'userName=*'
+</code></pre>
+
+<p>Running <code>ldapsearch</code> using simple authentication and the rootdn. (Passwords
+won&rsquo;t show up in the result unless bind is done this way.)</p>
+
+<p>Prompt for password:</p>
+
+<pre><code>$ ldapsearch -D cn=root,dc=fulltilt,dc=com -W -x -b 'dc=fulltilt,dc=com' 'userName=*'
+</code></pre>
+
+<p>Specifying password on command line:</p>
+
+<pre><code>$ ldapsearch -D cn=root,dc=fulltilt,dc=com -w password -x -b 'dc=fulltilt,dc=com' 'userName=*'
+</code></pre>
+
+<h2 id="running-ldapsearch-with-sasl">Running ldapsearch with SASL</h2>
+
+<p>Make sure SASL stuff is in config. See sample <code>slapd.conf</code>, below. Then,
+run this command:</p>
+
+<pre><code>$ ldapsearch -v -U bclapper -b 'dc=fulltilt,dc=com'  username=*
+</code></pre>
+
+<h2 id="specifying-users-password">Specifying user&rsquo;s password</h2>
+
+<p>Easiest way is via LDIF, in a field. e.g.,</p>
+
+<pre><code>dn: cn=bmc,dc=fulltilt,dc=com
 objectClass: localperson
 cn: bmc
 fullName: Brian Clapper
@@ -88,55 +67,48 @@ userName: bmc
 role: SuperUser
 role: Owner
 userPassword: bmc
-</code
-  ></pre
-><p
-><code
-  >userPassword</code
-  > field defines the password.</p
-><p
->Must also configure <code
-  >slapd</code
-  > to look there. See &quot;access to attr=userPassword&quot; in sample config, below.</p
-><p
->Sample <code
-  >/etc/openldap/slapd.conf</code
-  >:</p
-><pre
-><code
-  >#
+</code></pre>
+
+<p><code>userPassword</code> field defines the password.</p>
+
+<p>Must also configure <code>slapd</code> to look there. See &ldquo;access to attr=userPassword&rdquo;
+in sample config, below.</p>
+
+<p>Sample <code>/etc/openldap/slapd.conf</code>:</p>
+
+<pre><code>#
 # See slapd.conf(5) for details on configuration options.
 # This file should NOT be world readable.
 #
-include     /etc/openldap/schema/core.schema
-include     /etc/openldap/schema/cosine.schema
-include     /etc/openldap/schema/inetorgperson.schema
-include     /etc/openldap/schema/nis.schema
+include		/etc/openldap/schema/core.schema
+include		/etc/openldap/schema/cosine.schema
+include		/etc/openldap/schema/inetorgperson.schema
+include		/etc/openldap/schema/nis.schema
 
 # Local additions to the schema
-include     /etc/openldap/schema/local.schema
+include		/etc/openldap/schema/local.schema
 
 # Allow LDAPv2 client connections.  This is NOT the default.
 allow bind_v2
 
 # Do not enable referrals until AFTER you have a working directory
 # service AND an understanding of referrals.
-#referral   ldap://root.openldap.org
+#referral	ldap://root.openldap.org
 
-pidfile     /var/run/slapd.pid
-argsfile    /var/run/slapd.args
+pidfile		/var/run/slapd.pid
+argsfile	/var/run/slapd.args
 
 # Load dynamic backend modules:
-# modulepath    /usr/sbin/openldap
-# moduleload    back_bdb.la
-# moduleload    back_ldap.la
-# moduleload    back_ldbm.la
-# moduleload    back_passwd.la
-# moduleload    back_shell.la
+# modulepath	/usr/sbin/openldap
+# moduleload	back_bdb.la
+# moduleload	back_ldap.la
+# moduleload	back_ldbm.la
+# moduleload	back_passwd.la
+# moduleload	back_shell.la
 
 # The next three lines allow use of TLS for encrypting connections using a
 # dummy test certificate which you can generate by changing to
-# /usr/share/ssl/certs, running &quot;make slapd.pem&quot;, and fixing permissions on
+# /usr/share/ssl/certs, running "make slapd.pem", and fixing permissions on
 # slapd.pem so that the ldap user or group can read it.  Your client software
 # may balk at self-signed certificates, however.
 # TLSCACertificateFile /usr/share/ssl/certs/ca-bundle.crt
@@ -144,57 +116,57 @@ argsfile    /var/run/slapd.args
 # TLSCertificateKeyFile /usr/share/ssl/certs/slapd.pem
 
 # Sample security restrictions
-#   Require integrity protection (prevent hijacking)
-#   Require 112-bit (3DES or better) encryption for updates
-#   Require 63-bit encryption for simple bind
+#	Require integrity protection (prevent hijacking)
+#	Require 112-bit (3DES or better) encryption for updates
+#	Require 63-bit encryption for simple bind
 # security ssf=1 update_ssf=112 simple_bind=64
 
 # Sample access control policy:
-#   Root DSE: allow anyone to read it
-#   Subschema (sub)entry DSE: allow anyone to read it
-#   Other DSEs:
-#       Allow self write access
-#       Allow authenticated users read access
-#       Allow anonymous users to authenticate
-#   Directives needed to implement policy:
-# access to dn.base=&quot;&quot; by * read
-# access to dn.base=&quot;cn=Subschema&quot; by * read
+#	Root DSE: allow anyone to read it
+#	Subschema (sub)entry DSE: allow anyone to read it
+#	Other DSEs:
+#		Allow self write access
+#		Allow authenticated users read access
+#		Allow anonymous users to authenticate
+#	Directives needed to implement policy:
+# access to dn.base="" by * read
+# access to dn.base="cn=Subschema" by * read
 # access to *
-#   by self write
-#   by users read
-#   by anonymous auth
+#	by self write
+#	by users read
+#	by anonymous auth
 #
 # if no access controls are present, the default policy
 # allows anyone and everyone to read anything but restricts
-# updates to rootdn.  (e.g., &quot;access to * by * read&quot;)
+# updates to rootdn.  (e.g., "access to * by * read")
 #
 # rootdn can always read and write EVERYTHING!
 
 access to attr=userPassword
-    by self write
-    by anonymous auth
-    by dn.base=&quot;cn=root,dc=fulltilt,dc=com&quot; write
-    by * none
+	by self write
+	by anonymous auth
+	by dn.base="cn=root,dc=fulltilt,dc=com" write
+	by * none
 access to *
-    by self write
-    by dn.base=&quot;cn=root,dc=fulltilt,dc=com&quot; write
-    by * read
+	by self write
+	by dn.base="cn=root,dc=fulltilt,dc=com" write
+	by * read
 
 #######################################################################
 # ldbm and/or bdb database definitions
 #######################################################################
 
-database    bdb
-suffix      &quot;dc=fulltilt,dc=com&quot;
-rootdn      &quot;cn=root,dc=fulltilt,dc=com&quot;
+database	bdb
+suffix		"dc=fulltilt,dc=com"
+rootdn		"cn=root,dc=fulltilt,dc=com"
 
 # pw=foo$bar
-rootpw      {SSHA}u1zwxGiID0uDSA0p+jH+n7Ev5kHFMryq
+rootpw		{SSHA}u1zwxGiID0uDSA0p+jH+n7Ev5kHFMryq
 # Cleartext passwords, especially for the rootdn, should
 # be avoided.  See slappasswd(8) and slapd.conf(5) for details.
 # Use of strong authentication encouraged.
-# rootpw        secret
-# rootpw        {crypt}ijFYNcSNctBYg
+# rootpw		secret
+# rootpw		{crypt}ijFYNcSNctBYg
 
 # For SASL. Taken from:
 # http://www.openldap.org/doc/admin22/sasl.html
@@ -224,7 +196,7 @@ sasl-regexp
 # The database directory MUST exist prior to running slapd AND 
 # should only be accessible by the slapd and slap tools.
 # Mode 700 recommended.
-directory   /var/lib/ldap
+directory	/var/lib/ldap
 
 # Indices to maintain for this database
 index objectClass                       eq,pres
@@ -238,8 +210,7 @@ index nisMapName,nisMapEntry            eq,pres,sub
 #replica host=ldap-1.example.com:389 starttls=critical
 #     bindmethod=sasl saslmech=GSSAPI
 #     authcId=host/ldap-master.example.com@EXAMPLE.COM
-</code
-  ></pre
->
+</code></pre>
+
 </body>
 </html>

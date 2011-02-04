@@ -1,48 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 <head>
-  <title>BitTorrent Cheat Sheet</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="stylesheet" href="style.css" type="text/css" />
+<title>BitTorrent Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1 class="title">BitTorrent Cheat Sheet</h1>
-<h2 id="the-original-curses-client"
->The original <em
-  >curses</em
-  > client</h2
-><h3 id="installing"
->Installing</h3
-><p
->Linux:</p
-><pre
-><code
-  >$ sudo yum install bittorrent            # Fedora
+<h1 id="bittorrent-cheat-sheet">BitTorrent Cheat Sheet</h1>
+
+<h2 id="the-original-curses-client">The original <em>curses</em> client</h2>
+
+<h3 id="installing">Installing</h3>
+
+<p>Linux:</p>
+
+<pre><code>$ sudo yum install bittorrent            # Fedora
 $ sudo apt-get install python-bittorrent # Ubuntu and Debian
-</code
-  ></pre
-><p
->FreeBSD:</p
-><blockquote
-><p
-  >Install `/usr/ports/net/py-bittorrent</p
-  ></blockquote
-><h3 id="running"
->Running</h3
-><pre
-><code
-  >$ btdownloadcurses.py --max_allow_in 10 --max_initiate 10 -minport 6881 --maxport 6889 torrentfile
-</code
-  ></pre
-><h2 id="good-cross-platform-gui-client"
->Good cross-platform GUI client</h2
-><p
->Transmission: <a href="http://transmissionbt.com/"
-  ><code
-    >http://transmissionbt.com/</code
-    ></a
-  ></p
->
+</code></pre>
+
+<p>FreeBSD:</p>
+
+<blockquote>
+  <p>Install <code>/usr/ports/net/py-bittorrent</code></p>
+</blockquote>
+
+<h3 id="running">Running</h3>
+
+<pre><code>$ btdownloadcurses.py --max_allow_in 10 --max_initiate 10 -minport 6881 --maxport 6889 torrentfile
+</code></pre>
+
+<h2 id="good-cross-platform-gui-client">Good cross-platform GUI client</h2>
+
+<p>Transmission: <a href="http://transmissionbt.com/">http://transmissionbt.com/</a></p>
+
 </body>
 </html>

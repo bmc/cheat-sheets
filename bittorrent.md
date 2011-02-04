@@ -1,5 +1,4 @@
-% BitTorrent Cheat Sheet
-
+# BitTorrent Cheat Sheet
 
 ## The original *curses* client
 
@@ -12,7 +11,7 @@ Linux:
 
 FreeBSD:
 
-> Install `/usr/ports/net/py-bittorrent
+> Install `/usr/ports/net/py-bittorrent`
 
 ### Running
 
@@ -21,4 +20,3 @@ FreeBSD:
 ## Good cross-platform GUI client
 
 Transmission: <http://transmissionbt.com/>
-

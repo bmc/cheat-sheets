@@ -1,5 +1,4 @@
-% Mac OS X cheat sheet
-
+# Mac OS X cheat sheet
 
 ## Focus follows mouse
 
@@ -77,7 +76,7 @@ First, create directory `/Library/Local`. Then, create file
             ;;
     esac
 
-    if [ -f /Users/$1/.on-login.sh ]
+    if \[ -f /Users/$1/.on-login.sh \]
     then
         su $1 -c "/Users/$1/.on-login.sh"
     fi
@@ -193,7 +192,7 @@ When building, use "port" to install pkg-config, glib-2.0, glib2-devel
 
 ### sshfs
 
-Don't build *sshfs* Universally (i.e., leave out `-arch ppc1).
+Don't build *sshfs* Universally (i.e., leave out `-arch ppc1`).
 It won't work, because the port-installed libraries are i386-only.
 
 Run `configure` like this:
@@ -271,7 +270,7 @@ Enable "Personal Web Sharing" in the *System Preferences > Sharing* panel.
 - `httpd.conf` is in `/etc/httpd`
 
 NOTE: When you enable personal web sharing, the system creates file
-`/etc/httpd/users/$USER.conf` to contain the Apache `<Directory>`
+`/etc/httpd/users/$USER.conf` to contain the Apache `\<Directory\>`
 entry for the user's Sites folder. Any changes (e.g., to enable
 symlinking) must be made in there, not in `httpd.conf`.
 
@@ -343,9 +342,9 @@ To encrypt only one directory tree, use one of these options:
 > Authenticate dialog box appears, choose a password; clicking on the key
 > button next to the Password text box will summon Apple's Password
 > Assistant, which can help you generate a secure one. (See full
-> instructions [http://find.macworld.com/2425]; if that seems like too much
+> instructions (<http://find.macworld.com/2425>); if that seems like too much
 > trouble, you can also create an encrypted disk image with a third-party
-> product such as PGP Desktop Home [$99].)
+> product such as PGP Desktop Home.)
 >
 > Once you've created an encrypted disk image, you can use it to store any
 > files containing private data. Just remember that as long as the disk
