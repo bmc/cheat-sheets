@@ -1,4 +1,4 @@
-# General Windows Cheat Sheet
+# Windows Cheat Sheet
 
 ## Create a hotkey to lock the workstation
 

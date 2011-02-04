@@ -11,10 +11,23 @@ require 'kramdown'
 # Defs
 # ---------------------------------------------------------------------------
 
-INDEX_MARKDOWN = "html/index.markdown"
+# Name of the generated index file.
 INDEX_HTML = "html/index.html"
+
+# How many columns to generate in the index file.
+INDEX_COLUMNS = 3
+
+# The minimum number of entries (cheat sheets) for columnar index output.
+# Below this number, and we don't generate columns.
+INDEX_COLUMN_THRESHOLD = INDEX_COLUMNS * 3
+
+# The generated README.
 README_HTML = "html/README.html"
+
+# The list of Markdown files to use to generate HTML.
 MD_FILES = FileList['*.md'].exclude("README.md")
+
+# The HTML files.
 HTML_FILES = MD_FILES.ext('html').gsub(/^/, "html/")
 
 # ---------------------------------------------------------------------------
@@ -93,19 +106,60 @@ def make_html(markdown_content, target, title)
 end
 
 def make_index
+
+    if MD_FILES.length > INDEX_COLUMN_THRESHOLD
+
+        # Split into columns
+
+        total_per = MD_FILES.length / INDEX_COLUMNS
+        rem = MD_FILES.length % INDEX_COLUMNS
+
+        # Initially, each column is the same length. Records these lengths
+        # in an n-element array.
+        totals = (1..INDEX_COLUMNS).map {total_per}
+
+        # Now, bump up the leading columns by one, for each remainder.
+        (0..rem-1).each {|i| totals[i] += 1 }
+
+        # Create an n-element array of arrays. Each subarray contains the
+        # list of cheat sheets for one column.
+        md = MD_FILES
+        files = []
+        totals.each do |t|
+            files << md.take(t)
+            md = md.drop(t)
+        end
+    else
+        # Not enough for multi-column. Use an array of one array.
+        files = [MD_FILES]
+    end
+
+    # Now, render.
+
     markdown = ['# Cheat Sheets',
                 '',
                 '[README (with disclaimer)](README.html)',
-                '']
+                '',
+                '<table border="0">',
+                '<tr valign="top">']
 
-    MD_FILES.each do |md|
-        title = title_for(md)
-        base = File.basename(md, '.md')
-        html = base + '.html'
-        markdown << "* [#{title}](#{html}) (#{base})"
+    files.each do |array|
+        markdown << '<td align="left" markdown="1">'
+
+        array.each do |md_file|
+            title = title_for(md_file).gsub(/cheat sheet/i, '').strip
+            base = File.basename(md_file, '.md')
+            html_file = base + '.html'
+            markdown << "* [#{title}](#{html_file}) (#{base})"
+
+        end
+
+        markdown << '</td>'
     end
 
-    index = 'html/index.html'
-    puts("Generating #{index}")
-    make_html(markdown.join("\n"), index, "Cheat Sheets")
+    markdown << '</tr>'
+    markdown << '</table>'
+
+    puts("Generating #{INDEX_HTML}")
+    make_html(markdown.join("\n"), INDEX_HTML, 'Cheat Sheets')
 end

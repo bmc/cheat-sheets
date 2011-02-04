@@ -1,4 +1,4 @@
-# Cheat Sheet for Linksys WRT52G2 and related WAPs
+# Linksys WRT52G2
 
 ## Default password
 
