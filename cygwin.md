@@ -2,12 +2,12 @@
 
 ## Installing & starting a [Cygwin][] service
 
-inetd:
+### inetd
 
     cygrunsrv -I inetd -d "CYGWIN inetd" -p /usr/sbin/inetd -a -d -e CYGWIN=ntsec
     cygrunsrv -S inetd
 
-cron:
+### cron
 
     cygrunsrv -I cron -p /usr/sbin/cron -a -D
     cygrunsrv -S cron
