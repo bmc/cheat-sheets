@@ -62,15 +62,16 @@ task :html => HTML_FILES
 # Rules
 # ---------------------------------------------------------------------------
 
+def html_to_md
+    Proc.new {|task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md')}
+end
+
 # Complicated, but necessary. The target specifies the HTML file in the
 # "html" subdirectory. The proc calculates the corresponding source file
 # for the target. See http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
+# The proc is factored into html_to_md() for readability.
 
-rule /^html\/.*\.html$/ => [
-  proc { |task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md') },
-  CHEAT_SHEET_TEMPLATE
-] do |t|
-
+rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE] do |t|
     make_html_from_md(SourceFile.new(t.source), t.name, CHEAT_SHEET_TEMPLATE)
 end
 
