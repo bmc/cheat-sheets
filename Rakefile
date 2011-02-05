@@ -68,7 +68,6 @@ rule /^html\/.*\.html$/ => [
   proc { |task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md') }
 ] do |t|
 
-    puts "#{t.source} -> #{t.name}"
     make_html_from_md(SourceFile.new(t.source), t.name)
 end
 
@@ -105,8 +104,7 @@ class SourceFile
     end
 
     def to_s
-        #self.file
-        self.inspect
+        self.file
     end
 end
 
@@ -131,6 +129,7 @@ end
 
 def make_html_from_md(source, target, title = nil)
     title = title || source.title
+    puts "#{source} -> #{target}"
     make_html(File.open(source.file).readlines.join, target, title)
 end
 
