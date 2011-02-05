@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Rake Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
+</head>
+
+<body>
+
+<div id="content">
+
+  <h1 id="title">Rake Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
+
+<h2 id="rules">Rules</h2>
+
+<h3 id="computing-one-or-more-dependencies">Computing one or more dependencies</h3>
+
+<p>Example: You have a source file (e.g., Markdown) that, when converted,
+produces an output file in an &ldquo;html&rdquo; subdirectory. The normal Rake <code>rule</code>
+syntax doesn&rsquo;t support that. Instead, use a <code>proc</code> inside an array, to
+calculate the name of the source file (dependency) from the target file.</p>
+
+<pre><code>rule /^html\/.*\.html$/ =&gt; [
+  proc { |task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md') }
+] do |t|
+    markdown(t.source, t.name)
+end
+</code></pre>
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
+
+</body>
+</html>
