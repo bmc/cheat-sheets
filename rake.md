@@ -1,4 +1,4 @@
-title: Rake Cheat Sheet
+# Rake Cheat Sheet
 
 ## Rules
 

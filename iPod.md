@@ -1,4 +1,4 @@
-title: iPod Cheat Sheet
+# iPod Cheat Sheet
 
 ## Using Apple iPod with Linux.
 

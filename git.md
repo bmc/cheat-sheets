@@ -1,4 +1,4 @@
-title: Git Cheat Sheet
+# Git Cheat Sheet
 
 ## Useful Cheat Sheets on the Web
 

@@ -89,33 +89,36 @@ class SourceFile
         @file = md_file
         @title = nil
         @headers = nil
+        @content = nil
     end
 
     def get_headers
         if @headers == nil
             @headers = {}
-            File.open(@file) do |f|
-                f.readlines.take_while {|s| s =~ /^[A-Za-z]+:/}
-            end.select {|s| s != nil}.map {|s| s.strip}.each do |h|
-                /^(.*):(.*)$/ =~ h
-                header = Regexp.last_match(1).strip
-                value = Regexp.last_match(2).strip
-                @headers[header] = value
+            lines = File.open(@file).readlines.drop_while {|s| s =~ /^\s*$/}
+            if lines.length > 0
+                if lines[0] =~ /^\#\s+(.*)/
+                    @headers[:title] = Regexp.last_match(1).strip
+                    @content = lines.drop(1)
+                end
             end
         end
         @headers
     end
 
     def content
-        File.open(@file) do |f|
-            f.readlines.drop_while {|s| s =~ /^[A-Za-z]+:/}
+        if not @content
+            @content = File.open(@file) do |f|
+                f.readlines.drop_while {|s| s =~ /^\#\s+/}
+            end
         end
+        @content
     end
 
     def title
         if @title == nil
             headers = get_headers
-            @title = headers['title'] || File.basename(@file, '.md').chomp
+            @title = headers[:title] || File.basename(@file, '.md').chomp
         end
         @title
     end

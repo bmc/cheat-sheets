@@ -1,6 +1,6 @@
-title: OpenLDAP Cheat Sheet
+# OpenLDAP Cheat Sheet
 
-## Running ldapadd/ldapmodify with correct rootdn
+## Running *ldapadd*/*ldapmodify* with correct rootdn
 
 Running `ldapadd` or `ldapmodify` and using the rootdn configured in
 `slapd.conf`:
@@ -15,7 +15,7 @@ Assumes rootdn is defined something like this:
 
 where the encrypted password was created with slappasswd.
 
-## Running ldapsearch using simple authentication:
+## Running ldapsearch using simple authentication
 
     $ ldapsearch -x -b 'dc=fulltilt,dc=com' 'userName=*'
 

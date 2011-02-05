@@ -1,4 +1,4 @@
-title: Safari Cheat Sheet
+# Safari Cheat Sheet
 
 ## Enabling hidden debug menu:
 

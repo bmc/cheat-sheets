@@ -1,4 +1,4 @@
-title: MP3 Cheat Sheet
+# MP3 Cheat Sheet
 
 ## Convert MP3 to WAV
 

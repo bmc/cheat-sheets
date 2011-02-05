@@ -20,7 +20,7 @@
 </div>
 
 
-<h2 id="running-ldapaddldapmodify-with-correct-rootdn">Running ldapadd/ldapmodify with correct rootdn</h2>
+<h2 id="running-ldapaddldapmodify-with-correct-rootdn">Running <em>ldapadd</em>/<em>ldapmodify</em> with correct rootdn</h2>
 
 <p>Running <code>ldapadd</code> or <code>ldapmodify</code> and using the rootdn configured in
 <code>slapd.conf</code>:</p>
@@ -37,7 +37,7 @@ rootpw   {SSHA}u1zwxGiID0uDSA0p+jH+n7Ev5kHFMryq
 
 <p>where the encrypted password was created with slappasswd.</p>
 
-<h2 id="running-ldapsearch-using-simple-authentication">Running ldapsearch using simple authentication:</h2>
+<h2 id="running-ldapsearch-using-simple-authentication">Running ldapsearch using simple authentication</h2>
 
 <pre><code>$ ldapsearch -x -b 'dc=fulltilt,dc=com' 'userName=*'
 </code></pre>

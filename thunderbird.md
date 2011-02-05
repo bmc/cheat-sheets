@@ -1,4 +1,4 @@
-title: Thunderbird Cheat Sheet
+# Thunderbird Cheat Sheet
 
 ## Script busy or not responding
 

@@ -1,4 +1,4 @@
-title: Cygwin Cheat Sheet
+# Cygwin Cheat Sheet
 
 ## Installing & starting a [Cygwin][] service
 

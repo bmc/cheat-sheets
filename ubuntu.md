@@ -1,4 +1,4 @@
-title: Ubuntu Cheat Sheet
+# Ubuntu Cheat Sheet
 
 ## Getting sound to work.
 
