@@ -6,7 +6,7 @@
 
 * In a command window, issue:
 
-    defaults write com.apple.Safari IncludeDebugMenu 1
+        defaults write com.apple.Safari IncludeDebugMenu 1
 
 * Bring up Safari. Debug menu should now be available.
 
