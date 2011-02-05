@@ -1,23 +1,30 @@
+*
+{
+    font-size: 11pt;
+}
+
 body
 {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11pt;
 }
 
 h1
 {
     color: #d00000;
+    font-size: 16pt;
 }
 
 h2
 {
     border-top: 1px solid black;
     padding-top: 10px;
+    font-size: 14pt;
 }
 
 h3
 {
     font-style: italic;
+    font-size: 13pt;
 }
 
 blockquote
