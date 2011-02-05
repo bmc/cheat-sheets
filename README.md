@@ -13,7 +13,7 @@ Ensure that you have RubyGems installed, as well as the `kramdown` gem.
 Then, simply issue `rake` to build/rebuild the HTML versions of the cheat
 sheets.
 
-Or just read the cheat sheet Markdown source files.
+Or, just read the Markdown source files.
 
 ## NO WARRANTY
 
