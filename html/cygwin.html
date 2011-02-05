@@ -22,13 +22,13 @@
 
 <h2 id="installing--starting-a-cygwin-service">Installing &amp; starting a <a href="http://www.cygwin.com/">Cygwin</a> service</h2>
 
-<p>inetd:</p>
+<h3 id="inetd">inetd</h3>
 
 <pre><code>cygrunsrv -I inetd -d "CYGWIN inetd" -p /usr/sbin/inetd -a -d -e CYGWIN=ntsec
 cygrunsrv -S inetd
 </code></pre>
 
-<p>cron:</p>
+<h3 id="cron">cron</h3>
 
 <pre><code>cygrunsrv -I cron -p /usr/sbin/cron -a -D
 cygrunsrv -S cron
