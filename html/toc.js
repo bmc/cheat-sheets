@@ -11,16 +11,16 @@ function createTOC()
     for (var i = 0; i < nodes.length; i++)
     {
         var nn = nodes[i].nodeName;
-        // Skip H1 for now
-        if (/* nn == "H1" ||*/ nn == "H2" || nn == "H3" ||
+        if (nn == "H1" || nn == "H2" || nn == "H3" ||
             nn == "H4" || nn == "H5" || nn == "H6")
         {
-            tocTargets.push(nodes[i]);
+            if (nodes[i].id != 'title')
+                tocTargets.push(nodes[i]);
         }
     }
     var tocDiv = document.getElementById('toc');
-    // Remove toc if none or one heading
-    if (tocTargets.length <= 1)
+    // Remove toc if no heading
+    if (tocTargets.length < 1)
     {
         tocDiv.parentNode.removeChild(tocDiv);
         return;
