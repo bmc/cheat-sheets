@@ -1,4 +1,4 @@
-# SQL Cheat Sheet
+title: SQL Cheat Sheet
 
 Various SQL tricks and tips.
 

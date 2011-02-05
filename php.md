@@ -1,4 +1,4 @@
-# PHP Cheat Sheet
+title: PHP Cheat Sheet
 
 ## Chroot'ing PHP
 

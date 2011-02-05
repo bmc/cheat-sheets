@@ -1,4 +1,4 @@
-# MySQL Cheat Sheet
+title: MySQL Cheat Sheet
 
 ## Grant all privileges to a database
 

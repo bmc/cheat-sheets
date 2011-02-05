@@ -1,4 +1,4 @@
-# BitTorrent Cheat Sheet
+title: BitTorrent Cheat Sheet
 
 ## The original *curses* client
 

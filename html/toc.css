@@ -1,0 +1,67 @@
+/* --- table of contents styling. See toc.js */
+
+div#toc
+{
+    width: auto;
+    font-size: 6pt;
+}
+
+span#toc-heading
+{
+/*
+    background-color: #f0f0f0;
+*/
+    width: auto;
+    font-weight: bold;
+    font-size: larger;
+}
+
+div#toc-block
+{
+/*
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid #bbbbbb;
+    border-top: 2px solid #bbbbbb;
+    margin-right: 0em;
+    margin-left: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    float: right;
+*/
+    width: auto;
+}
+
+ul.toc
+{
+}
+
+li.tocH1
+{
+    margin-left: 0em
+}
+
+li.tocH2
+{ 
+    margin-left: 1em
+}
+
+li.tocH3
+{ 
+    margin-left: 2em
+}
+
+li.tocH4
+{ 
+    margin-left: 3em
+}
+
+li.tocH5
+{
+    margin-left: 4em
+}
+
+li.tocH6
+{
+    margin-left: 5em
+}

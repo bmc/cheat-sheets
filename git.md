@@ -1,4 +1,4 @@
-# Git Cheat Sheet
+title: Git Cheat Sheet
 
 ## Useful Cheat Sheets on the Web
 
@@ -33,8 +33,8 @@ See <http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default
     $ git push REMOTENAME :BRANCHNAME
 
 If you look at the advanced push syntax above it should make a bit more
-sense. You are literally telling git “push nothing into BRANCHNAME on
-REMOTENAME”.
+sense. You are literally telling git "push nothing into BRANCHNAME on
+REMOTENAME".
 
 ## Create a bare repository
 

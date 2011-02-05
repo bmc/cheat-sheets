@@ -1,4 +1,4 @@
-# Mac OS X cheat sheet
+title: Mac OS X Cheat Sheet
 
 ## Focus follows mouse
 

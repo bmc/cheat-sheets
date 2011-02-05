@@ -1,12 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>MySQL</title>
+<title>MySQL Cheat Sheet</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
 </head>
 
 <body>
-<h1 id="mysql-cheat-sheet">MySQL Cheat Sheet</h1>
+
+<div id="content">
+
+  <h1 id="title">MySQL Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
 
 <h2 id="grant-all-privileges-to-a-database">Grant all privileges to a database</h2>
 
@@ -24,6 +36,12 @@
 
 <pre><code>$ mysqladmin -u root -p create db_name
 </code></pre>
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
 
 </body>
 </html>

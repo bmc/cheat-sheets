@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>aqua-emacs</title>
+<title>{{title}}</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="toc.css">
 <script type="text/javascript" src="toc.js">
@@ -12,21 +12,14 @@
 
 <div id="content">
 
-  <h1 id="title">aqua-emacs</h1>
+  <h1 id="title">{{title}}</h1>
 
 <div id="toc-block">
   <span id="toc-heading">Table of Contents</span>
   <div id="toc"></div>
 </div>
 
-<h1 id="aquaemacs-cheat-sheet">AquaEmacs Cheat Sheet</h1>
-
-<p>To get Aqua Emacs to load <code>~/emacs</code>, create a file called <code>site-start.el</code>
-in <code>~/Library/Application Support/Aquamacs Emacs</code>, with this line:</p>
-
-<pre><code>(load-file "~/.emacs")
-</code></pre>
-
+{{content}}
 </div> <!-- content -->
 
 <script type="text/javascript">

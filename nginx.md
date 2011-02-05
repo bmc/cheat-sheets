@@ -1,4 +1,4 @@
-# Nginx Cheat Sheet
+title: Nginx Cheat Sheet
 
 ## Simulating Apache's `UserDir`, with nginx.
 

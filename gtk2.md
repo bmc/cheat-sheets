@@ -1,4 +1,4 @@
-# GTK2 Cheat Sheet
+title: GTK2 Cheat Sheet
 
 ## Key bindings
 

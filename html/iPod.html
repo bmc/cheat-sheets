@@ -1,12 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>iPod</title>
+<title>iPod Cheat Sheet</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
 </head>
 
 <body>
-<h1 id="ipod-cheat-sheet">iPod Cheat Sheet</h1>
+
+<div id="content">
+
+  <h1 id="title">iPod Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
 
 <h2 id="using-apple-ipod-with-linux">Using Apple iPod with Linux.</h2>
 
@@ -79,6 +91,12 @@ env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib /usr/local/bin/gtkpod
 umount-ipod
 </code></pre>
 
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
 
 </body>
 </html>

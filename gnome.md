@@ -1,4 +1,4 @@
-# Gnome Cheat Sheet
+title: Gnome Cheat Sheet
 
 ## Run startup script before Gnome starts
 

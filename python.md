@@ -1,4 +1,4 @@
-# Python Cheat Sheet
+title: Python Cheat Sheet
 
 ## Setuptools
 

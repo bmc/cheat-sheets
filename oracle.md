@@ -1,4 +1,4 @@
-# Oracle Cheat Sheet
+title: Oracle Cheat Sheet
 
 ## Getting a list of indexes
 

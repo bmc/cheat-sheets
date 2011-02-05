@@ -1,4 +1,4 @@
-# Linux Cheat Sheet
+title: Linux Cheat Sheet
 
 ## Single User Boot
 

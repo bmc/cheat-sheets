@@ -14,9 +14,15 @@ h1
     font-size: 16pt;
 }
 
+#title
+{
+    padding-bottom: 2px;
+    border-bottom: 2px solid #dddddd;
+}
+
 h2
 {
-    border-top: 1px solid black;
+    border-top: 1px solid #dddddd;
     padding-top: 10px;
     font-size: 14pt;
 }
@@ -55,4 +61,10 @@ div.multicolumn
     column-gap: 20px;
     width: auto;
     display: block;
+}
+
+div#content
+{
+    margin-left: 3em;
+    margin-right: 3em;
 }

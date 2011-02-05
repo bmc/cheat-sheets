@@ -1,4 +1,4 @@
-# GoDaddy Cheat Sheet
+title: GoDaddy Cheat Sheet
 
 ## Registering a new name server:
 

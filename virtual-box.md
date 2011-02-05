@@ -1,4 +1,4 @@
-# VirtualBox Cheat Sheet
+title: VirtualBox Cheat Sheet
 
 ## Create VMDK for existing partition
 

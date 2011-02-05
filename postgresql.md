@@ -1,4 +1,4 @@
-# PostgreSQL Cheat Sheet
+title: PostgreSQL Cheat Sheet
 
 ## Initial user ID
 

@@ -1,12 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>Nginx</title>
+<title>Nginx Cheat Sheet</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
 </head>
 
 <body>
-<h1 id="nginx-cheat-sheet">Nginx Cheat Sheet</h1>
+
+<div id="content">
+
+  <h1 id="title">Nginx Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
 
 <h2 id="simulating-apaches-userdir-with-nginx">Simulating Apache&rsquo;s <code>UserDir</code>, with nginx.</h2>
 
@@ -18,6 +30,12 @@ location ~ ^/~([^/]+)(/.*)?$ {
 }
 </code></pre>
 
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
 
 </body>
 </html>

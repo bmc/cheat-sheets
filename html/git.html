@@ -1,12 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>Git</title>
+<title>Git Cheat Sheet</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
 </head>
 
 <body>
-<h1 id="git-cheat-sheet">Git Cheat Sheet</h1>
+
+<div id="content">
+
+  <h1 id="title">Git Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
 
 <h2 id="useful-cheat-sheets-on-the-web">Useful Cheat Sheets on the Web</h2>
 
@@ -45,8 +57,8 @@ $ git config --global push.default matching
 </code></pre>
 
 <p>If you look at the advanced push syntax above it should make a bit more
-sense. You are literally telling git “push nothing into BRANCHNAME on
-REMOTENAME”.</p>
+sense. You are literally telling git &ldquo;push nothing into BRANCHNAME on
+REMOTENAME&rdquo;.</p>
 
 <h2 id="create-a-bare-repository">Create a bare repository</h2>
 
@@ -75,6 +87,12 @@ $ git --bare init
 
 <pre><code>$ git push origin :testbranch
 </code></pre>
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
 
 </body>
 </html>
