@@ -42,3 +42,17 @@ pre
     border: 1px solid #aaaaaa;
     background-color: #eeeeee;
 }
+
+div.multicolumn
+{
+    /* Note: Doesn't work with IE or Opera. */
+
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+    width: auto;
+    display: block;
+}

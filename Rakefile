@@ -151,28 +151,11 @@ def make_index
 
         # Split into columns
 
-        total_per = sources.length / INDEX_COLUMNS
-        rem = sources.length % INDEX_COLUMNS
-
-        # Initially, each column is the same length. Records these lengths
-        # in an n-element array.
-        totals = (1..INDEX_COLUMNS).map {total_per}
-
-        # Now, bump up the leading columns by one, for each remainder.
-        (0..rem-1).each {|i| totals[i] += 1 }
-
-        # Create an n-element array of arrays. Each subarray contains the
-        # list of cheat sheets for one column.
-        md = sources
-        files = []
-        totals.each do |t|
-            files << md.take(t)
-            md = md.drop(t)
-        end
+        div_class = "multicolumn"
     else
-        # Not enough for multi-column. Use an array of one array.
+        # Not enough for multi-column.
 
-        files = [sources]
+        div_class = ""
     end
 
     # Now, render.
@@ -181,25 +164,17 @@ def make_index
                 '',
                 '[README (with disclaimer)](README.html)',
                 '',
-                '<table border="0">',
-                '<tr valign="top">']
+                "<div class='#{div_class}' markdown='1'>"]
 
-    files.each do |array|
-        markdown << '<td align="left" markdown="1">'
+    sources.each do |md_source|
+        title = md_source.title
+        base = File.basename(md_source.file, '.md')
+        html_file = base + '.html'
+        markdown << "* [#{title}](#{html_file}) (#{base})"
 
-        array.each do |md_source|
-            title = md_source.title
-            base = File.basename(md_source.file, '.md')
-            html_file = base + '.html'
-            markdown << "* [#{title}](#{html_file}) (#{base})"
-
-        end
-
-        markdown << '</td>'
     end
 
-    markdown << '</tr>'
-    markdown << '</table>'
+    markdown << '</div>'
 
     puts("Generating #{INDEX_HTML}")
     make_html(markdown.join("\n"), INDEX_HTML, 'Cheat Sheets')
