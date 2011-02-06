@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Postfix Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
+</head>
+
+<body>
+
+<div id="content">
+
+  <h1 id="title">Postfix Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
+
+<h2 id="configuring-postfix-to-use-dovecots-sasl-implementation">Configuring Postfix to use Dovecot&rsquo;s SASL implementation</h2>
+
+<p>The Ubuntu guide, at <a href="https://help.ubuntu.com/community/PostfixDovecotSASL">https://help.ubuntu.com/community/PostfixDovecotSASL</a>,
+makes it easy.</p>
+
+<h2 id="virtual-alias-domains">Virtual alias domains</h2>
+
+<p>Assuming DNS is properly set up:</p>
+
+<p>First, list domains in the <code>virtual_alias_domains</code> setting in <code>main.cf</code>. e.g.:</p>
+
+<pre><code>virtual_alias_domains = example.org example.com
+virtual_alias_maps = hash:/etc/postfix/virtual
+</code></pre>
+
+<p>Next, edit the virtual map (<code>/etc/postfix/virtual</code>, in this case) to have the
+virtual domain address. e.g.:</p>
+
+<pre><code># Example.org
+foo@example.org    foo@clapper.org
+
+# Example.com
+foo@example.com    devnull@clapper.org
+</code></pre>
+
+<p>Then, run <code>postmap</code> to update the map:</p>
+
+<pre><code>$ sudo postmap /etc/postfix/virtual
+</code></pre>
+
+<h2 id="domainkeys">DomainKeys</h2>
+
+<p>Using <code>dkim-filter</code>: <a href="https://help.ubuntu.com/community/Postfix/DKIM">https://help.ubuntu.com/community/Postfix/DKIM</a></p>
+
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
+
+</body>
+</html>
