@@ -12,17 +12,17 @@ calculate the name of the source file (dependency) from the target file.
     rule /^html\/.*\.html$/ => [
       proc { |task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md') }
     ] do |t|
-        markdown(t.source, t.name)
+      markdown(t.source, t.name)
     end
 
 For readability, the `Proc` can be factored into a function:
 
     def html_to_md
-        Proc.new {|task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md')}
+      Proc.new {|task_name| task_name.sub(/^html./, '').sub(/\.html$/, '.md')}
     end
 
     rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE] do |t|
-        markdown(t.source, t.name)
+      markdown(t.source, t.name)
     end
 
 ## Martin Fowler's Rake Article
