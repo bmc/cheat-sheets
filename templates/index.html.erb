@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<!-- ERB: index.html.erb -->
+<head>
+<title><%= title %></title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="content">
+
+<h1 id="title"><%= title %></h1>
+
+<p><a href="README.html">README</a> (with disclaimers)</p>
+
+<div class="<%= div_class %>">
+<ul>
+  <% for source in sources %>
+  <li><a href="<%= source.title.gsub(/'\s*cheat sheet/i, '') %>"><%= source.html_file %>&nbsp;<%= source.basename %>)
+  <% end %>
+</ul>
+
+</div>
+
+</body>
+</html>

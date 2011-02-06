@@ -16,6 +16,7 @@
 
 # HTML subdir
 HTML_DIR = "html"
+TEMPLATE_DIR = "templates"
 
 # Name of the generated index file.
 INDEX_HTML = File.join(HTML_DIR, "index.html")
@@ -24,9 +25,9 @@ INDEX_HTML = File.join(HTML_DIR, "index.html")
 INDEX_COLUMNS = 3
 
 # HTML templates
-CHEAT_SHEET_TEMPLATE = File.join(HTML_DIR, "cheat-sheet.html.erb")
-INDEX_TEMPLATE = File.join(HTML_DIR, "index.html.erb")
-README_TEMPLATE = INDEX_TEMPLATE
+CHEAT_SHEET_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "cheat-sheet.html.erb")
+INDEX_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "index.html.erb")
+README_HTML_TEMPLATE = File.join(TEMPLATE_DIR, 'README.html.erb')
 
 # The minimum number of entries (cheat sheets) for columnar index output.
 # Below this number, and we don't generate columns.
@@ -50,14 +51,16 @@ task :default => [INDEX_HTML, :html]
 INDEX_DEPS = [HTML_FILES,
               'Rakefile',
               README_HTML,
-              CHEAT_SHEET_TEMPLATE,
-              INDEX_TEMPLATE].flatten
+              CHEAT_SHEET_HTML_TEMPLATE,
+              INDEX_HTML_TEMPLATE].flatten
 file INDEX_HTML => INDEX_DEPS do |t|
     make_index
 end
 
-file README_HTML => ['README.md', README_TEMPLATE] do |t|
-    make_html_from_md(SourceFile.new('README.md'), README_HTML, README_TEMPLATE)
+file README_HTML => ['README.md', README_HTML_TEMPLATE] do |t|
+    make_html_from_md(SourceFile.new('README.md'),
+                      README_HTML,
+                      README_HTML_TEMPLATE)
 end
 
 task :html => HTML_FILES
@@ -75,8 +78,11 @@ end
 # for the target. See http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 # The proc is factored into html_to_md() for readability.
 
-rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE, 'Rakefile'] do |t|
-    make_html_from_md(SourceFile.new(t.source), t.name, CHEAT_SHEET_TEMPLATE)
+MD_HTML_DEPS = [html_to_md, CHEAT_SHEET_HTML_TEMPLATE, 'Rakefile']
+rule /^html\/.*\.html$/ => MD_HTML_DEPS do |t|
+    make_html_from_md(SourceFile.new(t.source),
+                      t.name,
+                      CHEAT_SHEET_HTML_TEMPLATE)
 end
 
 # ---------------------------------------------------------------------------
@@ -142,12 +148,16 @@ class SourceFile
     end
 end
 
-class TemplateData
-    attr_accessor :title, :content
+class CallableHash
+    def initialize(h)
+        @hash = h
+        h.each do |k, v|
+            self.class.send(:define_method, k, proc{self[k]})
+        end
+    end
 
-    def initialize(title, content)
-        @title = title
-        @content = content
+    def [](k)
+        @hash[k]
     end
 
     def get_binding
@@ -155,12 +165,13 @@ class TemplateData
     end
 end
 
+
 # Map the MD_FILES into SourceFile objects.
 MD_SOURCES = MD_FILES.to_a.map{|m| SourceFile.new(m)}
 
 $template_cache = {}
 def load_template(name)
-    $template_cache[name] = ERB.new(File.open(name).readlines.join)
+    $template_cache[name] = File.open(name).readlines.join
 end
 
 def template(name)
@@ -168,25 +179,23 @@ def template(name)
 end
 
 def expand_html(title, html, template_name)
-    erb = template(template_name)
-    erb.result(TemplateData.new(title, html).get_binding)
+    erb = ERB.new(template(template_name))
+    erb.result(CallableHash.new(:title => title, :content => html).get_binding)
 end
 
 def make_html_from_md(source, target, template_name, title = nil)
-    title = title || source.title
-    puts "#{source} -> #{target} (via #{template_name})"
-    make_html(source.content.join,
-              target, title, template_name)
-end
-
-def make_html(markdown_content, target, title, template_name)
     begin
-        content = Kramdown::Document.new(markdown_content).to_html
+        title = title || source.title
+        puts "#{source} -> #{target} (via #{template_name})"
+        content = Kramdown::Document.new(source.content.join).to_html
         File.open(target, 'w').write(expand_html(title, content, template_name))
     rescue
         $stderr.puts("*** Error making #{target}")
         raise $!
     end
+end
+
+def make_readme
 end
 
 def make_index
@@ -203,22 +212,13 @@ def make_index
 
     # Now, render.
 
-    markdown = ['# Cheat Sheets',
-                '',
-                '[README (with disclaimer)](README.html)',
-                '',
-                "<div class='#{div_class}' markdown='1'>"]
+    # safe_mode = 0 (default)
+    # trim_mode = '>' (suppress newlines)
+    erb = ERB.new(template(INDEX_HTML_TEMPLATE), 0, '>')
+    data = CallableHash.new({:sources => sources,
+                              :div_class => div_class,
+                              :title => 'Cheat Sheets'})
 
-    sources.each do |md_source|
-        title = md_source.title.gsub(/cheat sheet/i, '').strip
-        base = File.basename(md_source.file, '.md')
-        html_file = base + '.html'
-        markdown << "* [#{title}](#{html_file}) (#{base})"
-
-    end
-
-    markdown << '</div>'
-
-    puts("Generating #{INDEX_HTML} (via #{INDEX_TEMPLATE})")
-    make_html(markdown.join("\n"), INDEX_HTML, 'Cheat Sheets', INDEX_TEMPLATE)
+    puts("Generating #{INDEX_HTML} (via #{INDEX_HTML_TEMPLATE})")
+    File.open(INDEX_HTML, 'w').write(erb.result(data.get_binding))
 end
