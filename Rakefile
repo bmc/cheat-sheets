@@ -24,8 +24,8 @@ INDEX_HTML = File.join(HTML_DIR, "index.html")
 INDEX_COLUMNS = 3
 
 # HTML templates
-CHEAT_SHEET_TEMPLATE = File.join(HTML_DIR, "cheat-sheet-template.html")
-INDEX_TEMPLATE = File.join(HTML_DIR, "index-template.html")
+CHEAT_SHEET_TEMPLATE = File.join(HTML_DIR, "cheat-sheet.html.erb")
+INDEX_TEMPLATE = File.join(HTML_DIR, "index.html.erb")
 README_TEMPLATE = INDEX_TEMPLATE
 
 # The minimum number of entries (cheat sheets) for columnar index output.
@@ -47,12 +47,16 @@ HTML_FILES = MD_FILES.ext('html').gsub(/^/, "html/")
 
 task :default => [INDEX_HTML, :html]
 
-INDEX_DEPS = [HTML_FILES, 'Rakefile', README_HTML, CHEAT_SHEET_TEMPLATE].flatten
+INDEX_DEPS = [HTML_FILES,
+              'Rakefile',
+              README_HTML,
+              CHEAT_SHEET_TEMPLATE,
+              INDEX_TEMPLATE].flatten
 file INDEX_HTML => INDEX_DEPS do |t|
     make_index
 end
 
-file README_HTML => ['README.md'] do |t|
+file README_HTML => ['README.md', README_TEMPLATE] do |t|
     make_html_from_md(SourceFile.new('README.md'), README_HTML, README_TEMPLATE)
 end
 
@@ -71,7 +75,7 @@ end
 # for the target. See http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 # The proc is factored into html_to_md() for readability.
 
-rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE] do |t|
+rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE, 'Rakefile'] do |t|
     make_html_from_md(SourceFile.new(t.source), t.name, CHEAT_SHEET_TEMPLATE)
 end
 
@@ -81,6 +85,7 @@ end
 
 require 'rubygems'
 require 'kramdown'
+require 'erb'
 
 # Contains meta-information about a Markdown cheat sheet.
 class SourceFile
@@ -137,12 +142,25 @@ class SourceFile
     end
 end
 
+class TemplateData
+    attr_accessor :title, :content
+
+    def initialize(title, content)
+        @title = title
+        @content = content
+    end
+
+    def get_binding
+        binding()
+    end
+end
+
 # Map the MD_FILES into SourceFile objects.
 MD_SOURCES = MD_FILES.to_a.map{|m| SourceFile.new(m)}
 
 $template_cache = {}
 def load_template(name)
-    $template_cache[name] = File.open(name).readlines
+    $template_cache[name] = ERB.new(File.open(name).readlines.join)
 end
 
 def template(name)
@@ -150,10 +168,8 @@ def template(name)
 end
 
 def expand_html(title, html, template_name)
-    template(template_name).map do |line|
-        line.gsub('{{title}}', title).
-             gsub('{{content}}', html)
-    end.join('')
+    erb = template(template_name)
+    erb.result(TemplateData.new(title, html).get_binding)
 end
 
 def make_html_from_md(source, target, template_name, title = nil)
@@ -203,6 +219,6 @@ def make_index
 
     markdown << '</div>'
 
-    puts("Generating #{INDEX_HTML}")
+    puts("Generating #{INDEX_HTML} (via #{INDEX_TEMPLATE})")
     make_html(markdown.join("\n"), INDEX_HTML, 'Cheat Sheets', INDEX_TEMPLATE)
 end

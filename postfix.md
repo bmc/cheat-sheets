@@ -29,5 +29,7 @@ Then, run `postmap` to update the map:
 
 ## DomainKeys
 
-Using `dkim-filter`: <https://help.ubuntu.com/community/Postfix/DKIM>
+Using `dkim-filter`:
+
+<https://help.ubuntu.com/community/Postfix/DKIM>
 

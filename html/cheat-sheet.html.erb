@@ -1,7 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
+<!-- ERB: cheat-sheet.html.erb -->
 <head>
-<title>{{title}}</title>
+<title><%= title %></title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="toc.css">
 <script type="text/javascript" src="toc.js">
@@ -12,14 +13,14 @@
 
 <div id="content">
 
-  <h1 id="title">{{title}}</h1>
+  <h1 id="title"><%= title %></h1>
 
 <div id="toc-block">
   <span id="toc-heading">Table of Contents</span>
   <div id="toc"></div>
 </div>
 
-{{content}}
+<%= content %>
 </div> <!-- content -->
 
 <script type="text/javascript">

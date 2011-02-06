@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repo contains a bunch of cheat sheets in Markdown format. The cheat
+This repository contains a set of cheat sheets on various topics. The cheat
 sheets are maintained as [Markdown][] documents, as supported by the Ruby
 [Kramdown][] gem. The documents are converted to HTML via [Rake][]; for
 convenience, the resulting HTML is also maintained in the repo.
