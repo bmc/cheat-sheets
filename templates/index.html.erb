@@ -16,7 +16,7 @@
 <div class="<%= div_class %>">
 <ul>
   <% for source in sources %>
-  <li><a href="<%= source.title.gsub(/'\s*cheat sheet/i, '') %>"><%= source.html_file %>&nbsp;<%= source.basename %>)
+  <li><a href="<%= source.html_file %>"><%= source.label %></a>&nbsp;(<%= source.basename %>)
   <% end %>
 </ul>
 

@@ -135,6 +135,10 @@ class CheatSheetSource
         @title
     end
 
+    def label
+        title.gsub(/\s*cheat sheet/i, '')
+    end
+
     def basename
         File.basename(@file, '.md')
     end
