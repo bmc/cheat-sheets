@@ -14,20 +14,20 @@
 # Defs
 # ---------------------------------------------------------------------------
 
-# HTML subdir
+# HTML and templates subdirectories
 HTML_DIR = "html"
 TEMPLATE_DIR = "templates"
 
 # Name of the generated index file.
 INDEX_HTML = File.join(HTML_DIR, "index.html")
 
-# How many columns to generate in the index file.
-INDEX_COLUMNS = 3
-
 # HTML templates
 CHEAT_SHEET_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "cheat-sheet.html.erb")
 INDEX_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "index.html.erb")
 README_HTML_TEMPLATE = File.join(TEMPLATE_DIR, 'README.html.erb')
+
+# How many columns to generate in the index file.
+INDEX_COLUMNS = 3
 
 # The minimum number of entries (cheat sheets) for columnar index output.
 # Below this number, and we don't generate columns.
@@ -58,7 +58,7 @@ file INDEX_HTML => INDEX_DEPS do |t|
 end
 
 file README_HTML => ['README.md', README_HTML_TEMPLATE] do |t|
-    make_html_from_md(SourceFile.new('README.md'),
+    make_html_from_md(CheatSheetSource.new('README.md'),
                       README_HTML,
                       README_HTML_TEMPLATE)
 end
@@ -80,7 +80,7 @@ end
 
 MD_HTML_DEPS = [html_to_md, CHEAT_SHEET_HTML_TEMPLATE, 'Rakefile']
 rule /^html\/.*\.html$/ => MD_HTML_DEPS do |t|
-    make_html_from_md(SourceFile.new(t.source),
+    make_html_from_md(CheatSheetSource.new(t.source),
                       t.name,
                       CHEAT_SHEET_HTML_TEMPLATE)
 end
@@ -94,7 +94,7 @@ require 'kramdown'
 require 'erb'
 
 # Contains meta-information about a Markdown cheat sheet.
-class SourceFile
+class CheatSheetSource
     attr_accessor :file
 
     def initialize(md_file)
@@ -148,6 +148,8 @@ class SourceFile
     end
 end
 
+# Behaves more or less like a readonly hash. Allows h.a, as well as h[a],
+# for accessing values.
 class CallableHash
     def initialize(h)
         @hash = h
@@ -166,8 +168,8 @@ class CallableHash
 end
 
 
-# Map the MD_FILES into SourceFile objects.
-MD_SOURCES = MD_FILES.to_a.map{|m| SourceFile.new(m)}
+# Map the MD_FILES into CheatSheetSource objects.
+MD_SOURCES = MD_FILES.to_a.map{|m| CheatSheetSource.new(m)}
 
 $template_cache = {}
 def load_template(name)
@@ -195,9 +197,6 @@ def make_html_from_md(source, target, template_name, title = nil)
     end
 end
 
-def make_readme
-end
-
 def make_index
 
     # Sort the list of sources by title.
@@ -215,9 +214,9 @@ def make_index
     # safe_mode = 0 (default)
     # trim_mode = '>' (suppress newlines)
     erb = ERB.new(template(INDEX_HTML_TEMPLATE), 0, '>')
-    data = CallableHash.new({:sources => sources,
-                              :div_class => div_class,
-                              :title => 'Cheat Sheets'})
+    data = CallableHash.new(:sources => sources,
+                            :div_class => div_class,
+                            :title => 'Cheat Sheets')
 
     puts("Generating #{INDEX_HTML} (via #{INDEX_HTML_TEMPLATE})")
     File.open(INDEX_HTML, 'w').write(erb.result(data.get_binding))

@@ -24,3 +24,7 @@ For readability, the `Proc` can be factored into a function:
     rule /^html\/.*\.html$/ => [html_to_md, CHEAT_SHEET_TEMPLATE] do |t|
         markdown(t.source, t.name)
     end
+
+## Martin Fowler's Rake Article
+
+<http://martinfowler.com/articles/rake.html>
