@@ -38,6 +38,15 @@
 
 <p>Worth using, to isolate gem sets. See <a href="http://rvm.beginrescueend.com/gemsets/">http://rvm.beginrescueend.com/gemsets/</a></p>
 
+<h3 id="ssl">SSL</h3>
+
+<pre><code>$ rvm package install openssl
+$ rvm package install zlib
+$ rvm remove 1.8.7
+$ rvm install 1.8.7 -C --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr
+</code></pre>
+
+<p>See <a href="http://rvm.beginrescueend.com/packages/openssl/">http://rvm.beginrescueend.com/packages/openssl/</a></p>
 
 </div> <!-- content -->
 
