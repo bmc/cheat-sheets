@@ -21,9 +21,16 @@ TEMPLATE_DIR = "templates"
 # Name of the generated index file.
 INDEX_HTML = File.join(HTML_DIR, "index.html")
 
-# HTML templates
-CHEAT_SHEET_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "cheat-sheet.html.erb")
+# Index HTML templates
 INDEX_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "index.html.erb")
+
+# Cheat sheet HTML template
+CHEAT_SHEET_HTML_TEMPLATE = File.join(TEMPLATE_DIR, "cheat-sheet.html.erb")
+
+# The generated README.
+README_HTML = File.join(HTML_DIR, "README.html")
+
+# README HTML template
 README_HTML_TEMPLATE = File.join(TEMPLATE_DIR, 'README.html.erb')
 
 # How many columns to generate in the index file.
@@ -33,13 +40,10 @@ INDEX_COLUMNS = 3
 # Below this number, and we don't generate columns.
 INDEX_COLUMN_THRESHOLD = INDEX_COLUMNS * 3
 
-# The generated README.
-README_HTML = File.join(HTML_DIR, "README.html")
-
 # The list of Markdown files to use to generate HTML.
 MD_FILES = FileList['*.md'].exclude("README.md")
 
-# The HTML files.
+# The HTML output files.
 HTML_FILES = MD_FILES.ext('html').gsub(/^/, "html/")
 
 # ---------------------------------------------------------------------------
@@ -48,13 +52,12 @@ HTML_FILES = MD_FILES.ext('html').gsub(/^/, "html/")
 
 task :default => [INDEX_HTML, :html]
 
-INDEX_DEPS = [HTML_FILES,
-              'Rakefile',
-              README_HTML,
-              CHEAT_SHEET_HTML_TEMPLATE,
-              INDEX_HTML_TEMPLATE].flatten
-file INDEX_HTML => INDEX_DEPS do |t|
-    make_index
+file INDEX_HTML => [HTML_FILES,
+                    'Rakefile',
+                    README_HTML,
+                    CHEAT_SHEET_HTML_TEMPLATE,
+                    INDEX_HTML_TEMPLATE].flatten do |t|
+  make_index
 end
 
 file README_HTML => ['README.md', README_HTML_TEMPLATE] do |t|
@@ -78,8 +81,9 @@ end
 # for the target. See http://rake.rubyforge.org/files/doc/rakefile_rdoc.html
 # The proc is factored into html_to_md() for readability.
 
-MD_HTML_DEPS = [html_to_md, CHEAT_SHEET_HTML_TEMPLATE, 'Rakefile']
-rule /^html\/.*\.html$/ => MD_HTML_DEPS do |t|
+rule /^html\/.*\.html$/ => [html_to_md,
+                            CHEAT_SHEET_HTML_TEMPLATE,
+                            'Rakefile'] do |t|
   make_html_from_md(CheatSheetSource.new(t.source),
                     t.name,
                     CHEAT_SHEET_HTML_TEMPLATE)

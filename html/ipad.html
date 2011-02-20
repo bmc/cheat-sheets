@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<!-- ERB: cheat-sheet.html.erb -->
+<head>
+<title>iPad Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="toc.css">
+<script type="text/javascript" src="toc.js">
+</script>
+</head>
+
+<body>
+
+<div id="content">
+
+  <h1 id="title">iPad Cheat Sheet</h1>
+
+<div id="toc-block">
+  <span id="toc-heading">Table of Contents</span>
+  <div id="toc"></div>
+</div>
+
+
+<h2 id="email-and-ssl">Email and SSL</h2>
+
+<h3 id="self-signed-certs">Self-signed certs</h3>
+
+<p>Using a self-signed cert will prevent the iPad from connecting, unless
+the cert is loaded into the iPad. Solution: Copy the PEM file to a
+browser-accessible place, then surf to it: e.g.:</p>
+
+<pre><code>http://www.example.com/tmp/mycert.pem
+</code></pre>
+
+<p>The iPad will then allow installation of the certificate. Once it&rsquo;s installed,
+Mail should work.</p>
+
+</div> <!-- content -->
+
+<script type="text/javascript">
+createTOC();
+</script>
+
+</body>
+</html>
