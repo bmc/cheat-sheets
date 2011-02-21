@@ -6,9 +6,9 @@
 
 ### Installing RVM
 
-Follow these instructions:
+    $ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 
-<http://rvm.beginrescueend.com/rvm/install/>
+More info is here: <http://rvm.beginrescueend.com/rvm/install/>
 
 Next, be sure to issue `rvm notes` and install the appropriate dependencies,
 *before* installing a Ruby.
