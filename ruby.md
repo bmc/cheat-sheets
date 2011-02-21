@@ -19,8 +19,15 @@ Worth using, to isolate gem sets. See <http://rvm.beginrescueend.com/gemsets/>
 
 ### SSL
 
-    $ rvm package install openssl
+First, make sure zlib and openssl libraries are installed. On Ubuntu, for
+instance:
+
+    $ sudo apt-get install openssl
+
+Then, install the packages via rvm. Order matters here.
+
     $ rvm package install zlib
+    $ rvm package install openssl
     $ rvm remove 1.8.7
     $ rvm install 1.8.7 -C --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr
 
