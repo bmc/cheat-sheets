@@ -12,3 +12,8 @@ browser-accessible place, then surf to it: e.g.:
 
 The iPad will then allow installation of the certificate. Once it's installed,
 Mail should work.
+
+## Synchronizing
+
+Connect the iPad, select it in iTunes, and click the "Info" tab. For more
+info, see <http://support.apple.com/kb/ht1386>.
