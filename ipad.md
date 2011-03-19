@@ -41,3 +41,20 @@ Finding your UDID using iTunes:
 * Select Copy from the Edit menu.
 
 Your UDID is now in the clipboard, so you can paste it into an email or message.
+
+## Side-loading .mobi Files to the Kindle App
+
+* Load <http://www.macroplant.com/iphoneexplorer/> on the Mac. This app
+  allows one to explore the iPad as if it were a USB drive.
+* Using that app, open the iPad. You'll see an Apps folder and a Media
+  folder.
+* In the Apps folder is a Kindle folder. Go to Apps/Kindle/Library/eBooks
+
+NOTE: This doesn't always work. If it doesn't, it's often easier to convert
+the .mobi file to an ePub file. Use the Calibre application (an open source
+Python GUI-based application), in that case:
+
+* Open the .mobi file in Calibre.
+* Click the "Convert eBooks" button.
+* If necessary, select the MOBI input format and EPUB output format.
+* Drag the resulting ePub file to the iPad, via iTunes.
