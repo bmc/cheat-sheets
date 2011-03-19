@@ -14,6 +14,12 @@ Support is limited currently. But, courtesy of
 > Quit and restart the Terminal and enjoy! Now if I only had window
 > autoraise, I'd be in heaven!
 
+## Mac Ports, Fink, etc.
+
+Skip Mac Ports and Fink. Use [HomeBrew][], instead.
+
+[HomeBrew]: https://github.com/mxcl/homebrew/wiki/installation
+
 ## Emacsen
 
 ### Aquamacs
