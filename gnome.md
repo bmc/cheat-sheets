@@ -63,3 +63,27 @@ From <https://help.ubuntu.com/6.10/ubuntu/desktopguide/C/ch12s07.html>
 * Run `gconf-editor`
 * Choose: *apps > nautilus > desktop*
 * Enable/disable whatever. Changes take place immediately.
+
+## Disabling Workspace Switcher tooltips
+
+From: <http://www.wtfm.org/tooltip>:
+
+This is as a workaround to a bug that left some tooltips "hanging" and
+were generally annoying. ...
+
+If you want to disable the "Click to start dragging" tooltip (when you
+hover over a workspace in the workspace switcher) and that for the
+calendar, so they don't linger around or pop up in the first place, do the
+following:
+
+Start `ccsm`:
+
+    $ ccsm
+
+Go to *Accessibility > Opacity, Brightness and Saturation > Opacity >*
+*Window specific settings*. Create settings like this:
+
+| class=^Clock-applet$ & type=Tooltip | 0 |
+| class=^Wnck-applet$ & type=Tooltip  | 0 |
+
+Be sure to click the *Enable Opacity, Brightness and Saturation* checkbox.

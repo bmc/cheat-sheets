@@ -100,6 +100,39 @@ pulls up a menu, which messes with my Emacs):</p>
   <li>Enable/disable whatever. Changes take place immediately.</li>
 </ul>
 
+<h2 id="disabling-workspace-switcher-tooltips">Disabling Workspace Switcher tooltips</h2>
+
+<p>From: <a href="http://www.wtfm.org/tooltip">http://www.wtfm.org/tooltip</a>:</p>
+
+<p>This is as a workaround to a bug that left some tooltips &ldquo;hanging&rdquo; and
+were generally annoying. &hellip;</p>
+
+<p>If you want to disable the &ldquo;Click to start dragging&rdquo; tooltip (when you
+hover over a workspace in the workspace switcher) and that for the
+calendar, so they don&rsquo;t linger around or pop up in the first place, do the
+following:</p>
+
+<p>Start <code>ccsm</code>:</p>
+
+<pre><code>$ ccsm
+</code></pre>
+
+<p>Go to <em>Accessibility &gt; Opacity, Brightness and Saturation &gt; Opacity &gt;</em>
+<em>Window specific settings</em>. Create settings like this:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>class=^Clock-applet$ &amp; type=Tooltip</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>class=^Wnck-applet$ &amp; type=Tooltip</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
 </div> <!-- content -->
 
 <script type="text/javascript">
