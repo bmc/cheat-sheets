@@ -34,7 +34,7 @@ See: *apps > metacity > global_keybindings* and
 
 ## Disable Alt-F opening Gnome Terminal menu:
 
-Open Keyboard Shortucts on an active terminal, and uncheck top checkbox.
+Open Keyboard Shortcuts on an active terminal, and uncheck top checkbox.
 
 ## Single click to open a folder
 
