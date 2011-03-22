@@ -160,10 +160,19 @@ Burning a DVD from a disk image (`.img`), such as one created by iDVD:
 
 ### Creating and burning a data disc
 
+First way:
+
 * Insert a burnable disc.
 * Open it in the Finder.
 * Drag files to the disc.
 * Press the Burn button.
+
+Second way:
+
+* Create a burn folder.
+* Drag files to the burn folder.
+* Press the Burn button.
+* Insert burnable disc.
 
 ## Create a DVD from a VIDEO_TS directory
 
