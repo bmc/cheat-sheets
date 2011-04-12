@@ -9,6 +9,7 @@ convenience, the resulting HTML is also maintained in the repo.
 
 ## Building and/or reading
 
+    $
 Ensure that you have RubyGems installed, as well as the `kramdown` gem.
 Then, simply issue `rake` to build/rebuild the HTML versions of the cheat
 sheets.

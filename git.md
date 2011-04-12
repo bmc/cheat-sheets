@@ -28,6 +28,14 @@ Getting rid of this warning:
 
 See <http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching>
 
+## Sync local repo with remote branches
+
+Someone has created a new, remote branch. To get your local repo to see the
+branch, so you can do a `git checkout`:
+
+    $ git fetch
+    $ git checkout newbranch
+
 ## Delete a remote branch
 
     $ git push REMOTENAME :BRANCHNAME

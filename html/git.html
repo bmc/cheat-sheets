@@ -52,6 +52,15 @@ $ git config --global push.default matching
 
 <p>See <a href="http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching">http://pivotallabs.com/users/alex/blog/articles/883-git-config-push-default-matching</a></p>
 
+<h2 id="sync-local-repo-with-remote-branches">Sync local repo with remote branches</h2>
+
+<p>Someone has created a new, remote branch. To get your local repo to see the
+branch, so you can do a <code>git checkout</code>:</p>
+
+<pre><code>$ git fetch
+$ git checkout newbranch
+</code></pre>
+
 <h2 id="delete-a-remote-branch">Delete a remote branch</h2>
 
 <pre><code>$ git push REMOTENAME :BRANCHNAME
