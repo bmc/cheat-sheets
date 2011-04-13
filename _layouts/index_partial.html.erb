@@ -1,0 +1,6 @@
+
+<div class="<%= div_class %>" markdown="1">
+<% for source in sources %>
+* [<%= source.label %> (<%= source.basename %>)](<%= source.html_file %>)
+<% end %>
+</div>
