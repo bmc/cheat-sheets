@@ -43,7 +43,7 @@ If you'd like to build your own HTML copies of these cheat sheets:
 
 # Contact
 
-Feel free to [email me](bmc@clapper.org) with suggestions, or fork
+Feel free to [email me](mailto:bmc@clapper.org) with suggestions, or fork
 [this repo][] and send me pull requests.
 
 [this repo]: http://github.com/bmc/cheat-sheets
