@@ -259,6 +259,7 @@ See item #1 in the Samba cheat sheet.
 
 * Entire screen: Command-Shift-3
 * Just a portion: Command-Shift-4, then drag rectangle around area
+* An application: Command-Shift-4, then Spacebar.
 
 Results are written to a PNG file on the Desktop
 
