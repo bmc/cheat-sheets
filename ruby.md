@@ -35,3 +35,11 @@ Install the packages via rvm. Order matters here.
     $ rvm install 1.8.7 -C --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr
 
 See <http://rvm.beginrescueend.com/packages/openssl/>
+
+# Emacs Tags
+
+Use [rtags][]:
+
+    $ gem install rtags
+
+[rtags]: http://rubyforge.org/projects/rtags/
