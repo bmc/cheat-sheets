@@ -7,7 +7,8 @@ layout: cheat-sheet
 
 ## APC Back UPS
 
-Adapted from <http://www.panticz.de/APC-Back-UPS-ES-700G-under-Ubuntu>:
+Adapted from <http://www.panticz.de/APC-Back-UPS-ES-700G-under-Ubuntu>.
+Works with my APC Back-UPS ES 750.
 
 Install the `apcupsd` package
 
