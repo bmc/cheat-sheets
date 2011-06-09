@@ -62,7 +62,25 @@ Be sure the Wifi switch on the side of the laptop is on!
 
 ----
 
+# Telephony
+
+## Sending a fax via a fax modem
+
+* Attach the modem. (External USB modems work fine.)
+* For a USB modem, look at `/var/log/syslog` to determine the assigned TTY.
+  (e.g., `ttyACM0`)
+* Install the *efax-gtk* package.
+* Fire up *efax-gtk* (typically under "Office" in the Gnome *Applications*
+  menu).
+* Configure *efax-gtk* (File > Settings). In particular, be sure to set the
+  appropriate TTY device.
+* Send the fax.
+
+----
+
 # Network
+
+*Nothing here yet.*
 
 ----
 
