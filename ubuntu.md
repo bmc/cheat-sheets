@@ -101,7 +101,7 @@ and the package refuses to go away. Solution:
 * Remove it
 * Try again
 
-## Adding a new disk and putting it in a logical volume
+## Adding a new disk and putting it in its own logical volume
 
 ### Preparation
 
@@ -152,6 +152,37 @@ To use 100% of all disks:
     # mount /dev/drive2/home2 /home2
 
 Reference: <http://www.davelachapelle.ca/guides/ubuntu-lvm-guide/>
+
+## Adding a new disk to an existing volume group.
+
+Create the physical volume, as described
+[above][#create-the-physical-volume]. Then:
+
+### Unmount the existing logical volume
+
+    # umount /dev/volgroup1/logicalvol0
+
+### Add the new physical volume to the parent volume group
+
+    # vgextend volgroup1 /dev/sdb1
+
+### Add space to the logical volume
+
+Decide how much of the new physical volume should go an existing volume
+group, if any. If any percentage of the drive is being used to extend an
+existing logical volume, extend the logical volume. In this example, the
+entire new volume group is being added. (See *lvextend*(8) for more info.)
+
+    # lvextend /dev/volgroup1/logicalvol0 /dev/sdk1 
+
+### Resize the logical volume
+
+    # e2fsck -f /dev/volgroup1/logicalvol0
+
+If that fails to get all the space, then recreate the file system from
+scratch:
+
+    # mkfs.ext4 /dev/volgroup1/logicalvol0
 
 ## Using logical volumes for virtualization with kvm
 
