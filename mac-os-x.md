@@ -57,11 +57,8 @@ effect:
 > quit Keychain Access. Now click the lock icon in your menubar and choose
 > Lock Screen to start your screen saver.
 
-*Another solution:* The LockTight preference pane, which allows setting a
-hot key combination for the "lock screen" capability.
-<http://mac.pieters.cx/>
-
-Also, in Snow Leopard, Ctrl-Shift-Eject activates the screen saver.
+*Another solution:* Use Automator to assign a keyboard shortcut, as described
+at <http://hints.macworld.com/article.php?story=20090831093941225>.
 
 ## Creating a dock folder (a "stack")
 
