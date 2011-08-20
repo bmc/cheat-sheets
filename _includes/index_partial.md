@@ -12,6 +12,7 @@
 * [GuruPlug (guruplug)](guruplug.html)
 * [iPad (ipad)](ipad.html)
 * [iPod (iPod)](iPod.html)
+* [Linksys WAP54G (linksys-wap54g)](linksys-wap54g.html)
 * [Linksys WRT52G2 (linksys-wrt52g2)](linksys-wrt52g2.html)
 * [Linux (linux)](linux.html)
 * [Mac OS X (mac-os-x)](mac-os-x.html)
