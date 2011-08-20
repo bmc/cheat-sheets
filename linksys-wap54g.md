@@ -21,7 +21,7 @@ After resetting the hardware, the device will have the following settings:
 
 3. Wire a static IP to the Mac's wired interface. e.g.:
 
-    $ sudo ifconfig en0 192.168.1.100 netmask 0xffffff00
+        $ sudo ifconfig en0 192.168.1.100 netmask 0xffffff00
 
 4. You should now be able to point your Mac's browser to http://192.168.1.245/
    to reconfigure the WAP.
