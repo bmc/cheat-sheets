@@ -1,5 +1,5 @@
 ---
-title: Linksys WRT52G2 Cheat Sheet
+title: Linksys WRT52G2 Wireless Router Cheat Sheet
 layout: cheat-sheet
 ---
 

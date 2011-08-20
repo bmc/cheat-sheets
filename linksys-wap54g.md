@@ -1,5 +1,5 @@
 ---
-title: Linksys WAP54G Cheat Sheet
+title: Linksys WAP54G Wireless Access Point Cheat Sheet
 layout: cheat-sheet
 ---
 
