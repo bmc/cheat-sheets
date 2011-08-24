@@ -29,8 +29,8 @@ Worth using, to isolate gem sets. See <http://rvm.beginrescueend.com/gemsets/>
 
 Install the packages via rvm. Order matters here.
 
-    $ rvm package install zlib
-    $ rvm package install openssl
+    $ rvm pkg install zlib
+    $ rvm pkg install openssl
     $ rvm remove 1.8.7
     $ rvm install 1.8.7 -C --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr
 
