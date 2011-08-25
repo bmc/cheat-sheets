@@ -90,3 +90,13 @@ Go to *Accessibility > Opacity, Brightness and Saturation > Opacity >*
 | class=^Wnck-applet$ & type=Tooltip  | 0 |
 
 Be sure to click the *Enable Opacity, Brightness and Saturation* checkbox.
+
+# Compiz
+
+## Disable resize when mouse moves on top border
+
+*Symptom*: Moving the mouse upwards on the top border of a window initiates
+a resize action (e.g., with a growing orange rectangle).
+
+*Solution*: In the CompizConfig Settings Manager, go to *Window Management*,
+then *Grid*, and select *Edges*. Under *Resize Actions*, select "None".
