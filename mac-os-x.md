@@ -363,8 +363,9 @@ A: If you installed "MacFUSE Core.pkg" version 0.1.9 or greater then
 
 ## Add an image to a PDF
 
-* Convert the PDF document to an image with File > Save As.... Choose PN
-  as the format and change the resolution as desired.
+* Convert the PDF document to an image with *File > Save As...* (or
+  *File > Export* on Lion). Choose PNG as the format and change the
+  resolution as desired.
 * Open the image file and select the whole image with Edit > Select Al
   (or select just a part of it with the mouse if you wish).
 * Copy the selection via Command-C or *Edit > Copy*.
