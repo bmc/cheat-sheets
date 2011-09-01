@@ -366,12 +366,12 @@ A: If you installed "MacFUSE Core.pkg" version 0.1.9 or greater then
 * Convert the PDF document to an image with *File > Save As...* (or
   *File > Export* on Lion). Choose PNG as the format and change the
   resolution as desired.
-* Open the image file and select the whole image with Edit > Select Al
+* Open the image file and select the whole image with *Edit > Select All*
   (or select just a part of it with the mouse if you wish).
 * Copy the selection via Command-C or *Edit > Copy*.
 * Go back to the document (which is now a PNG image) and paste the
   selection with Command-V or *Edit > Paste*, and resize it as you wish.
-* Save the file as a PDF with *File > Save As...* Choose PDF as the format.
+* Save the file as a PDF (*File > Save As* or *File > Export*).
 
 Note that a PDF made from an image is not searchable, so that is a drawback
 to this procedure.
