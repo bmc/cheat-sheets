@@ -50,10 +50,10 @@ On a standard USA keyboard, *Compose* is often the left Windows key.
 
 Examples:
 
-* *Compose*, \`, e **yields** &eacute;
-* *Compose*, ", e **yields** &euml;
-* *Compose*, comma (,), c **yields** &ccedil;
-* *Compose* ^ a **yields** &acirc;
+* `Compose` &#x0060; `e` **yields** &eacute;
+* `Compose " e` **yields** &euml;
+* `Compose , c` **yields** &ccedil;
+* `Compose ^ a` **yields** &acirc;
 
 # Disable Alt-F opening Gnome Terminal menu:
 
