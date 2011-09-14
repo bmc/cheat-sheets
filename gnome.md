@@ -35,6 +35,26 @@ pulls up a menu, which messes with my Emacs):
 See: *apps > metacity > global_keybindings* and
 *apps > metacity > window_keybindings*
 
+## Typing accented characters
+
+First, ensure that you have a Compose Key on your keyboard. In
+*System > Preferences > Keyboard*, select the *Layouts* tab, click the
+keyboard name, and press *Show...*. Verify that a Compose Key is set.
+
+Then, use the *Compose* + *accent-key* + *character* sequence to generate
+an accent. Note: Unlike on the Mac, where you use *Option* as a chorded key,
+use *Compose* separately (e.g., *Compose*, **then** *accent**, **then*
+*character*).
+
+On a standard USA keyboard, *Compose* is often the left Windows key.
+
+Examples:
+
+* *Compose*, \`, e **yields** è
+* *Compose*, ", e **yields** ë
+* *Compose*, comma (,), c **yields** ç
+* *Compose* ^ a **yields** â
+
 # Disable Alt-F opening Gnome Terminal menu:
 
 Open Keyboard Shortcuts on an active terminal, and uncheck top checkbox.
