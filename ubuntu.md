@@ -205,15 +205,15 @@ scratch:
 ## Using logical volumes for virtualization with kvm
 
 First, ensure that a logical volume exists. See above. Then, ensure that
-then virtual machine is *not* running.
+the virtual machine is *not* running.
 
 ### If moving from a file-based image (`.img` file)
 
-    # dd /path/to/machine.img /dev/volgroupname/lvname
+    # dd if=/path/to/machine.img of=/dev/volgroupname/lvname
 
 e.g.:
 
-    # dd /var/lib/libvirt/images/foobar.img /dev/virtimages/foobar
+    # dd if=/var/lib/libvirt/images/foobar.img of=/dev/virtimages/foobar
 
 This step, obviously, can take awhile.
 
