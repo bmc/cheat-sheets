@@ -312,7 +312,9 @@ Install via [HomeBrew][]:
 
     $ brew install sshfs
     
-Be sure to follow the 
+Be sure to follow the instructions in this output:
+
+    $ brew info fuse4x-kext
 
 ## Automounting shares and NFS partitions:
 
