@@ -306,37 +306,13 @@ containing the `VIDEO_TS` folder, not the `VIDEO_TS` folder itself. Once
 the `.iso` file has been created, drag this to Disk Utility and hit the
 Burn button.
 
-## Mac Fuse notes
+## Mac Fuse and sshfs
 
-<http://code.google.com/p/macfuse/wiki/HOWTO>
+Install via [HomeBrew][]:
 
-When building, use "port" to install pkg-config, glib-2.0, glib2-devel
-
-### sshfs
-
-Don't build *sshfs* Universally (i.e., leave out `-arch ppc1`).
-It won't work, because the port-installed libraries are i386-only.
-
-Run `configure` like this:
-
-    CFLAGS="-D__FreeBSD__=10 -O -g -arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk" LDFLAGS="-arch i386" ./configure --prefix=/usr/local --disable-dependency-tracking
-
-After running `configure`, manually edit Makefile and remove `-pthread`
-
-See also the list of FUSE file system projects at
-<http://fuse.sourceforge.net/wiki/index.php/FileSystems>
-
-### Uninstalling
-
-From the FAQ (http://code.google.com/p/macfuse/wiki/FAQ):
-
-Q: How can I uninstall MacFUSE Core?
-
-A: If you installed "MacFUSE Core.pkg" version 0.1.9 or greater then
-   you can use the uninstall script. From a terminal window run the
-   following command:
-
-    sudo /System/Library/Filesystems/fusefs.fs/uninstall-macfuse-core.sh
+    $ brew install sshfs
+    
+Be sure to follow the 
 
 ## Automounting shares and NFS partitions:
 
