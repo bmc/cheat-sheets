@@ -35,4 +35,5 @@
 * [Ubuntu (ubuntu)](ubuntu.html)
 * [VirtualBox (virtual-box)](virtual-box.html)
 * [Windows (windows)](windows.html)
+* [XFCE4 (xfce)](xfce.html)
 </div>
