@@ -3,6 +3,36 @@ title: Mac OS X Cheat Sheet
 layout: cheat-sheet
 ---
 
+# User Account Stuff
+
+## Changing login shell
+
+(Works for Lion; not tested elsewhere): Just use the old BSD *chsh* command.
+
+## Creating a login hook
+
+One solution, adapted from <http://www.bombich.com/mactips/loginhooks.html>
+and <http://docs.info.apple.com/article.html?artnum=301446>:
+
+First, create directory `/Library/Local`. Then, create file
+`/Library/Local/on-login.sh` containing, e.g.:
+
+    #!/bin/sh
+
+    case "$#" in
+        0)
+            echo "No user specified!" >&2
+            exit 1
+            ;;
+    esac
+
+    if \[ -f /Users/$1/.on-login.sh \]
+    then
+        su $1 -c "/Users/$1/.on-login.sh"
+    fi
+
+Use individual `.on-login.sh` scripts in user directories.
+
 # User Interface
 
 ## Focus follows mouse
@@ -416,30 +446,6 @@ Or, use a shell script to change the routes.
 ----
 
 # Miscellaneous
-
-## Creating a login hook
-
-One solution, adapted from <http://www.bombich.com/mactips/loginhooks.html>
-and <http://docs.info.apple.com/article.html?artnum=301446>:
-
-First, create directory `/Library/Local`. Then, create file
-`/Library/Local/on-login.sh` containing, e.g.:
-
-    #!/bin/sh
-
-    case "$#" in
-        0)
-            echo "No user specified!" >&2
-            exit 1
-            ;;
-    esac
-
-    if \[ -f /Users/$1/.on-login.sh \]
-    then
-        su $1 -c "/Users/$1/.on-login.sh"
-    fi
-
-Use individual `.on-login.sh` scripts in user directories.
 
 ## Startup Items
 
