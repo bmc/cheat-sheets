@@ -198,6 +198,38 @@ Use Audio Hijack Pro: <http://rogueamoeba.com/audiohijackpro/>
 
 Use SoundSource: <http://www.rogueamoeba.com/freebies/>
 
+## Convert an M4A
+
+First, install FAAD and LAME:
+
+    $ brew install faad2
+    $ brew install lame
+
+### ... to a WAV
+
+    $ faad -o foo.wav foo.m4a
+
+### ... to an MP3
+
+    $ faad -o - foo.m4a | lame -h -b 192 - foo.mp3
+
+Or, just install this script, as `m4a2mp3`:
+
+    #!/bin/bash
+
+    for i in "$@"
+    do
+        case $i in
+            *.m4a)
+                faad -o - "$i" | lame -h -b 192 - "${i%m4a}mp3"
+                ;;
+            *)
+                echo "Skipping non-M4A file $i" >&2
+                ;;
+        esac
+    done
+
+
 ----
 
 # Email
