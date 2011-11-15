@@ -425,6 +425,24 @@ to this procedure.
     $ sudo launchctl stop org.postfix.master
     $ sudo launchctl start org.postfix.master
 
+## Enabling Postfix
+
+Adapted from <http://www.freshblurbs.com/how-enable-local-smtp-postfix-os-x-leopard>
+
+Edit `/System/Library/LaunchDaemons/org.postfix.master.plist`
+add following line before the closing `</dict>` tag:
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+Edit `/etc/postfix/main.cf` as necessary.
+
+Then, start Postfix:
+
+    $ sudo launchctl start org.postfix.master
+
 ## BIND on Mac OS X
 
 <http://slaptijack.com/system-administration/bind-startup-in-mac-os-x-104-tiger/>
