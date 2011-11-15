@@ -430,7 +430,7 @@ to this procedure.
 Adapted from <http://www.freshblurbs.com/how-enable-local-smtp-postfix-os-x-leopard>
 
 Edit `/System/Library/LaunchDaemons/org.postfix.master.plist`
-add following line before the closing `</dict>` tag:
+add following lines before the closing `</dict>` tag:
 
     <key>RunAtLoad</key>
     <true/>
