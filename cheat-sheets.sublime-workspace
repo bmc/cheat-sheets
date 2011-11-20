@@ -1,0 +1,365 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"parag",
+				"paragraphs"
+			],
+			[
+				"rest",
+				"restaurants"
+			],
+			[
+				"tit",
+				"titlecase"
+			],
+			[
+				"name",
+				"name_fields"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "guruplug.md",
+			"settings":
+			{
+				"buffer_size": 4020,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "godaddy.md",
+			"settings":
+			{
+				"buffer_size": 127,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gnome.md",
+			"settings":
+			{
+				"buffer_size": 3816,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "windows.md",
+			"settings":
+			{
+				"buffer_size": 4808,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Build Book",
+	"command_palette":
+	{
+		"height": 285.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Add Repository"
+			],
+			[
+				":w",
+				":w - Save"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 287.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/bmc/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
+		"/home/bmc/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
+		"/home/bmc/.config/sublime-text-2/Packages/User/parawrap.py",
+		"/home/bmc/.config/sublime-text-2/Packages/User/Markdown.sublime-settings",
+		"/home/bmc/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/bmc/src/mystuff/python/grizzled-python/grizzled-python/grizzled/text/__init__.py",
+		"/home/bmc/src/mystuff/python/grizzled-python/grizzled-python/grizzled/misc.py",
+		"/home/bmc/src/mystuff/writing/sf-book/book.sublime-project",
+		"/home/bmc/src/mystuff/writing/sf-book/sublime-build.sh",
+		"/home/bmc/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/bmc/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/home/bmc/src/mystuff/docs/cheat-sheets/mac-os-x.md",
+		"/home/bmc/src/mystuff/web/brizzled/id/126/summary.md",
+		"/home/bmc/src/mystuff/web/brizzled/id/126/index.md",
+		"/home/bmc/src/mystuff/web/brizzled/id/125/summary.md",
+		"/home/bmc/src/mystuff/web/brizzled/id/125/index.md",
+		"/home/bmc/src/mystuff/sublime-text-hacks/Emacsish-keybindings.sublime-keymap",
+		"/home/bmc/.config/sublime-text-2/Packages/Vintage/vintage.py",
+		"/home/bmc/.config/sublime-text-2/Packages/Vintage/vintage_commands.py",
+		"/home/bmc/.config/sublime-text-2/Packages/Vintage/Default (Linux).sublime-keymap",
+		"/home/bmc/.config/sublime-text-2/Packages/Vintage/Default.sublime-keymap",
+		"/home/bmc/.config/sublime-text-2/Packages/Vintage/vintage_motions.py",
+		"/home/bmc/.config/sublime-text-2/Packages/Default/transpose.py",
+		"/home/bmc/.config/sublime-text-2/Packages/Default/indentation.py",
+		"/home/bmc/.config/sublime-text-2/Packages/Default/Main.sublime-menu",
+		"/home/bmc/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+		"/home/bmc/Applications/Sublime Text 2/Pristine Packages/C#.sublime-package",
+		"/home/bmc/.config/sublime-text-2/Packages/User/Global.sublime-settings",
+		"/home/bmc/src/mystuff/ruby/grizzled-ruby/grizzled-ruby/lib/grizzled/fileutil/ziputil.rb",
+		"/home/bmc/src/mystuff/web/brizzled/sass/style-printable.scss",
+		"/home/bmc/src/mystuff/ruby/grizzled-ruby/grizzled-ruby/lib/grizzled/stack.rb",
+		"/home/bmc/.config/sublime-text-2/Packages/User/Ruby.sublime-settings",
+		"/home/bmc/foo.md",
+		"/home/bmc/src/mystuff/scala/argot/argot/src/main/scala/org/clapper/argot/exception.scala",
+		"/home/bmc/src/mystuff/ruby/grizzled-ruby/grizzled-ruby/lib/grizzled.rb",
+		"/home/bmc/src/mystuff/scala/argot/argot/src/main/scala/org/clapper/argot/Argot.scala",
+		"/home/bmc/.config/sublime-text-2/Packages/User/JSON.sublime-settings"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"layou",
+			"layout",
+			"paragraph",
+			"alt+q",
+			"quit",
+			"wrap",
+			"f3",
+			"insert",
+			"keys",
+			"ctrl+i",
+			"tab",
+			"complete",
+			"ctrl+r",
+			"ctrl+h",
+			"backspace",
+			"ctrl+h",
+			"rulers",
+			"wrap_width",
+			"Mensch"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "guruplug.md",
+					"settings":
+					{
+						"buffer_size": 4020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "godaddy.md",
+					"settings":
+					{
+						"buffer_size": 127,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "gnome.md",
+					"settings":
+					{
+						"buffer_size": 3816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "windows.md",
+					"settings":
+					{
+						"buffer_size": 4808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4808,
+								4808
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 460.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
