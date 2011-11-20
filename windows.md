@@ -131,7 +131,7 @@ The driver should now be available when adding a printer.
 
 See #16 in the "Ubuntu" cheat sheet.
 
+## Skype Crashes on 64-bit Windows 7
 
 
-
-
+Try deleting `shared.xml` in folder `%userprofile%\AppData\Roaming\Skype`
