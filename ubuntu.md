@@ -159,6 +159,8 @@ Reference: (http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ub
 
 # Gnome
 
+See [Gnome Cheat Sheet](gnome.html) for more non-Ubuntu Gnome tips.
+
 ## Gnome terminal size
 
 Changing size of Gnome terminal. From
@@ -171,14 +173,6 @@ take that size.
 
 Doesn't always work. If not, use `--geometry=80x44` (or whatever) on the
 command line.
-
-## Keybindings for GTK applications
-
-    $ gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
-
-## Disable "empty trash" prompt
-
-See [gnome](gnome.html) cheat sheet.
 
 ----
 

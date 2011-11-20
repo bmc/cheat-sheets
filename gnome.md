@@ -35,6 +35,11 @@ pulls up a menu, which messes with my Emacs):
 See: *apps > metacity > global_keybindings* and
 *apps > metacity > window_keybindings*
 
+
+## Keybindings for GTK applications
+
+    $ gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
+
 ## Typing accented characters
 
 First, ensure that you have a Compose Key on your keyboard. In
