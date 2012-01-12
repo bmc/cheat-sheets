@@ -316,6 +316,12 @@ cause unexpected behavior in the Finder. See
 
 (Get Info comments aren't properly propagated.)
 
+## Getting Finder to show hidden files
+
+In a Terminal window, run this command:
+
+    $ defaults write com.apple.finder AppleShowAllFiles TRUE
+    $ killall Finder
 
 ## Burning a disc
 
