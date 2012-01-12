@@ -2,9 +2,7 @@
 
 div#toc
 {
-    width: auto;
-    font-size: 6pt;
-    float: right;
+    width: auto%;
 }
 
 span#toc-heading
@@ -14,7 +12,7 @@ span#toc-heading
 */
     width: auto;
     font-weight: bold;
-    font-size: larger;
+    font-size: 20px;
 }
 
 div#toc-block
@@ -30,15 +28,22 @@ div#toc-block
     float: right;
 */
     background-color: #ffeeca;
-    width: 40%;
+    width: 30%;
     border: 1px solid black;
     padding: 10px;
+    float: right;
+    margin: 5px;
 }
 
 ul.toc
 {
+    list-style: none;
 }
 
+ul.toc li
+{
+    font-size: 11px !important;
+}
 li.tocH1
 {
     margin-left: 0em
