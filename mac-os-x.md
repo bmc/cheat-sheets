@@ -26,7 +26,7 @@ First, create directory `/Library/Local`. Then, create file
             ;;
     esac
 
-    if \[ -f /Users/$1/.on-login.sh \]
+    if [ -f /Users/$1/.on-login.sh ]
     then
         su $1 -c "/Users/$1/.on-login.sh"
     fi
