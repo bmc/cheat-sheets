@@ -4,6 +4,7 @@ div#toc
 {
     width: auto;
     font-size: 6pt;
+    float: right;
 }
 
 span#toc-heading
