@@ -265,6 +265,8 @@ To encrypt only one directory tree, use one of these options:
   This option works very well, and it results in a "file system" that can
   be copied to a Linux machine and mounted there.
 
+* Use [TrueCrypt](http://www.trucrypt.org/).
+
 * Use an encrypted Mac disk image. From
   <http://www.macworld.com/2007/10/features/lockup_others/index.php>:
 
