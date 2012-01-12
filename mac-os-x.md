@@ -114,6 +114,25 @@ which is no help at all.
 
 <http://macapper.com/2007/04/21/how-to-create-custom-icons-for-your-mac/>
 
+## Prevent Mac from going to sleep
+
+Use Caffeine, which sits in the menu bar: <http://lightheadsw.com/caffeine>
+
+## Disable "Empty Trash" confirmation dialog
+
+Go to *Finder > Preferences*, select the *Advanced* button, and uncheck
+"Show warning before emptying the Trash." You may also wish to check the
+"Empty Trash securely" while you're there.
+
+## Change file associations
+
+To change default application that opens a file (e.g., PDF):
+
+* Right click on a file of that type.
+* Select *Get Info*
+* Change the `Open with` value.
+* Select `Change All` to change for all files, not just that one.
+
 ----
 
 # Open Source Software
@@ -162,25 +181,6 @@ the appropriate one, depending on whether login is local or remote.
 
 Note: --with-ns creates a Mac `Emacs.app` folder, which ends up being
 installed in `/Applications`, allowing use directly from the desktop.
-
-## Prevent Mac from going to sleep
-
-Use Caffeine, which sits in the menu bar: <http://lightheadsw.com/caffeine>
-
-## Disable "Empty Trash" confirmation dialog
-
-Go to *Finder > Preferences*, select the *Advanced* button, and uncheck
-"Show warning before emptying the Trash." You may also wish to check the
-"Empty Trash securely" while you're there.
-
-## Change file associations
-
-To change default application that opens a file (e.g., PDF):
-
-* Right click on a file of that type.
-* Select *Get Info*
-* Change the `Open with` value.
-* Select `Change All` to change for all files, not just that one.
 
 ----
 
