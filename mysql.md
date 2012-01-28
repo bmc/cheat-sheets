@@ -15,4 +15,12 @@ MySQL 5:
 
 # Create a database
 
-    $ mysqladmin -u root -p create db_name
+Using default system encoding:
+
+    $ mysql -u root
+    mysql> create database db_name;
+
+Specifying encoding:
+
+    $ mysql -u root
+    mysql> create database db_name character set utf8;
