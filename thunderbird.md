@@ -3,6 +3,21 @@ title: Thunderbird Cheat Sheet
 layout: cheat-sheet
 ---
 
+# Force Thunderbird to Expunge Messages When They're Deleted
+
+When you delete a message in your inbox (or, any folder), it's marked deleted,
+but not actually deleted until the folder is compacted. This can be annoying
+with an IMAP folder (e.g., one's Inbox), when it's being accessed on multiple
+devices.
+
+One solution: Set the "expunge" threshold to 1, forcing Thunderbird to expunge
+the folder when there is 1 deleted message in it. (The default is 20.)
+
+Use the advanced configuration editor, and set
+**mail.imap.expunge_threshold_number** to 1.
+
+See also: <http://kb.mozillazine.org/Deleting_messages_in_IMAP_accounts>
+
 # Script busy or not responding
 
 See <http://kb.mozillazine.org/Script_busy_or_stopped_responding>:

@@ -54,6 +54,14 @@
 				"buffer_size": 4808,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "mysql.md",
+			"settings":
+			{
+				"buffer_size": 489,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "Build Book",
@@ -292,8 +300,35 @@
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 4,
+					"file": "mysql.md",
+					"settings":
+					{
+						"buffer_size": 489,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								208,
+								279
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
