@@ -511,6 +511,12 @@ Or, use a shell script to change the routes.
 
 ----
 
+# Dynamic linking
+
+Use `DYLD_LIBRARY_PATH` to pick up `.dylib` files.
+
+----
+
 # Miscellaneous
 
 ## Startup Items
@@ -533,10 +539,6 @@ Solution: Copy `config.guess` and `config.sub` from `/usr/share/libtool` to
 the current directory (i.e., the directory containing the GNU
 autoconf-generated `configure` script).
 
-# Dynamic linking
-
-Use `DYLD_LIBRARY_PATH` to pick up `.dylib` files.
-
 ## Making the Mac OS X Color Picker into an Application
 
 From <http://hints.macworld.com/article.php?story=20060408050920158>:
@@ -546,3 +548,4 @@ From <http://hints.macworld.com/article.php?story=20060408050920158>:
 * Save as an Application (`File > Save As`, and choose `Application` format)
 
 Consider adding the free [HexColorPicker](http://wafflesoftware.net/hexpicker/)
+
