@@ -537,3 +537,12 @@ autoconf-generated `configure` script).
 
 Use `DYLD_LIBRARY_PATH` to pick up `.dylib` files.
 
+## Making the Mac OS X Color Picker into an Application
+
+From <http://hints.macworld.com/article.php?story=20060408050920158>:
+
+* Open `Applications > AppleScript Editor`
+* Enter the text `choose color`
+* Save as an Application (`File > Save As`, and choose `Application` format)
+
+Consider adding the free [HexColorPicker](http://wafflesoftware.net/hexpicker/)
