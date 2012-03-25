@@ -114,6 +114,14 @@ which is no help at all.
 
 <http://macapper.com/2007/04/21/how-to-create-custom-icons-for-your-mac/>
 
+NOTE: Icns2Rsrc seems to be gone. For Lion, though, just try this:
+
+* Generate the icon with Icon Converter (from the Developer Tools package)
+* Open the icon in Preview.app
+* Select and copy the largest one
+* Right click the desired application, and select Get Info
+* Select the icon image in the upper right, and paste
+
 ## Prevent Mac from going to sleep
 
 Use Caffeine, which sits in the menu bar: <http://lightheadsw.com/caffeine>
