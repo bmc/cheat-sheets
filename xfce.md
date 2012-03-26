@@ -38,3 +38,12 @@ To make sure this happens every time XFCE4 comes up, add an entry to
 *Settings > Session and Startup > Application Autostart*, as shown below.
 
 ![Swap Caps Lock and Control](xfce4-caps-control.png)
+
+Another option is to use *xmodmap*. For instance, the following input maps
+the Caps Lock key to Control, leaves the Control keys alone, and maps the Pause
+key (which I never use) to Caps Lock:
+
+    remove Lock = Caps_Lock
+    keycode 66 = Control_L Control_L Control_L
+    add Control = Control_L
+    keycode 127 = Caps_Lock
