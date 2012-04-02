@@ -237,6 +237,22 @@ Or, just install this script, as `m4a2mp3`:
         esac
     done
 
+----
+
+# Video
+
+# Capturing Streaming Video
+
+See http://www.cultofmac.com/115523/capturing-streaming-video-in-os-x-lion-video-how-to/
+
+Basics:
+
+* Using Safari, go to site with streaming video.
+* Select Window > Activity (or &#8997;&#8984;A)
+* Expand the list in the resulting window.
+* Look for the video link.
+* &#8997; *left-mouse-button* to download.
+* Download progress appears in upper right widget of Safari.
 
 ----
 
