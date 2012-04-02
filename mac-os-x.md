@@ -511,6 +511,29 @@ by issuing the command:
 
     $ sudo lookupd -flushcache
 
+## mDNSResponder
+
+mDNSResponder is responsible for Bonjour. Quote from:
+<http://osxdaily.com/2009/09/15/disable-bonjour-by-turning-off-mdnsresponder/>:
+
+> Bonjour is a great service that runs in the background of your Mac to
+> auto-discover network resources, that is, it’s great until mDNSResponder
+> goes haywire. I was recently in a very creatively crafted network
+> environment that made Bonjour absolutely freak out and tax my CPU with a
+> million processes, so I opted to just disable the service temporarily.
+> Generally speaking you should leave Bonjour enabled since its
+> functionality is ubiquitously used throughout Mac OS X, but if you DO
+> want to disable mDNSResponder, here’s how to do it:
+
+To disable it:
+
+    sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+
+To enable it:
+
+    sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+
+
 ## VPN routing
  
 Bring up a PPTP VPN and, by default, all traffic gets routed over that
