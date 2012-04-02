@@ -241,7 +241,7 @@ Or, just install this script, as `m4a2mp3`:
 
 # Video
 
-# Capturing Streaming Video
+## Capturing Streaming Video
 
 See http://www.cultofmac.com/115523/capturing-streaming-video-in-os-x-lion-video-how-to/
 
