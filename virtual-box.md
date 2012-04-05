@@ -21,3 +21,9 @@ Environment:
 Solution:
 
 * Boot Windows and reinstall VirtualBox Guest Additions. 
+
+# VERR_ACCESS_DENIED after a virtual machine crashes
+
+If the VM's disk is a physical partition, check the partition's permissions. In
+particular, ensure that the device (e.g., `/dev/dm-4`) is readable and writable
+by the user running VirtualBox.
