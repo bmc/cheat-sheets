@@ -62,6 +62,14 @@
 				"buffer_size": 489,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "virtual-box.md",
+			"settings":
+			{
+				"buffer_size": 799,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "Build Book",
@@ -207,6 +215,7 @@
 						],
 						"settings":
 						{
+							"buffer_scroll_name": "efb1df0e",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -235,6 +244,7 @@
 						],
 						"settings":
 						{
+							"buffer_scroll_name": "968506c5",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -261,6 +271,7 @@
 						],
 						"settings":
 						{
+							"buffer_scroll_name": "b0d68d2a",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -287,6 +298,7 @@
 						],
 						"settings":
 						{
+							"buffer_scroll_name": "ca8a0a40",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -300,7 +312,7 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -315,12 +327,40 @@
 						"selection":
 						[
 							[
-								208,
-								279
+								489,
+								489
 							]
 						],
 						"settings":
 						{
+							"buffer_scroll_name": "80c2ccaf",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "virtual-box.md",
+					"settings":
+					{
+						"buffer_size": 799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								798,
+								798
+							]
+						],
+						"settings":
+						{
+							"buffer_scroll_name": "f452de4f",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -380,6 +420,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"virtual",
+				"virtual-box.md"
+			]
 		],
 		"width": 0.0
 	},

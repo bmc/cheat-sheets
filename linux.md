@@ -76,8 +76,7 @@ Reference: <http://www.davelachapelle.ca/guides/ubuntu-lvm-guide/>
 
 ## Adding a new disk to an existing volume group.
 
-Create the physical volume, as described
-[above][#create-the-physical-volume]. Then:
+Create the physical volume, as described above. Then:
 
 ### Unmount the existing logical volume
 
