@@ -13,6 +13,25 @@ is defined in `pg_hba.conf` (`/etc/postgres/<version>`) and defaults to
 * "su" to the "postgres" user
 * "psql" should then work
 
+# Create a user
+
+Typical: User can create new databases and can log in.
+
+    $ psql
+    postgres=# create role username with password 'foo' createdb login;
+
+# Create a database
+
+Using default system encoding:
+
+    $ psql
+    postgres=# create database db_name with owner = 'user';
+
+Specifying encoding:
+
+    $ psql
+    postgres=# create database db_name with owner = 'user' encoding 'utf8';
+
 # Get list of databases
 
     SELECT datname FROM pg_database

@@ -70,6 +70,14 @@
 				"buffer_size": 799,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "linux.md",
+			"settings":
+			{
+				"buffer_size": 2993,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "Build Book",
@@ -312,7 +320,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -354,8 +362,8 @@
 						"selection":
 						[
 							[
-								798,
-								798
+								799,
+								799
 							]
 						],
 						"settings":
@@ -365,6 +373,35 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "linux.md",
+					"settings":
+					{
+						"buffer_size": 2993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1989,
+								1989
+							]
+						],
+						"settings":
+						{
+							"buffer_scroll_name": "f52a034c",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1125.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -420,6 +457,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"li",
+				"linux.md"
+			],
 			[
 				"virtual",
 				"virtual-box.md"
