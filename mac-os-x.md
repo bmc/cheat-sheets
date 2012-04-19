@@ -525,14 +525,9 @@ mDNSResponder is responsible for Bonjour. Quote from:
 > functionality is ubiquitously used throughout Mac OS X, but if you DO
 > want to disable mDNSResponder, here’s how to do it:
 
-To disable it:
+To disable it without screwing up regular DNS:
 
-    sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-
-To enable it:
-
-    sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-
+    http://support.apple.com/kb/HT3789
 
 ## VPN routing
  
