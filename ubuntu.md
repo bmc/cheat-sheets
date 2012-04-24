@@ -80,7 +80,9 @@ Be sure the Wifi switch on the side of the laptop is on!
 
 # Network
 
-*Nothing here yet.*
+## Setting up an FTP server
+
+Use PureFTP, as discussed at <https://help.ubuntu.com/community/PureFTP>.
 
 ----
 
