@@ -31,6 +31,7 @@
 * [Ruby (ruby)](ruby.html)
 * [Safari (safari)](safari.html)
 * [SQL (sql)](sql.html)
+* [SSH (ssh)](ssh.html)
 * [Thunderbird (thunderbird)](thunderbird.html)
 * [Ubuntu (ubuntu)](ubuntu.html)
 * [VirtualBox (virtual-box)](virtual-box.html)
