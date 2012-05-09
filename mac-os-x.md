@@ -33,6 +33,22 @@ First, create directory `/Library/Local`. Then, create file
 
 Use individual `.on-login.sh` scripts in user directories.
 
+# Mail.app
+
+## Editing content in a text editor
+
+Use [QuickCursor][].
+
+[QuickCursor]: http://www.hogbaysoftware.com/products/quickcursor
+
+## Adding multiple identities
+
+Currently, it cannot be done through the UI. However, it can easily be done
+by editing `~/Library/Mail.app/V2/MailData/Accounts.plist` and adding the
+alias there.
+
+See <http://simon.heimlicher.com/articles/2011/08/02/multiple-identities-mail>.
+
 # User Interface
 
 ## Focus follows mouse
