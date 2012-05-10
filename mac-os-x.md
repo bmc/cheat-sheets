@@ -49,6 +49,10 @@ alias there.
 
 See <http://simon.heimlicher.com/articles/2011/08/02/multiple-identities-mail>.
 
+## Enabling Bottom Posting
+
+Use the QuoteFix plugin: <http://code.google.com/p/quotefixformac/>
+
 # User Interface
 
 ## Focus follows mouse
