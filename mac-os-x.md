@@ -53,6 +53,10 @@ See <http://simon.heimlicher.com/articles/2011/08/02/multiple-identities-mail>.
 
 Use the QuoteFix plugin: <http://code.google.com/p/quotefixformac/>
 
+## Generating dynamic content (e.g., at the bottom of the message):
+
+<http://hints.macworld.com/article.php?story=20040503211932363>
+
 # User Interface
 
 ## Focus follows mouse
