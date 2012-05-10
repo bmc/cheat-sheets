@@ -53,9 +53,9 @@ See <http://simon.heimlicher.com/articles/2011/08/02/multiple-identities-mail>.
 
 Use the QuoteFix plugin: <http://code.google.com/p/quotefixformac/>
 
-## Generating dynamic content (e.g., at the bottom of the message):
+## Adding a quote to the bottom of a signature
 
-<http://hints.macworld.com/article.php?story=20040503211932363>
+See: <https://github.com/bmc/applescripts/blob/master/Mail/fortune-sig.applescript>
 
 # User Interface
 
