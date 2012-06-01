@@ -44,6 +44,13 @@ The resulting generated HTML will be in the `_site` directory; surf to the
 `index.html` file. Alternatively, you can run `rake preview` to fire up a
 local HTTP server on port 4000, to serve up the cheat sheets.
 
+Here are the actual commands, in scrape-friendly form:
+
+    git clone http://github.com/bmc/cheat-sheets
+    gem install bundler
+    bundle install
+    bundle exec rake
+
 # Contact
 
 Feel free to [email me](mailto:bmc@clapper.org) with suggestions, or fork
