@@ -4,8 +4,8 @@ layout: cheat-sheet
 ---
 
 *This cheat sheet concerns the [GuruPlug][] plug computing device, a 5-watt
-ARM device that, by default, runs [Debian][]. My device has two Ethernet cards
-and WiFi capability.*
+ARM device that, by default, runs [Debian][]. In general, it also applies
+to the DreamPlug.
 
 [Debian]: http://www.debian.org/
 [GuruPlug]: http://en.wikipedia.org/wiki/GuruPlug

@@ -33,7 +33,7 @@ MD_FILES = FileList['*.md'].exclude("README.md", "index.md")
 
 task :default => [:jekyll]
 
-task :jekyll => [INDEX_PARTIAL] do |t|
+task :jekyll => [:clean, INDEX_PARTIAL] do |t|
   sh 'jekyll'
 end
 
@@ -42,6 +42,16 @@ task :index_partial => INDEX_PARTIAL
 file INDEX_PARTIAL => MD_FILES + ['Rakefile', INDEX_PARTIAL_TEMPLATE] do |t|
   make_index_partial
   rm_f File.join("_site", "index.html")
+end
+
+desc "Build the site and run the local previewer on port 4000"
+task :preview => :jekyll do
+  sh 'jekyll', '--server'
+end
+
+desc "Clean up the generated stuff"
+task :clean do
+  rm_rf "_site"
 end
 
 # ---------------------------------------------------------------------------

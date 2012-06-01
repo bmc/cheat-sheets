@@ -36,10 +36,13 @@ to you, great, but the onus is on *you* to use them with care.
 If you'd like to build your own HTML copies of these cheat sheets:
 
 * Clone [this repo][].
-* Ensure that you have RubyGems installed, as well as the `kramdown` and
- `jekyll` gems.
-* Then, simply issue `rake` to build/rebuild the HTML versions of the cheat
-  sheets.
+* Ensure that the [Bundler][] Ruby gem is installed (`gem install bundler`).
+* Run `bundle install` to install the requisite gems.
+* Run `bundle exec rake` to build a local copy of the site.
+
+The resulting generated HTML will be in the `_site` directory; surf to the
+`index.html` file. Alternatively, you can run `rake preview` to fire up a
+local HTTP server on port 4000, to serve up the cheat sheets.
 
 # Contact
 
@@ -51,3 +54,4 @@ Feel free to [email me](mailto:bmc@clapper.org) with suggestions, or fork
 [Markdown]: http://kramdown.rubyforge.org/syntax.html
 [Rake]: http://rake.rubyforge.org/
 [bit rot]: http://www.jargon.net/jargonfile/b/bitrot.html
+[bundler]: http://gembundler.com/

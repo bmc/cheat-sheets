@@ -8,7 +8,6 @@
 * [GIMP (gimp)](gimp.html)
 * [Git (git)](git.html)
 * [Gnome (gnome)](gnome.html)
-* [GoDaddy (godaddy)](godaddy.html)
 * [GTK2 (gtk2)](gtk2.html)
 * [GuruPlug (guruplug)](guruplug.html)
 * [iPad (ipad)](ipad.html)
