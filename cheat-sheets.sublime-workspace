@@ -27,31 +27,39 @@
 			"file": "guruplug.md",
 			"settings":
 			{
-				"buffer_size": 4020,
+				"buffer_size": 4011,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "godaddy.md",
+			"file": "_includes/index_partial.md",
 			"settings":
 			{
-				"buffer_size": 127,
+				"buffer_size": 1336,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "gnome.md",
+			"file": "Gemfile",
 			"settings":
 			{
-				"buffer_size": 3816,
+				"buffer_size": 103,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "windows.md",
+			"file": "Rakefile",
 			"settings":
 			{
-				"buffer_size": 4808,
+				"buffer_size": 4344,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.md",
+			"settings":
+			{
+				"buffer_size": 2244,
 				"line_ending": "Unix"
 			}
 		},
@@ -112,6 +120,10 @@
 	},
 	"file_history":
 	[
+		"/home/bmc/src/mystuff/docs/cheat-sheets/README.md",
+		"/home/bmc/src/mystuff/docs/cheat-sheets/godaddy.md",
+		"/home/bmc/src/mystuff/docs/cheat-sheets/gnome.md",
+		"/home/bmc/src/mystuff/docs/cheat-sheets/windows.md",
 		"/home/bmc/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
 		"/home/bmc/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
 		"/home/bmc/.config/sublime-text-2/Packages/User/parawrap.py",
@@ -202,7 +214,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -210,15 +222,15 @@
 					"file": "guruplug.md",
 					"settings":
 					{
-						"buffer_size": 4020,
+						"buffer_size": 4011,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								225,
+								225
 							]
 						],
 						"settings":
@@ -236,23 +248,23 @@
 				},
 				{
 					"buffer": 1,
-					"file": "godaddy.md",
+					"file": "_includes/index_partial.md",
 					"settings":
 					{
-						"buffer_size": 127,
+						"buffer_size": 1336,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								297,
+								297
 							]
 						],
 						"settings":
 						{
-							"buffer_scroll_name": "968506c5",
+							"buffer_scroll_name": "6164fddb",
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -263,24 +275,26 @@
 				},
 				{
 					"buffer": 2,
-					"file": "gnome.md",
+					"file": "Gemfile",
 					"settings":
 					{
-						"buffer_size": 3816,
+						"buffer_size": 103,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								103,
+								103
 							]
 						],
 						"settings":
 						{
-							"buffer_scroll_name": "b0d68d2a",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"buffer_scroll_name": "a846248b",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -290,29 +304,56 @@
 				},
 				{
 					"buffer": 3,
-					"file": "windows.md",
+					"file": "Rakefile",
 					"settings":
 					{
-						"buffer_size": 4808,
+						"buffer_size": 4344,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4808,
-								4808
+								1142,
+								1142
 							]
 						],
 						"settings":
 						{
-							"buffer_scroll_name": "ca8a0a40",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 4,
+							"buffer_scroll_name": "58808737",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 460.0,
+						"translation.y": 233.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "index.md",
+					"settings":
+					{
+						"buffer_size": 2244,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1729,
+								1729
+							]
+						],
+						"settings":
+						{
+							"buffer_scroll_name": "f8ae3da5",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -324,7 +365,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "mysql.md",
 					"settings":
 					{
@@ -351,7 +392,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "virtual-box.md",
 					"settings":
 					{
@@ -378,7 +419,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "linux.md",
 					"settings":
 					{
@@ -457,6 +498,22 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"in",
+				"index.md"
+			],
+			[
+				"re",
+				"README.md"
+			],
+			[
+				"rakefile",
+				"Rakefile"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
 			[
 				"li",
 				"linux.md"

@@ -184,3 +184,40 @@ command line.
 
 <https://launchpad.net/~ubuntu-elisp/+archive/ppa>
 <http://emacs.orebokech.com/>
+
+## Thunderbird
+
+### Opening URLs with something other than Firefox
+
+On Ubuntu 11.04 and 11.10 (in my environment, anyway), Thunderbird always opens links in Firefox, no matter what the Ubuntu default browser is.
+
+Step 1:
+
+Pull up the Advanced Configuration Editor
+(`Edit > Preferences > Advanced > Config Editor`), and change the following
+values:
+
+    network.protocol-handler.app.ftp
+    network.protocol-handler.app.http
+    network.protocol-handler.app.https
+
+Set all to `/usr/bin/google-chrome` (or desired browser.)
+
+**In my case, this did _not_ work.**
+
+Step 2:
+
+An _strace_(1) of Thunderbird showed that it was invoking, in turn, the
+following Gnome shortcuts. (The fact that I'm using xfce4 makes no difference
+to Thunderbird.)
+
+* `~/.local/share/applications/firefox.desktop` (not there, in my case)
+* `/usr/share/xsession/applications/firefox.desktop` (also not there)
+* `/usr/local/share/xsession/applications/firefox.desktop` (again, not there)
+* `/usr/share/applications/firefox.desktop` (found)
+
+So, a quick hack solution:
+
+    $ ln -s /usr/share/applications/google-chrome.desktop ~/.local/share/applications/firefox.desktop
+
+At that point, Thunderbird finally invoked the browser I wanted it to invoke.
