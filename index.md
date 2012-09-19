@@ -7,8 +7,16 @@ layout: index
 
 This repository contains a set of cheat sheets on various topics. The cheat
 sheets are maintained as [Markdown][] documents, as supported by the Ruby
-[Kramdown][] gem. The documents are converted to HTML via [Rake][]; for
-convenience, the resulting HTML is also maintained in the repo.
+[Kramdown][] gem. The entire repository is organized as a [Jekyll][] site and
+lives in the repo's `gh-pages` branch. Thus, when changes are pushed to
+the repo, they automatically show up at
+[_software.clapper.org/cheat-sheets/_][cheat-sheets].
+
+Because the repo is just a Jekyll site, you can build it locally, as well.
+See below.
+
+[Jekyll]: http://jekyllrb.com
+[cheat-sheets]: http://software.clapper.org/cheat-sheets/
 
 # The Cheat Sheets
 
