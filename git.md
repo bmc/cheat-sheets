@@ -39,13 +39,27 @@ branch, so you can do a `git checkout`:
     $ git fetch
     $ git checkout newbranch
 
+# Create a remote branch
+
+Create a local branch, then push it to the server. General syntax:
+
+    $ git push REMOTE LOCALBRANCH:REMOTEBRANCH
+
+The remote branch name can be omitted if it's the same name as the local
+branch.
+
+    $ git co -b mybranch
+    $ git push origin mybranch
+
 # Delete a remote branch
 
-    $ git push REMOTENAME :BRANCHNAME
+    $ git push remotename :branch
 
-If you look at the advanced push syntax above it should make a bit more
-sense. You are literally telling git "push nothing into BRANCHNAME on
-REMOTENAME".
+e.g.:
+
+    $ git push origin :testbranch
+
+You are literally telling git "push nothing into BRANCHNAME on REMOTENAME".
 
 # Create a bare repository
 
@@ -61,11 +75,3 @@ From an existing repo:
 # Mark conflict resolved
 
     $ git add file
-
-# Delete a remote branch
-
-    $ git push remotename :branch
-
-e.g.:
-
-    $ git push origin :testbranch
