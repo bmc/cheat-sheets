@@ -30,6 +30,7 @@
 * [Rake (rake)](rake.html)
 * [Ruby (ruby)](ruby.html)
 * [Safari (safari)](safari.html)
+* [SBT (sbt)](sbt.html)
 * [SQL (sql)](sql.html)
 * [SSH (ssh)](ssh.html)
 * [Thunderbird (thunderbird)](thunderbird.html)
