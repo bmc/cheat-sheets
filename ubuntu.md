@@ -159,6 +159,14 @@ Reference: (http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ub
 
 ----
 
+# APT
+
+## Using backports
+
+See <https://help.ubuntu.com/community/UbuntuBackports>
+
+----
+
 # Gnome
 
 See [Gnome Cheat Sheet](gnome.html) for more non-Ubuntu Gnome tips.
