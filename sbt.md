@@ -38,3 +38,7 @@ Publish `ls.implicit.ly` information:
 
     sbt> lsync
 
+# `java.lang.NoClassDefFoundError` when invoking `sbt`
+
+Most often, this is due to corrupted data in the `~/.sbt/boot` directory.
+Just delete that directory and restart SBT.
