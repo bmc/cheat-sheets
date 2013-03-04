@@ -64,3 +64,11 @@ player, you might change the `defaults.list` file to look like this:
     video/quicktime=vlc.dekstop
 
 See `/etc/mime.types` for appropriate MIME types.
+
+# Panels
+
+## Autohide quits working
+
+Reset the panel:
+
+    $ xfce4-panel -r
