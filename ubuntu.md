@@ -84,6 +84,10 @@ Be sure the Wifi switch on the side of the laptop is on!
 
 Use PureFTP, as discussed at <https://help.ubuntu.com/community/PureFTP>.
 
+## Bridging
+
+Easiest procedure is here: <https://help.ubuntu.com/10.04/serverguide/network-configuration.html>. Works on 12.10, as well.
+
 ----
 
 # Miscellaneous System Administration
