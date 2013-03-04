@@ -125,42 +125,6 @@ and the package refuses to go away. Solution:
 * Remove it
 * Try again
 
-## Using logical volumes for virtualization with kvm
-
-First, ensure that a logical volume exists.  See [The Linux Cheat
-Sheet](linux.html#logical-and-physical-volume-groups) Then, ensure that the
-virtual machine is *not* running.
-
-### If moving from a file-based image (`.img` file)
-
-    # dd if=/path/to/machine.img of=/dev/volgroupname/lvname
-
-e.g.:
-
-    # dd if=/var/lib/libvirt/images/foobar.img of=/dev/virtimages/foobar
-
-This step, obviously, can take awhile.
-
-Then, using `virt-manager`, edit the virtual machine's configuration, and
-create or edit an IDE device to point to the logical volume name
-(e.g., `/dev/virtimages/foobar`).
-
-Note: This also works, but it's more error-prone:
-
-    $ virsh edit foobar
-
-     --- edit the XML, removing the existing disk image and replacing
-     --- it with:
-
-    <disk type='block' device='disk'>
-      <source dev='/dev/virtimages/foobar'/>
-      <target dev='hda' bus='ide'/>
-    </disk>
-
-Fire up the virtual machine.
-
-Reference: (http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ubuntu-with-kvm/>
-
 ----
 
 # APT
@@ -233,3 +197,53 @@ So, a quick hack solution:
     $ ln -s /usr/share/applications/google-chrome.desktop ~/.local/share/applications/firefox.desktop
 
 At that point, Thunderbird finally invoked the browser I wanted it to invoke.
+
+----
+
+# Virtualization
+
+# VirtualBox on 12.10
+
+Use this procedure, rather than the `apt` version of VirtualBox:
+
+    $ echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+    $ wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+    $ sudo apt-get update
+    $ sudo apt-get install virtualbox-4.2
+
+## Using logical volumes for virtualization with kvm
+
+First, ensure that a logical volume exists.  See [The Linux Cheat
+Sheet](linux.html#logical-and-physical-volume-groups) Then, ensure that the
+virtual machine is *not* running.
+
+### If moving from a file-based image (`.img` file)
+
+    # dd if=/path/to/machine.img of=/dev/volgroupname/lvname
+
+e.g.:
+
+    # dd if=/var/lib/libvirt/images/foobar.img of=/dev/virtimages/foobar
+
+This step, obviously, can take awhile.
+
+Then, using `virt-manager`, edit the virtual machine's configuration, and
+create or edit an IDE device to point to the logical volume name
+(e.g., `/dev/virtimages/foobar`).
+
+Note: This also works, but it's more error-prone:
+
+    $ virsh edit foobar
+
+     --- edit the XML, removing the existing disk image and replacing
+     --- it with:
+
+    <disk type='block' device='disk'>
+      <source dev='/dev/virtimages/foobar'/>
+      <target dev='hda' bus='ide'/>
+    </disk>
+
+Fire up the virtual machine.
+
+Reference: (http://blog.codefront.net/2010/02/01/setting-up-virtualization-on-ubuntu-with-kvm/>
+
