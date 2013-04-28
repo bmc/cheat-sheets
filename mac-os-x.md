@@ -506,6 +506,8 @@ Then, start Postfix:
 
 ## Apache
 
+## Pre-Mountain Lion
+
 Enable "Personal Web Sharing" in the *System Preferences > Sharing* panel.
 
 - Personal directory is in `~/Sites`
@@ -516,6 +518,13 @@ NOTE: When you enable personal web sharing, the system creates file
 `/etc/httpd/users/$USER.conf` to contain the Apache `\<Directory\>`
 entry for the user's Sites folder. Any changes (e.g., to enable
 symlinking) must be made in there, not in `httpd.conf`.
+
+## Mountain Lion and beyond
+
+In `/etc/httpd/users`, copy `Guest.conf` to `$USER.conf`, and edit
+appropriately. Then, restart Apache:
+
+    $ sudo /usr/sbin/apachectl restart
 
 ## Running *cron*
 
