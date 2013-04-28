@@ -23,4 +23,6 @@ Use the SIMBL plug-in. Works with Safari 4.
 
 <http://en.cyan-stivy.net/safari-plugins/safarigestures/>
 
+# Getting Safari to show favicons in the tabs
 
+Use [Glims](http://www.machangout.com/).
