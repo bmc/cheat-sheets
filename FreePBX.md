@@ -1,3 +1,8 @@
+---
+title: GIMP Cheat Sheet
+layout: cheat-sheet
+---
+
 # Installation
 
 ## Copy the ISO to the SDHC card
