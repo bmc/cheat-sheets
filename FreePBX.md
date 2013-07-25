@@ -1,7 +1,9 @@
 ---
-title: GIMP Cheat Sheet
+title: FreePBX Cheat Sheet
 layout: cheat-sheet
 ---
+
+*Notes on FreePBX, IncrediblePBX, and the like.*
 
 # Installation
 
