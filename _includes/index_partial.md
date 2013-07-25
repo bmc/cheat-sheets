@@ -5,7 +5,7 @@
 * [BIND (bind)](bind.html)
 * [BitTorrent (bittorrent)](bittorrent.html)
 * [Cygwin (cygwin)](cygwin.html)
-* [GIMP (FreePBX)](FreePBX.html)
+* [FreePBX (FreePBX)](FreePBX.html)
 * [GIMP (gimp)](gimp.html)
 * [Git (git)](git.html)
 * [Gnome (gnome)](gnome.html)
