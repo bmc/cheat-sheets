@@ -1,5 +1,5 @@
 ---
-title: FreePBX Cheat Sheet
+title: PBX Cheat Sheet
 layout: cheat-sheet
 ---
 
