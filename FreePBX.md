@@ -30,6 +30,8 @@ Put the SDHC card in the Pi, attach the HDMI port to a monitor, and boot.
 * Enable the SSH daemon.
 * Reboot.
 
+# Configuration
+
 ## Configure the PBX
 
 * Connect to the web server on the Pi.
