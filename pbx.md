@@ -24,7 +24,7 @@ Put the SDHC card in the Pi, attach the HDMI port to a monitor, and boot.
 * Allow IncrediblePBX to update itself.
 * At the bash prompt, run `raspi-config`.
 * If the SD card has more than 4Gb, choose the menu item to expand the file
-  system. (The ISO is only 4Gb, and that's all the system will see, unless
+  system. (The ISO is only 4Gb, and Linux will only see that much, unless
   you expand the file system.)
 * Possibly select the overclock option, as well.
 * Enable the SSH daemon.
@@ -44,9 +44,21 @@ Easiest solution:
 
 1. Applications > Follow Me
 2. Select the extension.
-3. Select "hunt" as the Ring Strategy.
-4. Add the number, with a trailing "#", to the Follow-Me List.
+3. Select *hunt* as the Ring Strategy.
+4. Add the number, with a trailing #, to the Follow-Me List.
 5. Optional: Adjust the ring time. 
+
+**Note**: If the target of an inbound route is a ring group, rather than an
+extension, you must include a "#" on the end of the extension in the ring
+group to force Follow Me behavior.
+
+### Ensuring that the original caller ID follows a forwarded call
+
+Go into Advanced Settings and change **SIP trustrpid** and **SIP sendrpid** to
+`yes`.
+
+Also, make *sure* you don't have the Outbound CID set on the primary
+extension.
 
 # References
 
