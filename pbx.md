@@ -82,9 +82,7 @@ message ("press 1 to accept the call, 2 to reject it, 3 to listen to the
 caller ID information"). This approach provides a way to allow the callee
 to get the caller ID information, even though it's not passed along by the
 telco. **Be sure to configure enough ring time on the second ring group to
-permit the callee to listen to the message!
-
-### 
+permit the callee to listen to the message!**
 
 # References
 
