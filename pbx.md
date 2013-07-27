@@ -32,11 +32,86 @@ Put the SDHC card in the Pi, attach the HDMI port to a monitor, and boot.
 
 # Configuration
 
+In a terminal window on another machine, `ssh` into the PBX machine.
+
+## Configure MySQL
+
+The docs I've seen don't say what the IncrediblePBX distribution uses for
+the MySQL root password, and it's useful to be able to get into MySQL. Set
+the root password as follows:
+
+    # /etc/init.d/mysql stop 
+    # mysqld_safe --skip-grant-tables &
+    # mysql -u root
+    mysql> use mysql;
+    mysql> update user set password=PASSWORD("NEW-PASSWORD") where user='root';
+    mysql> flush privileges;
+    mysql> quit
+    # /etc/init.d/mysql restart
+    # mysql -u root -p
+
+## Change the host name
+
+Edit `/etc/hostname` to reflect your desired host name. Then, run:
+
+    # hostname $(cat /etc/hostname)
+    
+## Install and configure postfix
+
+This is only necessary if you prefer *postfix* to the default *exim*.
+
+    # apt-get install postfix
+
+A smart host relay is sufficient. Having a configured mail server allows
+the PBX to email voice mail audio files.
+
+### Using Gmail as a relay
+
+First, you'll need TLS support, which requires installing some supplementary
+packages.
+
+    # apt-get install libsasl2-modules
+
+Next, add the following to `/etc/postfix/main.cf`
+
+    # Use Gmail as smart relay. See
+    # http://mhawthorne.net/posts/postfix-configuring-gmail-as-relay.html and
+    # http://anothersysadmin.wordpress.com/2009/02/06/postfix-as-relay-to-a-smtp-requiring-authentication/
+    relayhost = [smtp.gmail.com]:587
+    smtp_sasl_auth_enable = yes
+    smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
+    smtp_sasl_security_options = noanonymous
+
+    smtp_use_tls = yes
+    smtp_tls_security_level = secure
+    smtp_tls_mandatory_protocols = TLSv1
+    smtp_tls_mandatory_ciphers = high
+    smtp_tls_secure_cert_match = nexthop
+    smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
+Change `masquerade_domains` appropriately, as well.
+
+Finally, you have to add authentication parameters. Create
+`/etc/postfix/sasl_password` with the following contents:
+
+    [smtp.gmail.com]:587 gmailuser:gmailpassword
+    
+Replace `gmailuser` with your Gmail login. If you use a Google Apps
+domain account, use your domain email address as the user.
+
+Then, run these commands:
+
+    # cd /etc/postfix
+    # postmap sasl_password
+    # chown postfix sasl_password*
+
+
 ## Configure the PBX
 
 * Connect to the web server on the Pi.
 * Select the administration logo. 
 * Log in as `admin`, with password `admin`.
+* Change the password, under the Admin > Administrators menu.
 
 ## Forwarding to an external number after so many rings
 
@@ -89,25 +164,23 @@ permit the callee to listen to the message!**
 This is useful if you have, say, a home line and an office line on the
 same PBX, and you want to ensure that each one uses a specific outbound route.
 
-First, install the Custom Contexts module. Then, create a context:
+Solutions proposed on the web include:
 
-* Create a custom context in Custom Contexts, which appears under the
-  Connectivity menu in IncrediblePBX. Give it a meaningful name (e.g.,
-  "from-home", "from-biz").
-* Set "Set All To" to "Allow".
-* Scroll down to the Outbound Routes and "Deny" the routes (trunks) you
-  don't want to be used.
-* Save the context.
+1. Using the complicated, and unsupported, Custom Contexts module.
+   **This is a potentially dangerous module that can totally bork your PBX.**
+2. Using something called Extension Routing, by SchmoozeCom; getting it
+   requires a complicated registration procedure at SchmoozeCom, one that
+   doesn't appear to work with Incredible PBX.
+3. Using a dial pattern to specify individual internal extension caller IDs
+   on each outbound route.
 
-Next, wire down the extension:
+# Misc. Admin
 
-* Go the extension you want to control. (If you are creating a new
-  extension, create it and save it, then reenter it)
-* You will see a drop-down for custom contexts, with "ALLOW ALL (Default)"
-  preselected. Choose the one you created above. Submit and apply.
+## Restarting Asterisk
 
-Now, whenever that extension makes a call, it will go out the trunk specified.
+    # amportal restart
 
 # References
 
+* <http://nerdvittles.com/?p=755>
 * <http://nerdvittles.com/?p=3026>
