@@ -194,6 +194,19 @@ Solutions proposed on the web include:
 
 * Go to Settings > Asterisk Logfile Settings
 
+## Backups
+
+Needless to say, it's a *really good idea* to backup your PBX. It's possible
+to screw things up beyond the point of recovery (especially using experimental
+modules like Custom Contexts).
+
+To schedule a routine backup, ensure that the Backup and Restore module is
+installed. (By default, it should be.) Then, go to Admin > Backup. The
+"Full Backup" template is a reasonable place to start.
+
+Backups are written to `/var/spool/asterisk/backup`. Copying this directory
+off to another machine is also a wise idea.
+
 # Provider-specific
 
 ## Vitelity
