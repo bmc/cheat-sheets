@@ -84,6 +84,30 @@ to get the caller ID information, even though it's not passed along by the
 telco. **Be sure to configure enough ring time on the second ring group to
 permit the callee to listen to the message!**
 
+## Ensuring that an extension only uses specific outbound routes
+
+This is useful if you have, say, a home line and an office line on the
+same PBX, and you want to ensure that each one uses a specific outbound route.
+
+First, install the Custom Contexts module. Then, create a context:
+
+* Create a custom context in Custom Contexts, which appears under the
+  Connectivity menu in IncrediblePBX. Give it a meaningful name (e.g.,
+  "from-home", "from-biz").
+* Set "Set All To" to "Allow".
+* Scroll down to the Outbound Routes and "Deny" the routes (trunks) you
+  don't want to be used.
+* Save the context.
+
+Next, wire down the extension:
+
+* Go the extension you want to control. (If you are creating a new
+  extension, create it and save it, then reenter it)
+* You will see a drop-down for custom contexts, with "ALLOW ALL (Default)"
+  preselected. Choose the one you created above. Submit and apply.
+
+Now, whenever that extension makes a call, it will go out the trunk specified.
+
 # References
 
 * <http://nerdvittles.com/?p=3026>
