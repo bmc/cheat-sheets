@@ -14,6 +14,10 @@ layout: cheat-sheet
 * Put the SDHC card in the card reader (assumes Linux).
 * Run the `make-sdhc` script that came out of the tarball.
 
+## Put the Pi on the network
+
+For security reasons, do *not* put the Pi outside your firewall!
+
 ## Boot the Pi.
 
 Put the SDHC card in the Pi, attach the HDMI port to a monitor, and boot.
@@ -29,8 +33,6 @@ Put the SDHC card in the Pi, attach the HDMI port to a monitor, and boot.
 * Possibly select the overclock option, as well.
 * Enable the SSH daemon.
 * Reboot.
-
-# Configuration
 
 In a terminal window on another machine, `ssh` into the PBX machine.
 
@@ -105,6 +107,21 @@ Then, run these commands:
     # postmap sasl_password
     # chown postfix sasl_password*
 
+## Adjust your router's firewall
+
+With your Pi behind your firewall, you'll have to open some ports. Configure
+your firewall to pass UDP ports 5060, 5061, and 10,000 through 20,000 to and
+from the Pi. If you're using a Linux-based *iptables* firewall, the following
+rules should do the trick
+
+    EXT_IF=...   # The external, Internet visible interface (e.g., eth0)
+    PBX=...      # The internal IP address of your Raspberry Pi PBX machine
+
+    iptables -t nat -A PREROUTING -i $EXT_IF -p udp -m udp \
+             -dport 10000:20000 -j DNAT --to-destination $PBX
+    iptables -t nat -A PREROUTING -i $EXT_IF -p udp -m udp \
+             -dport 5060:5061 -j DNAT --to-destination $PBX
+
 ## Configure the PBX
 
 * Connect to the web server on the Pi.
@@ -113,6 +130,8 @@ Then, run these commands:
 * Change the password, under the Admin > Administrators menu.
 * Under the Settings menu, select Asterisk Settings.
 * Set the NAT configuration.
+
+# Ongoing Configuration
 
 ## Forwarding to an external number after so many rings
 
@@ -175,6 +194,7 @@ Solutions proposed on the web include:
 3. Using a dial pattern to specify individual internal extension caller IDs
    on each outbound route.
 
+
 # Misc. Admin
 
 ## Restarting Asterisk
@@ -211,8 +231,58 @@ off to another machine is also a wise idea.
 
 ## Vitelity
 
+### Sample trunk configurations, using a subaccount
+
+#### Outbound
+
+Set **Maximum Channels** to 2.
+
+Set the **Outbound Caller ID** to the number for the DID you're using
+for outbound calls.
+
+Set the trunk name under **Outgoing Settings** (e.g., `vitel-out`).
+
+Set **PEER Details** under **Outgoing Settings** to something like the
+following. Replace the username and secret to correspond to the Vitelity
+subaccount.
+
+    type=friend
+    dtmfmode=auto
+    username=subaccount_user
+    secret=subaccount_password
+    fromuser=subaccount_user
+    trustrpid=yes
+    sendrpid=yes
+    context=ext-did
+    canreinvite=no
+    nat=yes
+    host=outbound.vitelity.net
+
+#### Inbound
+
+Set the trunk name under **Outgoing Settings** (e.g., `vitel-in`).
+
+Set **PEER Details** under **Outgoing Settings** to something like the
+following. Replace the username and secret with the credentials of the
+Vitelity subaccount you're using.
+
+    type=friend
+    dtmfmode=auto
+    username=subaccount_user
+    secret=subaccount_password
+    context=from-trunk
+    insecure=port,invite
+    canreinvite=no
+    nat=yes
+    host=inbound29.vitelity.net
+
+Set the **Register String**. Again, replace the username and secret with
+the credentials of the Vitelity subaccount you're using.
+
+    subaccount_user:subaccount_password@inbound29.vitelity.net:5060
+
 If inbound calls aren't working, be sure to set the provider route for the
-DID(s) appropriate, via the DIDs page on the Vitelity customer portal.
+DID(s) appropriately, via the DIDs page on the Vitelity customer portal.
 
 # References
 
