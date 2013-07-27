@@ -105,13 +105,14 @@ Then, run these commands:
     # postmap sasl_password
     # chown postfix sasl_password*
 
-
 ## Configure the PBX
 
 * Connect to the web server on the Pi.
 * Select the administration logo. 
 * Log in as `admin`, with password `admin`.
 * Change the password, under the Admin > Administrators menu.
+* Under the Settings menu, select Asterisk Settings.
+* Set the NAT configuration.
 
 ## Forwarding to an external number after so many rings
 
@@ -179,6 +180,26 @@ Solutions proposed on the web include:
 ## Restarting Asterisk
 
     # amportal restart
+    
+## Changing the log level
+
+**First, ensure that the FreePBX Asterisk Logfiles module is installed.**
+
+* Within the FreePBX web UI, go to Admin > Module Admin
+* Click the Check Online button
+* Location the Asterisk Logfiles module and install it, if it isn't
+  already installed.
+  
+**Next, adjust the logging.**
+
+* Go to Settings > Asterisk Logfile Settings
+
+# Provider-specific
+
+## Vitelity
+
+If inbound calls aren't working, be sure to set the provider route for the
+DID(s) appropriate, via the DIDs page on the Vitelity customer portal.
 
 # References
 
