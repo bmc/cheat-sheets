@@ -194,6 +194,17 @@ Solutions proposed on the web include:
 3. Using a dial pattern to specify individual internal extension caller IDs
    on each outbound route.
 
+(I have not gotten this working yet.)
+
+## Modifying the inbound caller ID.
+
+* Install the Set Caller ID module. This module works as a filter.
+* Create a new Set Caller ID, editing the inbound caller ID as appropriate.
+* Set the new Set Caller ID's destination to be the desired extension or
+  ring group. If adding a prefix (e.g., "H" to indicate that the call came
+  into the home line), it's best just to modify the caller ID name.
+* Go to the appropriate inbound route and set its destination to the new
+  Set Caller ID.
 
 # Misc. Admin
 
