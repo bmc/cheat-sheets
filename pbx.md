@@ -295,6 +295,17 @@ the credentials of the Vitelity subaccount you're using.
 If inbound calls aren't working, be sure to set the provider route for the
 DID(s) appropriately, via the DIDs page on the Vitelity customer portal.
 
+# Troubleshooting
+
+## Can't access voicemail
+
+### Password not accepted
+
+You enter the password on the phone handset, but it isn't accepted. Common
+problem: The phone isn't a SIP phone, and you're using an adapter, but the
+adapter's DTMF method isn't set to "SIP INFO" for that extension. Set the
+DTMF method to "SIP INFO" and try aagain.
+
 # References
 
 * <http://nerdvittles.com/?p=755>
