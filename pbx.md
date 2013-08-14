@@ -308,5 +308,5 @@ DTMF method to "SIP INFO" and try aagain.
 
 # References
 
-* <http://nerdvittles.com/?p=755>
-* <http://nerdvittles.com/?p=3026>
+* _A Newcomer's Guide to PBX in a Flash_: <http://nerdvittles.com/?p=755>
+* Incredible PBX Quick Start Guide: <http://nerdvittles.com/?p=3026>
