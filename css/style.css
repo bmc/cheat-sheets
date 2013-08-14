@@ -68,3 +68,13 @@ div#content
     margin-left: 3em;
     margin-right: 3em;
 }
+
+div.footer
+{
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: smaller;
+    font-style: italic;
+}
+

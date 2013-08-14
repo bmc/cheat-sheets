@@ -304,7 +304,7 @@ DID(s) appropriately, via the DIDs page on the Vitelity customer portal.
 You enter the password on the phone handset, but it isn't accepted. Common
 problem: The phone isn't a SIP phone, and you're using an adapter, but the
 adapter's DTMF method isn't set to "SIP INFO" for that extension. Set the
-DTMF method to "SIP INFO" and try aagain.
+DTMF method to "SIP INFO" and try again.
 
 # References
 
