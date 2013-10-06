@@ -75,3 +75,12 @@ From an existing repo:
 # Mark conflict resolved
 
     $ git add file
+
+# Rename a tag
+
+From <http://stackoverflow.com/questions/1028649/rename-a-tag-in-git>:
+
+    git tag new old
+    git tag -d old
+    git push origin :refs/tags/old
+    git push --tags
