@@ -56,6 +56,8 @@ Here are the actual commands, in scrape-friendly form:
 
     git clone http://github.com/bmc/cheat-sheets
     gem install bundler
+    cd cheat-sheets
+    git checkout gh-pages
     bundle install
     bundle exec rake
 
