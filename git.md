@@ -6,6 +6,7 @@ layout: cheat-sheet
 # Useful Cheat Sheets on the Web
 
 * <http://daniel.debian.net/documents/cheatpages/git.html>
+* Hywel Carter's [Conceptual Git Cheatsheet](http://startuptechnology.files.wordpress.com/2013/11/git_cheatsheet.pdf) (PDF)
 * GitHub
 
 # Get rid of "push" warning
