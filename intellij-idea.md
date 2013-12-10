@@ -1,5 +1,5 @@
 ---
-title: Rake Cheat Sheet
+title: IntelliJ IDEA Cheat Sheet
 layout: cheat-sheet
 ---
 
