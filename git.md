@@ -85,3 +85,28 @@ From <http://stackoverflow.com/questions/1028649/rename-a-tag-in-git>:
     git tag -d old
     git push origin :refs/tags/old
     git push --tags
+
+# Diff two versions of the same file
+
+    git diff hash1..hash2 -- path/to/file
+
+### Determine which branch contains a change
+
+    $ git branch --contains 2039f3
+
+### Display which files were in a commit:
+
+    $ git diff-tree --no-commit-id --name-only -r bd61ad98 # method 1
+    $ git show --pretty="format:" --name-only bd61ad98     # method 2
+
+If you do this a lot, consider creating an alias by adding an entry to the
+`[alias]` section of your `$HOME/.gitconfig` file:
+
+    [alias]
+    files = diff-tree --no-commit-id --name-only -r
+
+Once you've saved the alias, you can simply type:
+
+    $ git files bd61ad98
+
+to see the files in a particular commit.
