@@ -13,7 +13,7 @@ the repo, they automatically show up at
 [_software.clapper.org/cheat-sheets/_][cheat-sheets].
 
 Because the repo is just a Jekyll site, you can build it locally, as well.
-See below.
+See below for instructions on how to do that.
 
 [Jekyll]: http://jekyllrb.com
 [cheat-sheets]: http://software.clapper.org/cheat-sheets/
