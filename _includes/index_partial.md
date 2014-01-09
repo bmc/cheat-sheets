@@ -11,7 +11,6 @@
 * [GTK2 (gtk2)](gtk2.html)
 * [GuruPlug (guruplug)](guruplug.html)
 * [IntelliJ IDEA (intellij-idea)](intellij-idea.html)
-* [IntelliJ IDEA (intellij-idea)](intellij-idea.html)
 * [iPad (ipad)](ipad.html)
 * [Linksys WAP54G WAP (linksys-wap54g)](linksys-wap54g.html)
 * [Linksys WRT52G2 Router (linksys-wrt52g2)](linksys-wrt52g2.html)
