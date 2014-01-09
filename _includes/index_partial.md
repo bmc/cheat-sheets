@@ -30,7 +30,7 @@
 * [QuickBooks (quickbooks)](quickbooks.html)
 * [Rails (rails)](rails.html)
 * [Rake (rake)](rake.html)
-* [Rake (intellij-idea)](intellij-idea.html)
+* [IntelliJ IDEA (intellij-idea)](intellij-idea.html)
 * [Ruby (ruby)](ruby.html)
 * [Safari (safari)](safari.html)
 * [SBT (sbt)](sbt.html)
