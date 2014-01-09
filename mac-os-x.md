@@ -33,45 +33,14 @@ First, create directory `/Library/Local`. Then, create file
 
 Use individual `.on-login.sh` scripts in user directories.
 
-# Mail.app
-
-## Editing content in a text editor
-
-Use [QuickCursor][].
-
-[QuickCursor]: http://www.hogbaysoftware.com/products/quickcursor
-
-## Adding multiple identities
-
-Currently, it cannot be done through the UI. However, it can easily be done
-by editing `~/Library/Mail.app/V2/MailData/Accounts.plist` and adding the
-alias there.
-
-See <http://simon.heimlicher.com/articles/2011/08/02/multiple-identities-mail>.
-
-## Enabling Bottom Posting
-
-Use the QuoteFix plugin: <http://code.google.com/p/quotefixformac/>
-
-## Adding a quote to the bottom of a signature
-
-See: <https://github.com/bmc/applescripts/blob/master/Mail/fortune-sig.applescript>
-
 # User Interface
 
 ## Focus follows mouse
 
-Support is limited currently. But, courtesy of
-<http://www.macosxhints.com/article.php?story=20031029203936659>
+The Mac is terrible at this capability. There _are_ some workarounds, including:
 
-> A feature that I've long waited for -- window focus that follows the
-> mouse between terminal windows -- has finally been added (in a hidden
-> manner) to the 10.3 Terminal application. From the Terminal, type:
->
->     defaults write com.apple.Terminal FocusFollowsMouse -string YES
->
-> Quit and restart the Terminal and enjoy! Now if I only had window
-> autoraise, I'd be in heaven!
+* <http://georgepavlides.info/mac-os-x-maverick-and-focus-follows-mouse-x-mouse-functionality/>
+* For the Terminal.app application: <http://www.defaults-write.com/os-x-terminal-activate-focus-follow/>
 
 ## Capturing the screen
 
