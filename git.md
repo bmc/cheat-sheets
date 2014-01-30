@@ -110,3 +110,16 @@ Once you've saved the alias, you can simply type:
     $ git files bd61ad98
 
 to see the files in a particular commit.
+
+# Show an old version of a file
+
+<http://stackoverflow.com/questions/338436/is-there-a-quick-git-command-to-see-an-old-version-of-a-file>
+
+General form:
+
+    $ git show REVISION:path/to/file
+
+Example:
+
+    $ git show HEAD~4:src/main.c
+
