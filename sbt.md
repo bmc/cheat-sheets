@@ -5,15 +5,13 @@ layout: cheat-sheet
 
 # Releasing/Publishing
 
-First, ensure that the GPG plugin is available. Either in the project plugins
-file or in `$HOME/.sbt/plugins/build.sbt`, include:
-
-    addSbtPlugin("com.jsuereth" % "xsbt-gpg-plugin" % "0.6")
+First, ensure that the PGP plugin is available. See
+<http://www.scala-sbt.org/sbt-pgp/>.
 
 After `compile` and `test`, run a `+publish-local`. If that goes well,
 run `+publish`.
 
-    sbt> +publish
+    sbt> publishSigned
 
 Next, follow the steps for deploying to Sonatype. See
 <http://www.scala-sbt.org/using_sonatype.html>. That page also spells out
