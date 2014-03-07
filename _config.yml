@@ -1,3 +1,5 @@
 exclude: README.md
 pygments: true
 markdown: kramdown
+kramdown:
+  input: GFM

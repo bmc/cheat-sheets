@@ -78,3 +78,10 @@ div.footer
     font-style: italic;
 }
 
+table
+{
+    margin-top: 1em;
+    margin-left: 40px;
+    border: 1px solid #aaa;
+    padding: 5px;
+}

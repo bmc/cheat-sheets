@@ -133,6 +133,52 @@ rules should do the trick
 
 # Ongoing Configuration
 
+## Configure routes
+
+Configure your trunks. (If using Vitelity, see below.)
+
+### Inbound route
+
+Define a new incoming route and set the **DID Number** field to the number
+associated with the trunk. You must ensure that the trunk passes the associated
+DID number, or routing won't work.
+
+Be sure to define a destination (e.g., a ring group or extension.)
+
+### Outbound route
+
+Define the route as normal, but be sure to use dial patterns so that outbound
+calls match the route.
+
+#### Configuration for a single default outbound route
+
+
+| Route Settings                                    |
+| :-------------- | ------------------------------- |
+|                 |                                 |
+| Route Name      | _routename_                     |
+| Route CID       | _CID_                           |
+| Route Password  |                                 |
+| Route Type      | [ ] Emergency [ ] Intra-Company |
+| Music On Hold?  | [default]                       |
+| Time Group      | [--Permanent Route--]           |
+| Route Position  | [--No Change--]                 |
+|                 |                                 |
+| **Additional Settings**                           |
+|                 |                                 |
+| Call Recording  | [Allow  ]                       |
+|                 |                                 |
+| **Dial Patterns that will use this Route**        |
+|                 |                                 |
+| :------------------------------------------------ |
+| (.......) +  [........] \| [1NXXNXXXXXX] / .....] |
+| (.......) +  [........] \| [N11........] / .....] |
+| (.......) +  [........] \| [NXXNXXXXXX.] / .....] |
+| (.......) +  [........] \| [NXXXXXX....] / .....] |
+
+
+(Dots in the above indicate blanks.)
+
 ## Forwarding to an external number after so many rings
 
 Two simple solutions:
@@ -264,16 +310,16 @@ subaccount.
     fromuser=subaccount_user
     trustrpid=yes
     sendrpid=yes
-    context=ext-did
+    context=from-trunk
     canreinvite=no
     nat=yes
     host=outbound.vitelity.net
 
 #### Inbound
 
-Set the trunk name under **Outgoing Settings** (e.g., `vitel-in`).
+Set the trunk name under **Incoming Settings** (e.g., `vitel-in`).
 
-Set **PEER Details** under **Outgoing Settings** to something like the
+Set **USER Details** under **Incoming Settings** to something like the
 following. Replace the username and secret with the credentials of the
 Vitelity subaccount you're using.
 
