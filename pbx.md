@@ -131,11 +131,103 @@ rules should do the trick
 * Under the Settings menu, select Asterisk Settings.
 * Set the NAT configuration.
 
-# Ongoing Configuration
+# Configuring Trunks
 
-## Configure routes
+## Google Voice
 
-Configure your trunks. (If using Vitelity, see below.)
+Log into your Google Voice account. In _Settings_, set:
+
+* **Call Screening** – _off_
+* **Caller ID (incoming)** – _Display caller's number_
+* **Do Not Disturb** – _off_
+* **Missed Calls** – both options should be _unchecked_
+* **Call Options (Enable Recording)** – _off_
+* **Global Spam Filtering** – _on_
+
+Next, set up a trunk in the PBX. Under _Connectivity_, select 
+_Google Voice (Motif)_. Create a new Google Voice trunk:
+
+| Typical Settings                                                           |
+| :---------------------------------------- | ------------------------------ |
+|                                           |                                |
+| Google Voice Username                     | _google username_ (see Note 1) |
+| Google Voice Password                     | _password_                     |
+| Google Voice Phone Number                 | _phone number_ (see Note 2)    |
+| Edit Trunk                                | checked                        |
+| Edit Outbound Routes                      | checked                        |
+| Send Unanswered Calls to Google Voicemail | _un_checked                    |
+| ----------------------------------------- | ------------------------------ |
+
+Leave all other settings alone.
+
+**Note 1**: If you're using a regular Gmail account with Google voice, your
+username should be _only_ your username, with no "@gmail.com". If you're using
+a hosted Google Apps account, specify the username _and_ the domain name.
+
+**Note 2**: Specify the number without spaces or hyphens.
+
+You'll need to set an appropriate inbound route. (See below.) You can also
+use Google Voice as your outbound route.
+
+## Vitelity
+
+### Sample trunk configurations, using a subaccount
+
+#### Outbound
+
+Set **Maximum Channels** to 2.
+
+Set the **Outbound Caller ID** to the number for the DID you're using
+for outbound calls.
+
+Set the trunk name under **Outgoing Settings** (e.g., `vitel-out`).
+
+Set **PEER Details** under **Outgoing Settings** to something like the
+following. Replace the username and secret to correspond to the Vitelity
+subaccount.
+
+    type=friend
+    dtmfmode=auto
+    username=subaccount_user
+    secret=subaccount_password
+    fromuser=subaccount_user
+    trustrpid=yes
+    sendrpid=yes
+    context=from-trunk
+    canreinvite=no
+    nat=yes
+    host=outbound.vitelity.net
+
+#### Inbound
+
+Set the trunk name under **Incoming Settings** (e.g., `vitel-in`).
+
+Set **USER Details** under **Incoming Settings** to something like the
+following. Replace the username and secret with the credentials of the
+Vitelity subaccount you're using.
+
+    type=friend
+    dtmfmode=auto
+    username=subaccount_user
+    secret=subaccount_password
+    context=from-trunk
+    insecure=port,invite
+    canreinvite=no
+    nat=yes
+    host=inbound29.vitelity.net
+
+Set the **Register String**. Again, replace the username and secret with
+the credentials of the Vitelity subaccount you're using.
+
+    subaccount_user:subaccount_password@inbound29.vitelity.net:5060
+
+If inbound calls aren't working, be sure to set the provider route for the
+DID(s) appropriately, via the DIDs page on the Vitelity customer portal.
+
+
+# Configuring routes
+
+Configure your trunks. (See above)
 
 ### Inbound route
 
@@ -144,6 +236,10 @@ associated with the trunk. You must ensure that the trunk passes the associated
 DID number, or routing won't work.
 
 Be sure to define a destination (e.g., a ring group or extension.)
+
+**Google Voice Note**: If you want to route from a Google Voice trunk, just
+create a new route and put the Google Voice number in the **DID Number**
+field.
 
 ### Outbound route
 
@@ -284,62 +380,6 @@ installed. (By default, it should be.) Then, go to Admin > Backup. The
 Backups are written to `/var/spool/asterisk/backup`. Copying this directory
 off to another machine is also a wise idea.
 
-# Provider-specific
-
-## Vitelity
-
-### Sample trunk configurations, using a subaccount
-
-#### Outbound
-
-Set **Maximum Channels** to 2.
-
-Set the **Outbound Caller ID** to the number for the DID you're using
-for outbound calls.
-
-Set the trunk name under **Outgoing Settings** (e.g., `vitel-out`).
-
-Set **PEER Details** under **Outgoing Settings** to something like the
-following. Replace the username and secret to correspond to the Vitelity
-subaccount.
-
-    type=friend
-    dtmfmode=auto
-    username=subaccount_user
-    secret=subaccount_password
-    fromuser=subaccount_user
-    trustrpid=yes
-    sendrpid=yes
-    context=from-trunk
-    canreinvite=no
-    nat=yes
-    host=outbound.vitelity.net
-
-#### Inbound
-
-Set the trunk name under **Incoming Settings** (e.g., `vitel-in`).
-
-Set **USER Details** under **Incoming Settings** to something like the
-following. Replace the username and secret with the credentials of the
-Vitelity subaccount you're using.
-
-    type=friend
-    dtmfmode=auto
-    username=subaccount_user
-    secret=subaccount_password
-    context=from-trunk
-    insecure=port,invite
-    canreinvite=no
-    nat=yes
-    host=inbound29.vitelity.net
-
-Set the **Register String**. Again, replace the username and secret with
-the credentials of the Vitelity subaccount you're using.
-
-    subaccount_user:subaccount_password@inbound29.vitelity.net:5060
-
-If inbound calls aren't working, be sure to set the provider route for the
-DID(s) appropriately, via the DIDs page on the Vitelity customer portal.
 
 # Troubleshooting
 
