@@ -90,6 +90,14 @@ Use Radio Tray. See <http://itsfoss.com/radio-tray-ubuntu/>. To install:
 
 ----
 
+# Unity
+
+## Emacs key bindings
+
+    $ gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+ 
+----
+
 # Network
 
 ## Setting up an FTP server
