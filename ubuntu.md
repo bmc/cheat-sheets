@@ -78,6 +78,18 @@ Be sure the Wifi switch on the side of the laptop is on!
 
 ----
 
+# Music and Audio
+
+## Streaming Radio
+
+Use Radio Tray. See <http://itsfoss.com/radio-tray-ubuntu/>. To install:
+
+    sudo add-apt-repository ppa:eugenesan/ppa
+    sudo apt-get update
+    sudo apt-get install radiotray
+
+----
+
 # Network
 
 ## Setting up an FTP server
