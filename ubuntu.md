@@ -90,6 +90,14 @@ Easiest procedure is here: <https://help.ubuntu.com/10.04/serverguide/network-co
 
 ----
 
+# Java
+
+## Adding the Oracle JDK via PPA
+
+See <http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html>
+
+----
+
 # Miscellaneous System Administration
 
 ## Rough equivalent to "chkconfig"
