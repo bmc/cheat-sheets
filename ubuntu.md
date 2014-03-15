@@ -95,6 +95,22 @@ Use Radio Tray. See <http://itsfoss.com/radio-tray-ubuntu/>. To install:
 ## Emacs key bindings
 
     $ gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+
+## Allow X server to listen for TCP connections
+
+Ubuntu uses [LightDM][]. To tell LightDM to allow incoming TCP connections
+(controlled via _xhost_ settings, of course), modify
+`/etc/lightdm/lightdm.conf` so that the `[SeatDefaults]` section contains
+`xserver-allow-tcp=true`. For example:
+
+    [SeatDefaults]
+    autologin-guest=false
+    autologin-user=oem
+    autologin-user-timeout=0
+    autologin-session=lightdm-autologin
+    xserver-allow-tcp=true
+
+[LightDM]: http://www.freedesktop.org/wiki/Software/LightDM/
  
 ----
 
