@@ -110,6 +110,10 @@ Ubuntu uses [LightDM][]. To tell LightDM to allow incoming TCP connections
     autologin-session=lightdm-autologin
     xserver-allow-tcp=true
 
+Then, log out, and from a remote terminal window, type:
+
+    $ sudo restart lightdm
+
 [LightDM]: http://www.freedesktop.org/wiki/Software/LightDM/
  
 ----
