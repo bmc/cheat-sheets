@@ -90,6 +90,14 @@ Use Radio Tray. See <http://itsfoss.com/radio-tray-ubuntu/>. To install:
 
 ----
 
+# Video
+
+## Getting Netflix to work on Ubuntu
+
+See <http://www.webupd8.org/2013/08/pipelight-use-silverlight-in-your-linux.html>
+
+----
+
 # Unity
 
 ## Emacs key bindings
