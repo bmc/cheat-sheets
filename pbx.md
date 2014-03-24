@@ -348,6 +348,40 @@ Solutions proposed on the web include:
 * Go to the appropriate inbound route and set its destination to the new
   Set Caller ID.
 
+# Hold Music
+
+## Converting the music file
+
+FreePBX works best with 8- or 16-bit monoaural, 8,000-Hz WAV files. If
+you're starting with an MP3, first convert it to a WAV file:
+
+    $ lame --decode mymusic.mp3 mymusic.wav
+    
+Then, use `sox` to convert it to the correct format:
+
+    $ sox mymusic.wav -r 8000 -s -b 8 -c 1 mymusic2.wav
+
+## Installing the music file
+
+FreePBX support hold music categories. While the _Settings > Music On Hold_
+screen supports uploading files and creating new categories, it doesn't always
+work. It's easier to do the whole thing from the command line.
+
+* Copy your converted WAV file(s) to the PBX machine.
+* SSH into the PBX.
+* `cd` to `/var/lib/asterisk/moh`
+* If you want the new music to be in the `Default` category, copy the WAV
+  files to that directory. Otherwise, create a subdirectory for the new
+  category (e.g., `mkdir Classical` for a "Classical" category), and copy
+  the WAV files into that directory.
+* Restart the PBX via: `amportal restart`
+* Log into the PBX web portal, go to _Settings > Music On Hold_, and verify
+  that (a) the new category is there and (b) the files you copied are listed.
+  
+## Using the new category
+
+The on-hold music category is specified in the Inbound Routes configuration.
+
 # Misc. Admin
 
 ## Restarting Asterisk
