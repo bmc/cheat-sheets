@@ -2,3 +2,4 @@ _site
 .on*.bash
 *.sublime-*
 *.log
+.ruby*
