@@ -100,6 +100,14 @@ See <http://www.webupd8.org/2013/08/pipelight-use-silverlight-in-your-linux.html
 
 # Unity
 
+## Themes
+
+There are numerous Unity themes out there. This site lists a few of the best:
+<http://itsfoss.com/best-themes-ubuntu-1310/>
+
+Once a theme is installed, it can be previewed and activated via the
+Unity Tweak Tool.
+
 ## Emacs key bindings
 
     $ gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
