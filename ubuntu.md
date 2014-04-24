@@ -5,6 +5,25 @@ layout: cheat-sheet
 
 # Devices
 
+## Apple Magic Mouse
+
+### Setting the scroll speed
+
+Create `/etc/modprobe.d/hid-magicmouse`, with the following contents:
+
+    options hid_magicmouse scroll-speed=55 scroll-acceleration=1
+
+The scroll speed value is a number from 0 (slow) to 63 (fast).
+
+To force a change, reload the module:
+
+    $ sudo rmmod hid_magicmouse
+    $ sudo modprobe hid_magicmouse
+
+To check that the value was properly picked up on reload:
+
+    $ cat /sys/module/hid_magicmouse/parameters/scroll_speed              
+
 ## APC Back UPS
 
 Adapted from <http://www.panticz.de/APC-Back-UPS-ES-700G-under-Ubuntu>.
