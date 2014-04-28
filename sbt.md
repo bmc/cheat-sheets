@@ -13,6 +13,8 @@ run `+publish-signed`.
 
     sbt> publish-signed
 
+(For local publishing, use `publish-local-signed`.)
+
 Next, follow the steps for deploying to Sonatype. See
 <http://www.scala-sbt.org/using_sonatype.html>. That page also spells out
 the POM extras and other data necessary to publish to Sonatype.
