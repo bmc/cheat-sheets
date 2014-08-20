@@ -8,10 +8,12 @@ layout: cheat-sheet
 First, ensure that the PGP plugin is available. See
 <http://www.scala-sbt.org/sbt-pgp/>.
 
-After `compile` and `test`, run a `+publish-local`. If that goes well,
-run `+publish`.
+After `compile` and `test`, run a `+publish-local-signed`. If that goes well,
+run `+publish-signed`.
 
-    sbt> publishSigned
+    sbt> publish-signed
+
+(For local publishing, use `publish-local-signed`.)
 
 Next, follow the steps for deploying to Sonatype. See
 <http://www.scala-sbt.org/using_sonatype.html>. That page also spells out
