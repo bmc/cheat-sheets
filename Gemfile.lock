@@ -9,6 +9,7 @@ GEM
     directory_watcher (1.4.1)
     fast-stemmer (1.0.1)
     ffi (1.0.11)
+    iconv (1.0.4)
     jekyll (0.11.2)
       albino (~> 1.3)
       classifier (~> 1.3)
@@ -34,6 +35,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  iconv
   jekyll
   kramdown
   pygments.rb

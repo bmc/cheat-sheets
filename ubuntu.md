@@ -119,6 +119,17 @@ See <http://www.webupd8.org/2013/08/pipelight-use-silverlight-in-your-linux.html
 
 # Unity
 
+## Disabling Alt-Space keybinding
+
+This keybinding gets in the way of (my) Emacs bindings. To disable it,
+install the Compiz Settings Manager:
+
+    $ sudo apt-get install compizconfig-settings-manager
+
+Then, fire it up, go to the Ubuntu Unity Plugin (you may have to enable it
+first), and disable the "Key to show the menu bar when pressed" shortcut under
+the General tab.
+
 ## Themes
 
 There are numerous Unity themes out there. This site lists a few of the best:
