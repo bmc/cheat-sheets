@@ -144,6 +144,9 @@ Log into your Google Voice account. In _Settings_, set:
 * **Call Options (Enable Recording)** – _off_
 * **Global Spam Filtering** – _on_
 
+*NOTE* Disable 2-factor authentication on the account, or the PBX won't be
+able to log in.
+
 Next, set up a trunk in the PBX. Under _Connectivity_, select 
 _Google Voice (Motif)_. Create a new Google Voice trunk:
 
