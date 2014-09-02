@@ -45,3 +45,17 @@ For instance, to resize the VDI to 100 Gb, use:
 ## Windows 7
 
 See <http://www.howtogeek.com/howto/windows-vista/resize-a-partition-for-free-in-windows-vista/>
+
+## USB devices
+
+(Including host web cam)
+
+See <https://www.virtualbox.org/manual/ch03.html#idp50191904>
+
+With Linux hosts, this is _necessary_: "On newer Linux hosts, VirtualBox
+accesses USB devices through special files in the file system. When VirtualBox
+is installed, these are made available to all users in the `vboxusers` system
+group. In order to be able to access USB from guest systems, make sure that
+you are a member of this group."
+
+If you are not in `vboxusers`, you will _not_ be able to see any USB devices.
