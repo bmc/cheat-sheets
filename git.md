@@ -123,3 +123,12 @@ Example:
 
     $ git show HEAD~4:src/main.c
 
+# Sync a forked repo
+
+See <https://help.github.com/articles/syncing-a-fork/>. In short:
+
+    git remote add forked {url-to-original-repo}
+    git fetch forked
+    git checkout master
+    git merge forked/master
+    git push origin master
