@@ -34,7 +34,7 @@ MD_FILES = FileList['*.md'].exclude("README.md", "index.md")
 task :default => [:jekyll]
 
 task :jekyll => [:clean, INDEX_PARTIAL] do |t|
-  sh 'jekyll'
+  sh 'jekyll', 'build'
 end
 
 task :index_partial => INDEX_PARTIAL
