@@ -42,7 +42,7 @@ The docs I've seen don't say what the IncrediblePBX distribution uses for
 the MySQL root password, and it's useful to be able to get into MySQL. Set
 the root password as follows:
 
-    # /etc/init.d/mysql stop 
+    # /etc/init.d/mysql stop
     # mysqld_safe --skip-grant-tables &
     # mysql -u root
     mysql> use mysql;
@@ -57,7 +57,7 @@ the root password as follows:
 Edit `/etc/hostname` to reflect your desired host name. Then, run:
 
     # hostname $(cat /etc/hostname)
-    
+
 ## Install and configure postfix
 
 This is only necessary if you prefer *postfix* to the default *exim*.
@@ -97,7 +97,7 @@ Finally, you have to add authentication parameters. Create
 `/etc/postfix/sasl_password` with the following contents:
 
     [smtp.gmail.com]:587 gmailuser:gmailpassword
-    
+
 Replace `gmailuser` with your Gmail login. If you use a Google Apps
 domain account, use your domain email address as the user.
 
@@ -125,7 +125,7 @@ rules should do the trick
 ## Configure the PBX
 
 * Connect to the web server on the Pi.
-* Select the administration logo. 
+* Select the administration logo.
 * Log in as `admin`, with password `admin`.
 * Change the password, under the Admin > Administrators menu.
 * Under the Settings menu, select Asterisk Settings.
@@ -147,7 +147,7 @@ Log into your Google Voice account. In _Settings_, set:
 *NOTE* Disable 2-factor authentication on the account, or the PBX won't be
 able to log in.
 
-Next, set up a trunk in the PBX. Under _Connectivity_, select 
+Next, set up a trunk in the PBX. Under _Connectivity_, select
 _Google Voice (Motif)_. Create a new Google Voice trunk:
 
 | Typical Settings                                                           |
@@ -288,7 +288,7 @@ Two simple solutions:
 2. Select the extension.
 3. Select *hunt* as the Ring Strategy.
 4. Add the number, with a trailing #, to the Follow-Me List.
-5. Optional: Adjust the ring time. 
+5. Optional: Adjust the ring time.
 
 **Note**: If the target of an inbound route is a ring group, rather than an
 extension, you must include a "#" on the end of the extension in the ring
@@ -359,7 +359,7 @@ FreePBX works best with 8- or 16-bit monoaural, 8,000-Hz WAV files. If
 you're starting with an MP3, first convert it to a WAV file:
 
     $ lame --decode mymusic.mp3 mymusic.wav
-    
+
 Then, use `sox` to convert it to the correct format:
 
     $ sox mymusic.wav -r 8000 -s -b 8 -c 1 mymusic2.wav
@@ -380,7 +380,7 @@ work. It's easier to do the whole thing from the command line.
 * Restart the PBX via: `amportal restart`
 * Log into the PBX web portal, go to _Settings > Music On Hold_, and verify
   that (a) the new category is there and (b) the files you copied are listed.
-  
+
 ## Using the new category
 
 The on-hold music category is specified in the Inbound Routes configuration.
@@ -390,7 +390,7 @@ The on-hold music category is specified in the Inbound Routes configuration.
 ## Restarting Asterisk
 
     # amportal restart
-    
+
 ## Changing the log level
 
 **First, ensure that the FreePBX Asterisk Logfiles module is installed.**
@@ -399,16 +399,16 @@ The on-hold music category is specified in the Inbound Routes configuration.
 * Click the Check Online button
 * Location the Asterisk Logfiles module and install it, if it isn't
   already installed.
-  
+
 **Next, adjust the logging.**
 
 * Go to Settings > Asterisk Logfile Settings
 
 ## Backups
 
-Needless to say, it's a *really good idea* to backup your PBX. It's possible
-to screw things up beyond the point of recovery (especially using experimental
-modules like Custom Contexts).
+Needless to say, it's a *really good idea* to backup your PBX. It's
+possible to screw things up beyond the point of recovery (especially using
+experimental modules like Custom Contexts).
 
 To schedule a routine backup, ensure that the Backup and Restore module is
 installed. (By default, it should be.) Then, go to Admin > Backup. The
@@ -428,6 +428,108 @@ You enter the password on the phone handset, but it isn't accepted. Common
 problem: The phone isn't a SIP phone, and you're using an adapter, but the
 adapter's DTMF method isn't set to "SIP INFO" for that extension. Set the
 DTMF method to "SIP INFO" and try again.
+
+# Feature Codes
+
+These are the default settings. To change them, use the web admin UI and
+go to _Admin | Feature Codes_.
+
+| Feature                                                      | Code    |
+|-------------------------------------------------------------:|:--------|
+|                                                                        |
+| **_Blacklist_**                                                        |
+|                                                                        |
+| Blacklist a number                                           | *30     |
+| Blacklist the last caller                                    | *32     |
+| Remove a number from the blacklist 			       | *31     |
+|                                                                        |
+| **_Call Forward_**                                                     |
+|                                                                        |
+| Call Forward All Activate                                    | *72     |
+| Call Forward All Deactivate                                  | *73     |
+| Call Forward All Prompting Activate                          | *720    |
+| Call Forward All Prompting Deactivate                        | *74     |
+| Call Forward Busy Activate                                   | *90     |
+| Call Forward Busy Deactivate                                 | *91     |
+| Call Forward Busy Prompting Activate                         | *900    |
+| Call Forward Busy Prompting Deactivate                       | *92     |
+| Call Forward No Answer/Unavailable Activate                  | *52     |
+| Call Forward No Answer/Unavailable Deactivate                | *53     |
+| Call Forward No Answer/Unavailable Prompting Activate        | *520    |
+| Call Forward Toggle                                          | *740    |
+|                                                                        |
+| **_Call Waiting_**                                                     |
+|                                                                        |
+| Call Waiting - Activate                                      | *70     |
+| Call Waiting - Deactivate                                    | *71     |
+|                                                                        |
+| **_Conferences_**                                                      |
+|                                                                        |
+| Conference Status                                            | *87     |
+|                                                                        |
+| **_Core_**                                                             |
+|                                                                        |
+| Asterisk General Call Pickup                                 | *8      |
+| ChanSpy                                                      | 555     |
+| Directed Call Pickup                                         | \*\*    |
+| In-Call Asterisk Attended Transfer                           | *2      |
+| In-Call Asterisk Blind Transfer                              | ##      |
+| In-Call Asterisk Disconnect Code                             | \*\*    |
+| In-Call Asterisk Toggle Call Recording                       | *1      |
+| Simulate Incoming Call                                       | 7777    |
+| User Logoff                                                  | *12     |
+| User Logon                                                   | *11     |
+| ZapBarge                                                     | 888     |
+|                                                                        |
+| **_Do-Not-Disturb (DND)_**                                             |
+|                                                                        |
+| DND Activate                                                 | *78     |
+| DND Deactivate                                               | *79     |
+| DND Toggle                                                   | *76     |
+|                                                                        |
+| **_Fax Configuration_**                                                |
+|                                                                        |
+| Dial System FAX                                              | 666     |
+|                                                                        |
+| **_Follow Me_**                                                        |
+|                                                                        |
+| Findme Follow Toggle                                         | *21     |
+|                                                                        |
+| **_Wake Up Calls_**                                                    |
+|                                                                        |
+| Wake Up Calls                                                | *68     |
+|                                                                        |
+| **_Info Services_**                                                    |
+|                                                                        |
+| Call Trace                                                   | *69     |
+| Echo Test                                                    | *43     |
+| Speak Your Exten Number                                      | *65     |
+| Speaking Clock                                               | *60     |
+|                                                                        |
+| **_Misc Applications_**                                                |
+|                                                                        |
+| Apps IVR Demo                                                | 3366    |
+| Time of Day                                                  | *61     |
+|                                                                        |
+| **_Parking Lot_**                                                      |
+|                                                                        |
+| Pickup ParkedCall Prefix                                     | *85     |
+|                                                                        |
+| **_Recordings_**                                                       |
+|                                                                        |
+| Check Recording                                              | *99     |
+| Save Recording                                               | *77     |
+|                                                                        |
+| **_Time Conditions_**                                                  |
+|                                                                        |
+| All: Time Condition Override                                 | *27     |
+|                                                                        |
+| **_Voicemail_**                                                        |
+|                                                                        |
+| Dial Voicemail                                               | *98     |
+| Direct Dial Prefix                                           | *       |
+| My Voicemail                                                 | *97     |
+
 
 # References
 

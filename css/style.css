@@ -1,87 +1,97 @@
-body
-{
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11pt;
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
 }
 
-h1
-{
-    color: #d00000;
-    font-size: 16pt;
+h1 {
+  color: #d00000;
+  font-size: 16pt;
 }
 
-#title
-{
-    color: black;
-    font-size: 18pt;
-    padding-bottom: 2px;
-    border-bottom: 2px solid #dddddd;
+#title {
+  color: black;
+  font-size: 18pt;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #dddddd;
 }
 
-h2
-{
-    border-top: 1px solid #dddddd;
-    padding-top: 10px;
-    font-size: 14pt;
+h2 {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+  font-size: 14pt;
 }
 
-h3
-{
-    font-style: italic;
-    font-size: 13pt;
+h3 {
+  font-style: italic;
+  font-size: 13pt;
 }
 
-blockquote
-{
-    border-left: 10px solid #dddddd;
-    padding-left: 5px;
+blockquote {
+  border-left: 10px solid #dddddd;
+  padding-left: 5px;
 }
 
-pre
-{
-    /* "display: inline-block" forces browser to shrink width to fit. */
-    display: inline-block;
-    margin-left: 3em;
-    margin-right: 5em;
-    padding: 10px;
-    width: auto;
-    border: 1px solid #aaaaaa;
-    background-color: #eeeeee;
+pre {
+  /* "display: inline-block" forces browser to shrink width to fit. */
+  display: inline-block;
+  margin-left: 3em;
+  margin-right: 5em;
+  padding: 10px;
+  width: auto;
+  border: 1px solid #aaaaaa;
+  background-color: #eeeeee;
 }
 
-div.multicolumn
-{
-    /* Note: Doesn't work with IE or Opera. */
+div.multicolumn {
+  /* Note: Doesn't work with IE or Opera. */
 
-    -moz-column-count: 3;
-    -moz-column-gap: 20px;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 20px;
-    column-count: 3;
-    column-gap: 20px;
-    width: auto;
-    display: block;
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
+  width: auto;
+  display: block;
 }
 
-div#content
-{
-    margin-left: 3em;
-    margin-right: 3em;
+div#content {
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
-div.footer
-{
-    float: right;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: smaller;
-    font-style: italic;
+div.footer {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: smaller;
+  font-style: italic;
 }
 
-table
-{
-    margin-top: 1em;
-    margin-left: 40px;
-    border: 1px solid #aaa;
-    padding: 5px;
+table {
+  padding: 0 !important;
+  margin-top: 1em;
+  margin-left: 40px;
+  border: 1px solid #aaa;
+  padding: 5px;
+}
+
+table tbody {
+  padding: 0;
+}
+
+td,th {
+  padding-right:  5px !important;
+}
+
+table tr td:nth-child(odd) {
+  border-right: 1px solid #aaa;
+}
+
+table tr th:nth-child(odd) {
+  border-right: 1px solid #aaa;
+}
+
+th {
+  border-bottom: 1px solid #aaa;
 }
