@@ -1,5 +1,5 @@
 exclude: [README.md]
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
