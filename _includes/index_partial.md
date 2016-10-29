@@ -1,6 +1,5 @@
 
 <div class="multicolumn" markdown="1">
-* [AquaEmacs (aqua-emacs)](aqua-emacs.html)
 * [Bash (bash)](bash.html)
 * [BIND (bind)](bind.html)
 * [BitTorrent (bittorrent)](bittorrent.html)
@@ -12,8 +11,6 @@
 * [GuruPlug (guruplug)](guruplug.html)
 * [IntelliJ IDEA (intellij-idea)](intellij-idea.html)
 * [iPad (ipad)](ipad.html)
-* [Linksys WAP54G Wireless Access Point (linksys-wap54g)](linksys-wap54g.html)
-* [Linksys WRT52G2 Wireless Router (linksys-wrt52g2)](linksys-wrt52g2.html)
 * [Linux (linux)](linux.html)
 * [Mac OS X (mac-os-x)](mac-os-x.html)
 * [MP3 (mp3)](mp3.html)

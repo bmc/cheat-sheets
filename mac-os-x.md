@@ -150,10 +150,11 @@ Skip Mac Ports and Fink. Use [HomeBrew][], instead.
 
 Completely re-worked, Carbon-ized, Mac-specific version of GNU Emacs.
 
-### Mac Ports
+### Via Homebrew
 
-Emacs as installed via Darwin Ports ("port"). Seems to have problems
-creating a mapping from Command (or Option) to the Meta key.
+```
+brew install emacs
+```
 
 ### Build from source
 
@@ -186,10 +187,6 @@ installed in `/Applications`, allowing use directly from the desktop.
 ----
 
 # Audio
-
-## To capture audio going to sound driver
-
-Use WireTap Pro: <http://www.ambrosiasw.com/utilities/wiretap/>
 
 ## To capture audio from specific applications
 
@@ -272,46 +269,6 @@ Use `/Applications/Utilities/Printer Setup Utility`
 ----
 
 # Disks, Files and File Systems
-
-## Encrypted file systems
-
-Can use Apple's FileVault. However, it encrypts the entire home directory.
-To encrypt only one directory tree, use one of these options:
-
-* Use a FUSE-based file system like EncFS, in conjunction with Mac-FUSE.
-  This option works very well, and it results in a "file system" that can
-  be copied to a Linux machine and mounted there.
-
-* Use [TrueCrypt](http://www.trucrypt.org/).
-
-* Use an encrypted Mac disk image. From
-  <http://www.macworld.com/2007/10/features/lockup_others/index.php>:
-
-> If your computer were stolen, the thief would be able to read any of your
-> files. Requiring a password to log in wouldn’t keep your data safe,
-> because someone could use an OS X Install disc to reset your password, or
-> remove your hard drive and view the files on another computer. Encrypting
-> your most sensitive files is the best solution.
->
-> FileVault, introduced in OS X 10.3 (Panther), can do this, but encrypting
-> all your data in this way can be dangerous; even a minor disk error could
-> leave you unable to access any of your files. A better way is to create
-> an encrypted disk image.
->
-> In Disk Utility, create a new disk image (File: New: Blank Disk Image).
-> Then, under Encryption, choose AES-128. From the Format pop-up menu,
-> choose Sparse Disk Image and specify a name and location. When the
-> Authenticate dialog box appears, choose a password; clicking on the key
-> button next to the Password text box will summon Apple's Password
-> Assistant, which can help you generate a secure one. (See full
-> instructions (<http://find.macworld.com/2425>); if that seems like too much
-> trouble, you can also create an encrypted disk image with a third-party
-> product such as PGP Desktop Home.)
->
-> Once you've created an encrypted disk image, you can use it to store any
-> files containing private data. Just remember that as long as the disk
-> image is mounted, your files are vulnerable. So be sure to log out (or at
-> least unmount the disk image) whenever you step away from your computer.
 
 ## Those .DS_Store files
 
