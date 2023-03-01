@@ -103,16 +103,3 @@ If that fails to get all the space, then recreate the file system from
 scratch:
 
     # mkfs.ext4 /dev/volgroup1/logicalvol0
-
-# Multimedia
-
-## Video
-
-### Importing Video via Firewire
-
-To import video from a video camera with a Firewire port, use
-[dvgrab](http://www.kinodv.org/).
-
-**Example**: Import video to QuickTime format:
-
-    $ dvgrab --rewind -f qt myvideo-
